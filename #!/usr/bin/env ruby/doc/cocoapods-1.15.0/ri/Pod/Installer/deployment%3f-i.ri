@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"deployment?:ETI"Pod::Installer#deployment?;TI"RW;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"K@return [Boolean] Whether installation should verify that there are no;To:RDoc::Markup::Verbatim;	[I"4Podfile or Lockfile changes. Defaults to false.;T:@format0:
+@fileI"lib/cocoapods/installer.rb;T:0@omit_headings_from_table_of_contents_below0F@I"Pod::Installer;TcRDoc::NormalClass0

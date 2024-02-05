@@ -1,0 +1,25 @@
+current directory: /Users/johnathanhill/Documents/GitHub/WeatherApp/#!/usr/bin/env ruby/gems/zlib-3.1.0/ext/zlib
+/Users/johnathanhill/.rbenv/versions/3.1.2/bin/ruby extconf.rb
+checking for deflateReset(NULL) in -lz... yes
+checking for crc32_combine() in zlib.h... yes
+checking for adler32_combine() in zlib.h... yes
+checking for z_crc_t in zlib.h... yes
+checking for z_size_t in zlib.h... yes
+checking for crc32_z() in zlib.h... yes
+checking for adler32_z() in zlib.h... yes
+creating Makefile
+
+current directory: /Users/johnathanhill/Documents/GitHub/WeatherApp/#!/usr/bin/env ruby/gems/zlib-3.1.0/ext/zlib
+make DESTDIR\= sitearchdir\=./.gem.20240203-796-llboi6 sitelibdir\=./.gem.20240203-796-llboi6 clean
+
+current directory: /Users/johnathanhill/Documents/GitHub/WeatherApp/#!/usr/bin/env ruby/gems/zlib-3.1.0/ext/zlib
+make DESTDIR\= sitearchdir\=./.gem.20240203-796-llboi6 sitelibdir\=./.gem.20240203-796-llboi6
+compiling zlib.c
+linking shared-object zlib.bundle
+
+current directory: /Users/johnathanhill/Documents/GitHub/WeatherApp/#!/usr/bin/env ruby/gems/zlib-3.1.0/ext/zlib
+make DESTDIR\= sitearchdir\=./.gem.20240203-796-llboi6 sitelibdir\=./.gem.20240203-796-llboi6 install
+/usr/bin/install -c -m 0755 zlib.bundle ./.gem.20240203-796-llboi6
+
+current directory: /Users/johnathanhill/Documents/GitHub/WeatherApp/#!/usr/bin/env ruby/gems/zlib-3.1.0/ext/zlib
+make DESTDIR\= sitearchdir\=./.gem.20240203-796-llboi6 sitelibdir\=./.gem.20240203-796-llboi6 clean

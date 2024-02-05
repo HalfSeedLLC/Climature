@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"repo_update:ETI"Pod::Installer#repo_update;TI"RW;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"@@return [Boolean] Whether the spec repos should be updated.;T:
+@fileI"lib/cocoapods/installer.rb;T:0@omit_headings_from_table_of_contents_below0F@I"Pod::Installer;TcRDoc::NormalClass0

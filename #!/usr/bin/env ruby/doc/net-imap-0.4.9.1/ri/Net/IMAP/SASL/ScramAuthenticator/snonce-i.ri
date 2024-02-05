@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"snonce:ETI"/Net::IMAP::SASL::ScramAuthenticator#snonce;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"4The server nonce, which must start with #cnonce;T:
+@fileI"-lib/net/imap/sasl/scram_authenticator.rb;T:0@omit_headings_from_table_of_contents_below0F@I"(Net::IMAP::SASL::ScramAuthenticator;TcRDoc::NormalClass0

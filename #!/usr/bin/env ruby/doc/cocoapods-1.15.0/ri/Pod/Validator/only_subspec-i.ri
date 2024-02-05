@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"only_subspec:ETI" Pod::Validator#only_subspec;TI"RW;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"T@return [String] name of the subspec to check, if nil all subspecs are checked.;T:
+@fileI"lib/cocoapods/validator.rb;T:0@omit_headings_from_table_of_contents_below0F@I"Pod::Validator;TcRDoc::NormalClass0

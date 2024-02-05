@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"use_static_frameworks:ETI")Pod::Validator#use_static_frameworks;TI"RW;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"U@return [Boolean] Whether static frameworks should be used for the installation.;T:
+@fileI"lib/cocoapods/validator.rb;T:0@omit_headings_from_table_of_contents_below0F@I"Pod::Validator;TcRDoc::NormalClass0

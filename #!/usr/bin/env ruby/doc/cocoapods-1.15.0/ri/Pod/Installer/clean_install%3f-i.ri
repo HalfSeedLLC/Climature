@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"clean_install?:ETI""Pod::Installer#clean_install?;TI"RW;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"\@return [Boolean] Whether installation should ignore the contents of the project cache ;TI".when incremental installation is enabled.;T:
+@fileI"lib/cocoapods/installer.rb;T:0@omit_headings_from_table_of_contents_below0F@I"Pod::Installer;TcRDoc::NormalClass0

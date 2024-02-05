@@ -1,0 +1,7 @@
+U:RDoc::Attr[iI"cached_sets:ETI"Pod::Resolver#cached_sets;TI"R;T:privateo:RDoc::Markup::Document:@parts[	o:RDoc::Markup::Paragraph;	[I"H@return [Hash<String => Set>] A cache that keeps tracks of the sets;To:RDoc::Markup::Verbatim;	[I"'loaded by the resolution process.
+;T:@format0o;
+;	[I"H@note   Sets store the resolved dependencies and return the highest;To;;	[	I"@available specification found in the sources. This is done
+;TI"Fglobally and not per target definition because there can be just
+;TI"Eone Pod installation, so different version of the same Pods for
+;TI"(target definitions are not allowed.;T;0:
+@fileI"lib/cocoapods/resolver.rb;T:0@omit_headings_from_table_of_contents_below0F@I"Pod::Resolver;TcRDoc::NormalClass0

@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"configuration_name:ETI"KPod::Target::BuildSettings::AggregateTargetSettings#configuration_name;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"@return [Symbol];To:RDoc::Markup::Verbatim;	[I"<The build configuration these settings will be used for;T:@format0:
+@fileI"+lib/cocoapods/target/build_settings.rb;T:0@omit_headings_from_table_of_contents_below0F@I"8Pod::Target::BuildSettings::AggregateTargetSettings;TcRDoc::NormalClass0

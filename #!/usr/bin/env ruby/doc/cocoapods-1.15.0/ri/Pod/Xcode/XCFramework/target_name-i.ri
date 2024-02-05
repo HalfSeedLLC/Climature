@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"target_name:ETI"(Pod::Xcode::XCFramework#target_name;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"M@return [String] target_name the target name this XCFramework belongs to;T:
+@fileI"'lib/cocoapods/xcode/xcframework.rb;T:0@omit_headings_from_table_of_contents_below0F@I"Pod::Xcode::XCFramework;TcRDoc::NormalClass0

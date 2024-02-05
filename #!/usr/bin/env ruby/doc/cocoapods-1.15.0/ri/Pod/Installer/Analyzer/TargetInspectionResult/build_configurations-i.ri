@@ -1,0 +1,4 @@
+U:RDoc::Attr[iI"build_configurations:ETI"JPod::Installer::Analyzer::TargetInspectionResult#build_configurations;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"F@return [Hash{String=>Symbol}] A hash representing the user build;To:RDoc::Markup::Verbatim;	[I"@configurations where each key corresponds to the name of a
+;TI":configuration and its value to its type (`:debug` or
+;TI"`:release`).;T:@format0:
+@fileI"Alib/cocoapods/installer/analyzer/target_inspection_result.rb;T:0@omit_headings_from_table_of_contents_below0F@I"5Pod::Installer::Analyzer::TargetInspectionResult;TcRDoc::NormalClass0

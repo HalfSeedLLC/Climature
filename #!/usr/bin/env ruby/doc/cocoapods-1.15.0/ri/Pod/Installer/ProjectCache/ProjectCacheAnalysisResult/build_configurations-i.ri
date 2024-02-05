@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"build_configurations:ETI"RPod::Installer::ProjectCache::ProjectCacheAnalysisResult#build_configurations;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"%@return [Hash{String => Symbol}];To:RDoc::Markup::Verbatim;	[I":The build configurations to install with each target.;T:@format0:
+@fileI"Klib/cocoapods/installer/project_cache/project_cache_analysis_result.rb;T:0@omit_headings_from_table_of_contents_below0F@I"=Pod::Installer::ProjectCache::ProjectCacheAnalysisResult;TcRDoc::NormalClass0

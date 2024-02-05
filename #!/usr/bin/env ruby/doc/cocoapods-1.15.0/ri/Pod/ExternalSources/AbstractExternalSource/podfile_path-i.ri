@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"podfile_path:ETI">Pod::ExternalSources::AbstractExternalSource#podfile_path;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"F@return [String] the path where the podfile is defined to resolve;To:RDoc::Markup::Verbatim;	[I"relative paths.;T:@format0:
+@fileI"?lib/cocoapods/external_sources/abstract_external_source.rb;T:0@omit_headings_from_table_of_contents_below0F@I"1Pod::ExternalSources::AbstractExternalSource;TcRDoc::NormalClass0

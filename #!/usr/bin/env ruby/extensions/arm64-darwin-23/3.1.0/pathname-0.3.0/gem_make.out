@@ -1,0 +1,19 @@
+current directory: /Users/johnathanhill/Documents/GitHub/WeatherApp/#!/usr/bin/env ruby/gems/pathname-0.3.0/ext/pathname
+/Users/johnathanhill/.rbenv/versions/3.1.2/bin/ruby extconf.rb
+checking for rb_file_s_birthtime()... yes
+creating Makefile
+
+current directory: /Users/johnathanhill/Documents/GitHub/WeatherApp/#!/usr/bin/env ruby/gems/pathname-0.3.0/ext/pathname
+make DESTDIR\= sitearchdir\=./.gem.20240203-796-edhvj1 sitelibdir\=./.gem.20240203-796-edhvj1 clean
+
+current directory: /Users/johnathanhill/Documents/GitHub/WeatherApp/#!/usr/bin/env ruby/gems/pathname-0.3.0/ext/pathname
+make DESTDIR\= sitearchdir\=./.gem.20240203-796-edhvj1 sitelibdir\=./.gem.20240203-796-edhvj1
+compiling pathname.c
+linking shared-object pathname.bundle
+
+current directory: /Users/johnathanhill/Documents/GitHub/WeatherApp/#!/usr/bin/env ruby/gems/pathname-0.3.0/ext/pathname
+make DESTDIR\= sitearchdir\=./.gem.20240203-796-edhvj1 sitelibdir\=./.gem.20240203-796-edhvj1 install
+/usr/bin/install -c -m 0755 pathname.bundle ./.gem.20240203-796-edhvj1
+
+current directory: /Users/johnathanhill/Documents/GitHub/WeatherApp/#!/usr/bin/env ruby/gems/pathname-0.3.0/ext/pathname
+make DESTDIR\= sitearchdir\=./.gem.20240203-796-edhvj1 sitelibdir\=./.gem.20240203-796-edhvj1 clean

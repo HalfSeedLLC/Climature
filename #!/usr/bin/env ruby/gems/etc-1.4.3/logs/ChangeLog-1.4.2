@@ -1,0 +1,22 @@
+-*- coding: utf-8 -*-
+
+commit 5cac138538ea4ce0176aa035a97fca78e913d65d
+  Author:     Hiroshi SHIBATA <hsbt@ruby-lang.org>
+  AuthorDate: 2022-12-09 14:57:29 +0900
+  Commit:     Hiroshi SHIBATA <hsbt@ruby-lang.org>
+  CommitDate: 2022-12-09 14:57:29 +0900
+
+    Bump version to 1.4.2
+
+commit 61b3dc486bbfdb662834a7088150050da57a61c9
+  Author:     卜部昌平 <shyouhei@ruby-lang.org>
+  AuthorDate: 2022-09-21 10:03:30 +0900
+  Commit:     Hiroshi SHIBATA <hsbt@ruby-lang.org>
+  CommitDate: 2022-12-09 14:56:37 +0900
+
+    getenv: is in stdlib.h
+
+    getenv is a very basic function that has been in stdlib.h since
+    ISO/IEC 9899:1990.  There is absolutely zero need for us to redeclare.
+
+    pty.c already includes stdlib.h out of the box so we need nothing.

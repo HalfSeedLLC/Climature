@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"children:ETI",Pod::Podfile::TargetDefinition#children;TI"RW;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"G@return [Array<TargetDefinition>] the children target definitions.;T:
+@fileI"4lib/cocoapods-core/podfile/target_definition.rb;T:0@omit_headings_from_table_of_contents_below0F@I"#Pod::Podfile::TargetDefinition;TcRDoc::NormalClass0

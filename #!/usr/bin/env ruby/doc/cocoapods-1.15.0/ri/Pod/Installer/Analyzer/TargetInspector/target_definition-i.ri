@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"target_definition:ETI"@Pod::Installer::Analyzer::TargetInspector#target_definition;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"@@return [TargetDefinition] the target definition to inspect;T:
+@fileI"9lib/cocoapods/installer/analyzer/target_inspector.rb;T:0@omit_headings_from_table_of_contents_below0F@I".Pod::Installer::Analyzer::TargetInspector;TcRDoc::NormalClass0

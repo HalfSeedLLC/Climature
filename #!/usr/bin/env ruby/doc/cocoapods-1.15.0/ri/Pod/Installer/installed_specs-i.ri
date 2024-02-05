@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"installed_specs:ETI"#Pod::Installer#installed_specs;TI"RW;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"K@return [Array<Specification>] The specifications that were installed.;T:
+@fileI"lib/cocoapods/installer.rb;T:0@omit_headings_from_table_of_contents_below0F@I"Pod::Installer;TcRDoc::NormalClass0

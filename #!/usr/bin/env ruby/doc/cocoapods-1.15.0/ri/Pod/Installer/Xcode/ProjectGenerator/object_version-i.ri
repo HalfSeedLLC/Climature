@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"object_version:ETI";Pod::Installer::Xcode::ProjectGenerator#object_version;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"<@return [Integer] Object version for the Xcode project.;T:
+@fileI"Nlib/cocoapods/installer/xcode/pods_project_generator/project_generator.rb;T:0@omit_headings_from_table_of_contents_below0F@I",Pod::Installer::Xcode::ProjectGenerator;TcRDoc::NormalClass0

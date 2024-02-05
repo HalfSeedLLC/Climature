@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"classes_by_key:ETI"GXcodeproj::Project::Object::AbstractObjectAttribute#classes_by_key;TI"RW;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"I@return [{Symbol, Array<Class>}] the list of the classes accepted by;To:RDoc::Markup::Verbatim;	[I"6each key for attributes which store a dictionary.;T:@format0:
+@fileI"/lib/xcodeproj/project/object_attributes.rb;T:0@omit_headings_from_table_of_contents_below0F@I"8Xcodeproj::Project::Object::AbstractObjectAttribute;TcRDoc::NormalClass0

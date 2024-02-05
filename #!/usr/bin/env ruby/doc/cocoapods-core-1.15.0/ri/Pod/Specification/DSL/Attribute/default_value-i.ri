@@ -1,0 +1,4 @@
+U:RDoc::Attr[iI"default_value:ETI"5Pod::Specification::DSL::Attribute#default_value;TI"R;T:publico:RDoc::Markup::Document:@parts[	o:RDoc::Markup::Paragraph;	[I"A@return [Object] if the attribute follows configuration over;To:RDoc::Markup::Verbatim;	[I"0convention it can specify a default value.
+;T:@format0o;
+;	[I"I@note   The default value is not automatically wrapped and should be;To;;	[I"+specified within the container if any.;T;0:
+@fileI"6lib/cocoapods-core/specification/dsl/attribute.rb;T:0@omit_headings_from_table_of_contents_below0F@I"'Pod::Specification::DSL::Attribute;TcRDoc::NormalClass0

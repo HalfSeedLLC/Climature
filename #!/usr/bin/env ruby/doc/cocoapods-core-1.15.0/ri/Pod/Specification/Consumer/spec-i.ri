@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"	spec:ETI"&Pod::Specification::Consumer#spec;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I":@return [Specification] The specification to consume.;T:
+@fileI"1lib/cocoapods-core/specification/consumer.rb;T:0@omit_headings_from_table_of_contents_below0F@I"!Pod::Specification::Consumer;TcRDoc::NormalClass0

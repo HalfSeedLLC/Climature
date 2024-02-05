@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"max_concurrency:ETI"$Typhoeus::Hydra#max_concurrency;TI"RW;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I""@example Set max_concurrency.;To:RDoc::Markup::Verbatim;	[I"-Typhoeus::Hydra.new(max_concurrency: 20);T:@format0:
+@fileI"lib/typhoeus/hydra.rb;T:0@omit_headings_from_table_of_contents_below0F@I"Typhoeus::Hydra;TcRDoc::NormalClass0

@@ -1,0 +1,143 @@
+-*- coding: utf-8 -*-
+
+commit 78987ce56a489cb7ee82595c8354469f712195ce
+  Author:     Hiroshi SHIBATA <hsbt@ruby-lang.org>
+  AuthorDate: 2019-11-30 18:03:57 +0900
+  Commit:     Hiroshi SHIBATA <hsbt@ruby-lang.org>
+  CommitDate: 2019-11-30 18:03:57 +0900
+
+    Bump version to 1.1.0
+
+commit b6a02c1193c0bfb89b71fdfe3fe9b282e61465cd
+  Author:     Jeremy Evans <code@jeremyevans.net>
+  AuthorDate: 2019-10-18 12:10:03 -0700
+  Commit:     Jeremy Evans <code@jeremyevans.net>
+  CommitDate: 2019-10-30 13:49:52 -0700
+
+    Remove taint support
+
+    Ruby 2.7 deprecates taint and it no longer has an effect.
+    The lack of taint support should not cause a problem in
+    previous Ruby versions.
+
+    Still untaint the tmpdir object on Ruby <2.7, as returning
+    a tainted string there could cause problems.
+
+commit 5157aeaa08b60561a036d7c8269a514430cdd16f
+  Author:     卜部昌平 <shyouhei@ruby-lang.org>
+  AuthorDate: 2019-08-28 17:48:48 +0900
+  Commit:     Hiroshi SHIBATA <hsbt@ruby-lang.org>
+  CommitDate: 2019-10-26 06:55:50 +0900
+
+    drop-in type check for rb_define_module_function
+
+    We can check the function pointer passed to rb_define_module_function
+    like how we do so in rb_define_method.  The difference is that this
+    changeset reveales lots of atiry mismatches.
+
+commit 8c93da18680cd1421cb52cd9b15aeb2b593cdb02
+  Author:     卜部昌平 <shyouhei@ruby-lang.org>
+  AuthorDate: 2019-08-26 15:20:15 +0900
+  Commit:     Hiroshi SHIBATA <hsbt@ruby-lang.org>
+  CommitDate: 2019-10-26 06:55:33 +0900
+
+    rb_ensure now free from ANYARGS
+
+    After 5e86b005c0f2ef30df2f9906c7e2f3abefe286a2, I now think ANYARGS is
+    dangerous and should be extinct.  This commit deletes ANYARGS from
+    rb_ensure, which also revealed many arity / type mismatches.
+
+commit 941b2e47a5511bfcb306fe24c021e5cf2b5f8eed
+  Author:     hsbt <hsbt@b2dd03c8-39d4-4d8f-98ff-823fe69b080e>
+  AuthorDate: 2018-10-20 10:30:42 +0000
+  Commit:     Hiroshi SHIBATA <hsbt@ruby-lang.org>
+  CommitDate: 2019-10-26 06:55:15 +0900
+
+    Retry r65211.
+
+      * Maybe, RbConfig.ruby only provides after Ruby installation.
+
+    git-svn-id: svn+ssh://ci.ruby-lang.org/ruby/trunk@65224 b2dd03c8-39d4-4d8f-98ff-823fe69b080e
+
+commit b344460f8fc13cb3c71780e997582df2431bccfb
+  Author:     Samuel Williams <samuel.williams@oriontransfer.co.nz>
+  AuthorDate: 2019-06-19 21:06:57 +1200
+  Commit:     Hiroshi SHIBATA <hsbt@ruby-lang.org>
+  CommitDate: 2019-07-12 10:39:00 +0900
+
+    Remove IA64 support.
+
+commit e9a48c774672a1bb5de5905aa7b5ac2becf895c3
+  Author:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  AuthorDate: 2019-07-10 12:27:25 +0900
+  Commit:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  CommitDate: 2019-07-10 12:27:25 +0900
+
+    Update binary versions
+
+commit f622b5a6ae2939af0338b043aca90ffd335fa90d
+  Author:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  AuthorDate: 2019-07-10 10:51:24 +0900
+  Commit:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  CommitDate: 2019-07-10 10:55:21 +0900
+
+    Make constdefs.h with rake
+
+    `RbConfig.ruby` is not runnable but the target platform binary
+    when cross-compiling in rake-compiler-dock.
+
+commit e1674c18f5a0faf881b362363f428d139baef3b4
+  Author:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  AuthorDate: 2019-07-10 10:50:29 +0900
+  Commit:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  CommitDate: 2019-07-10 10:51:01 +0900
+
+    Added build:mingw
+
+commit 4f791590d95a410d4225b71f35b27d0f14dc2acd
+  Author:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  AuthorDate: 2019-07-10 10:44:10 +0900
+  Commit:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  CommitDate: 2019-07-10 10:44:10 +0900
+
+    Added Etc::VERSION
+
+commit 37bf414e7031e77eea82f0a72d461a6c09383797
+  Author:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  AuthorDate: 2019-07-10 10:42:45 +0900
+  Commit:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  CommitDate: 2019-07-10 10:42:45 +0900
+
+    Unnecessary files for gem packages
+
+commit 63da66202ff93060f6fc2fb92e257809d59661e5
+  Author:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  AuthorDate: 2019-07-10 08:22:37 +0900
+  Commit:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  CommitDate: 2019-07-10 08:22:37 +0900
+
+    Removed unused files
+
+commit f1fad5e4ae6e5eadd4d7a9a9d9e8868f18acbef8
+  Author:     SHIBATA Hiroshi <hsbt@ruby-lang.org>
+  AuthorDate: 2018-10-20 19:26:59 +0900
+  Commit:     SHIBATA Hiroshi <hsbt@ruby-lang.org>
+  CommitDate: 2018-10-20 19:26:59 +0900
+
+    Prefer to use File.exist?
+
+commit 07ab6655d07c5b9cd5f115e5ebe449c90777b349
+  Author:     SHIBATA Hiroshi <hsbt@ruby-lang.org>
+  AuthorDate: 2018-10-20 19:26:00 +0900
+  Commit:     SHIBATA Hiroshi <hsbt@ruby-lang.org>
+  CommitDate: 2018-10-20 19:26:00 +0900
+
+    Use `depend` file insted of dependency target file.
+
+commit 5a9187a647db1a11588082e63607edcc975a9170
+  Author:     SHIBATA Hiroshi <hsbt@ruby-lang.org>
+  AuthorDate: 2018-10-20 16:37:05 +0900
+  Commit:     SHIBATA Hiroshi <hsbt@ruby-lang.org>
+  CommitDate: 2018-10-20 16:37:05 +0900
+
+    Added comments for constdefs.h.

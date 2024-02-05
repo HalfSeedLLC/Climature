@@ -1,0 +1,27 @@
+current directory: /Users/johnathanhill/Documents/GitHub/WeatherApp/#!/usr/bin/env ruby/gems/rbs-3.4.3/ext/rbs_extension
+/Users/johnathanhill/.rbenv/versions/3.1.2/bin/ruby extconf.rb
+checking for whether -std=gnu99 is accepted as CFLAGS... yes
+creating Makefile
+
+current directory: /Users/johnathanhill/Documents/GitHub/WeatherApp/#!/usr/bin/env ruby/gems/rbs-3.4.3/ext/rbs_extension
+make DESTDIR\= sitearchdir\=./.gem.20240203-796-vakcbt sitelibdir\=./.gem.20240203-796-vakcbt clean
+
+current directory: /Users/johnathanhill/Documents/GitHub/WeatherApp/#!/usr/bin/env ruby/gems/rbs-3.4.3/ext/rbs_extension
+make DESTDIR\= sitearchdir\=./.gem.20240203-796-vakcbt sitelibdir\=./.gem.20240203-796-vakcbt
+compiling constants.c
+compiling lexer.c
+compiling lexstate.c
+compiling location.c
+compiling main.c
+compiling parser.c
+compiling parserstate.c
+compiling ruby_objs.c
+compiling unescape.c
+linking shared-object rbs_extension.bundle
+
+current directory: /Users/johnathanhill/Documents/GitHub/WeatherApp/#!/usr/bin/env ruby/gems/rbs-3.4.3/ext/rbs_extension
+make DESTDIR\= sitearchdir\=./.gem.20240203-796-vakcbt sitelibdir\=./.gem.20240203-796-vakcbt install
+/usr/bin/install -c -m 0755 rbs_extension.bundle ./.gem.20240203-796-vakcbt
+
+current directory: /Users/johnathanhill/Documents/GitHub/WeatherApp/#!/usr/bin/env ruby/gems/rbs-3.4.3/ext/rbs_extension
+make DESTDIR\= sitearchdir\=./.gem.20240203-796-vakcbt sitelibdir\=./.gem.20240203-796-vakcbt clean

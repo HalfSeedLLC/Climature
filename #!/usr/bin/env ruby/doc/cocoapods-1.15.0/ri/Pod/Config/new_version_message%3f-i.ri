@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"new_version_message?:ETI"%Pod::Config#new_version_message?;TI"RW;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"P@return [Boolean] Whether a message should be printed when a new version of;To:RDoc::Markup::Verbatim;	[I"CocoaPods is available.;T:@format0:
+@fileI"lib/cocoapods/config.rb;T:0@omit_headings_from_table_of_contents_below0F@I"Pod::Config;TcRDoc::NormalClass0

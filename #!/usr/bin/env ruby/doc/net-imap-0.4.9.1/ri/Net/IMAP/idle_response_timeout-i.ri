@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"idle_response_timeout:ETI"$Net::IMAP#idle_response_timeout;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"8Seconds to wait until an IDLE response is received.;T:
+@fileI"lib/net/imap.rb;T:0@omit_headings_from_table_of_contents_below0F@I"Net::IMAP;TcRDoc::NormalClass0

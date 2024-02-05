@@ -1,0 +1,71 @@
+-*- coding: utf-8 -*-
+
+commit 041c4a0cc91ce9140cc41641f4a16016349ecf30
+  Author:     SHIBATA Hiroshi <hsbt@ruby-lang.org>
+  AuthorDate: 2018-05-26 09:13:47 +0900
+  Commit:     SHIBATA Hiroshi <hsbt@ruby-lang.org>
+  CommitDate: 2018-05-26 09:13:47 +0900
+
+    bump version to 1.0.1
+
+commit 4a7571b310da6a40a337421412e2db6ad379d066
+  Author:     k0kubun <k0kubun@b2dd03c8-39d4-4d8f-98ff-823fe69b080e>
+  AuthorDate: 2018-02-27 11:12:23 +0000
+  Commit:     SHIBATA Hiroshi <hsbt@ruby-lang.org>
+  CommitDate: 2018-05-26 08:29:39 +0900
+
+    Refactor ERB version checking for keyword arguments
+
+    Improving code like r62590. See r62529 for details.
+
+    git-svn-id: svn+ssh://ci.ruby-lang.org/ruby/trunk@62594 b2dd03c8-39d4-4d8f-98ff-823fe69b080e
+
+commit 5903c2ff093fc176a564053aa3b6a09e7ef7b5a3
+  Author:     k0kubun <k0kubun@b2dd03c8-39d4-4d8f-98ff-823fe69b080e>
+  AuthorDate: 2018-02-22 13:28:25 +0000
+  Commit:     SHIBATA Hiroshi <hsbt@ruby-lang.org>
+  CommitDate: 2018-05-26 08:29:15 +0900
+
+    erb.rb: deprecate safe_level of ERB.new
+
+    Also, as it's in the middle of the list of 4 arguments, 3rd and 4th arguments
+    (trim_mode, eoutvar) are changed to keyword arguments.
+    Old ways to specify arguments are deprecated and warned now.
+
+    bin/erb: deprecate -S option.
+
+    We'll remove all of deprecated ones at Ruby 2.7+.
+
+    enc/make_encmake.rb: stopped using deprecated interface
+    ext/etc/mkconstants.rb: ditto
+    ext/socket/mkconstants.rb: ditto
+    sample/ripper/ruby2html.rb: ditto
+    spec/ruby/library/erb/defmethod/def_erb_method_spec.rb: ditto
+    spec/ruby/library/erb/new_spec.rb: ditto
+    test/erb/test_erb.rb: ditto
+    test/erb/test_erb_command.rb: ditto
+    tool/generic_erb.rb: ditto
+    tool/ruby_vm/helpers/dumper.rb: ditto
+    tool/transcode-tblgen.rb: ditto
+    lib/rdoc/erbio.rb: ditto
+    lib/rdoc/generator/darkfish.rb: ditto
+
+    [Feature #14256]
+
+    git-svn-id: svn+ssh://ci.ruby-lang.org/ruby/trunk@62529 b2dd03c8-39d4-4d8f-98ff-823fe69b080e
+
+commit 16aba3206fb5335638f40d0a3969bf93e73af64b
+  Author:     SHIBATA Hiroshi <hsbt@ruby-lang.org>
+  AuthorDate: 2018-01-05 09:23:48 +0900
+  Commit:     SHIBATA Hiroshi <hsbt@ruby-lang.org>
+  CommitDate: 2018-01-05 09:23:48 +0900
+
+    Fixed installation error with standalone gem.
+
+commit 9aad154fa91cf257ce985be9719ab55cf4ffc884
+  Author:     Olle Jonsson <olle.jonsson@gmail.com>
+  AuthorDate: 2017-12-25 16:21:36 +0100
+  Commit:     GitHub <noreply@github.com>
+  CommitDate: 2017-12-25 16:21:36 +0100
+
+    README: ruby code fence [ci skip]

@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"resources_by_config:ETI"<Pod::Generator::CopyResourcesScript#resources_by_config;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"I@return [Hash{String, Array{String}] A list of files relative to the;To:RDoc::Markup::Verbatim;	[I"5project pods root, keyed by build configuration.;T:@format0:
+@fileI"5lib/cocoapods/generator/copy_resources_script.rb;T:0@omit_headings_from_table_of_contents_below0F@I"(Pod::Generator::CopyResourcesScript;TcRDoc::NormalClass0

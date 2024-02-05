@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"variants:ETI"5Pod::Installer::Analyzer::PodVariantSet#variants;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"H@return [Array<PodVariant>] the different variants within this set.;T:
+@fileI"8lib/cocoapods/installer/analyzer/pod_variant_set.rb;T:0@omit_headings_from_table_of_contents_below0F@I",Pod::Installer::Analyzer::PodVariantSet;TcRDoc::NormalClass0

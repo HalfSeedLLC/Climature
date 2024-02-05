@@ -1,0 +1,134 @@
+import 'package:flutter/material.dart';
+import 'package:weather_app/pages/home/widgets/weather_card.dart';
+import 'package:weather_app/theme/colors.dart';
+
+class Home extends StatelessWidget {
+  const Home({
+    Key? key,
+  }) : super(key: key);
+
+  static const route = '/home';
+
+  @override
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.only(top: 25, left: 25, right: 25),
+        child: Scaffold(
+          backgroundColor: WeatherColors.black,
+          appBar: PreferredSize(
+              preferredSize: const Size(double.infinity, 125),
+              child: SafeArea(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'City List',
+                      style: Theme.of(context).textTheme.headlineMedium,
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      'Light rain for the next hour',
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    TextField(
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyMedium!
+                          .copyWith(color: WeatherColors.white),
+                      decoration: InputDecoration(
+                        filled: true,
+                        hintText: 'Search for a city',
+                        contentPadding: EdgeInsets.zero,
+                        fillColor: WeatherColors.ev1,
+                        focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                            borderSide:
+                                const BorderSide(color: Color(0xFFAAAAAA))),
+                        hintStyle: Theme.of(context).textTheme.bodyMedium,
+                        prefixIcon:
+                            const Icon(Icons.search, color: Color(0xFF7F7F7F)),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              )),
+          body: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 35),
+                Text(
+                  'Your City',
+                  style: Theme.of(context).textTheme.headlineSmall,
+                ),
+                const SizedBox(height: 15),
+                const WeatherCard(
+                  city: 'Fresno',
+                  time: '03:22 AM',
+                  degrees: '12',
+                  forecast: 'Light rain forecasted',
+                ),
+                const SizedBox(height: 30),
+                Text(
+                  'Favorite List',
+                  style: Theme.of(context).textTheme.headlineSmall,
+                ),
+                const SizedBox(height: 15),
+                const Wrap(
+                  runSpacing: 12,
+                  children: [
+                    WeatherCard(
+                      city: 'New York',
+                      time: '03:22 AM',
+                      degrees: '4',
+                      forecast: 'Light rain forecasted',
+                      fontColor: WeatherColors.white,
+                      backgroundColor: WeatherColors.ev1,
+                    ),
+                    WeatherCard(
+                      city: 'Vancouver',
+                      time: '03:22 AM',
+                      degrees: '8',
+                      forecast: 'Light rain forecasted',
+                      fontColor: WeatherColors.white,
+                      backgroundColor: WeatherColors.ev1,
+                    ),
+                    WeatherCard(
+                      city: 'London',
+                      time: '03:22 AM',
+                      degrees: '13',
+                      forecast: 'Light rain forecasted',
+                      fontColor: WeatherColors.white,
+                      backgroundColor: WeatherColors.ev1,
+                    ),
+                    WeatherCard(
+                      city: 'Fresno',
+                      time: '03:22 AM',
+                      degrees: '27',
+                      forecast: 'Light rain forecasted',
+                      fontColor: WeatherColors.white,
+                      backgroundColor: WeatherColors.ev1,
+                    ),
+                    WeatherCard(
+                      city: 'California',
+                      time: '03:22 AM',
+                      degrees: '12',
+                      forecast: 'Light rain forecasted',
+                      fontColor: WeatherColors.white,
+                      backgroundColor: WeatherColors.ev1,
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+        ),
+      );
+}

@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"platforms:ETI":Pod::Specification::Linter::Results::Result#platforms;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"B@return [Array<Platform>] the platforms where this result was;To:RDoc::Markup::Verbatim;	[I"generated.;T:@format0:
+@fileI"6lib/cocoapods-core/specification/linter/result.rb;T:0@omit_headings_from_table_of_contents_below0F@I"0Pod::Specification::Linter::Results::Result;TcRDoc::NormalClass0

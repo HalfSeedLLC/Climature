@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI" add_launchscreen_storyboard:ETI"^Pod::Installer::Xcode::PodsProjectGenerator::AppHostInstaller#add_launchscreen_storyboard;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"[@return [Boolean] whether the app host installer should add a launch screen storyboard;T:
+@fileI"Olib/cocoapods/installer/xcode/pods_project_generator/app_host_installer.rb;T:0@omit_headings_from_table_of_contents_below0F@I"BPod::Installer::Xcode::PodsProjectGenerator::AppHostInstaller;TcRDoc::NormalClass0

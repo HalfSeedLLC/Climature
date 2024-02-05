@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"target_installation_result:ETI"`Pod::Installer::Xcode::PodsProjectGenerator::PodTargetIntegrator#target_installation_result;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"h@return [TargetInstallationResult] the installation result of the target that should be integrated.;T:
+@fileI"Rlib/cocoapods/installer/xcode/pods_project_generator/pod_target_integrator.rb;T:0@omit_headings_from_table_of_contents_below0F@I"EPod::Installer::Xcode::PodsProjectGenerator::PodTargetIntegrator;TcRDoc::NormalClass0

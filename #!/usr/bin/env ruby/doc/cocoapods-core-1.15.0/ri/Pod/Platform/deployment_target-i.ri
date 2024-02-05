@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"deployment_target:ETI"$Pod::Platform#deployment_target;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"=@return [Version] the deployment target of the platform.;T:
+@fileI"#lib/cocoapods-core/platform.rb;T:0@omit_headings_from_table_of_contents_below0F@I"Pod::Platform;TcRDoc::NormalClass0

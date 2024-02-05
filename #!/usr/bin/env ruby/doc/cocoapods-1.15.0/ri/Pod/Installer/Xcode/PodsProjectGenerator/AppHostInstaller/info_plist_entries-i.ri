@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"info_plist_entries:ETI"UPod::Installer::Xcode::PodsProjectGenerator::AppHostInstaller#info_plist_entries;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"7@return [Hash] Info.plist entries for the app host;T:
+@fileI"Olib/cocoapods/installer/xcode/pods_project_generator/app_host_installer.rb;T:0@omit_headings_from_table_of_contents_below0F@I"BPod::Installer::Xcode::PodsProjectGenerator::AppHostInstaller;TcRDoc::NormalClass0

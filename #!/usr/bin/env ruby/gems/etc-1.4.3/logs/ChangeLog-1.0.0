@@ -1,0 +1,65 @@
+-*- coding: utf-8 -*-
+
+commit 3402a9366fba4d2bf2f4ea20df16c95121876bc4
+  Author:     SHIBATA Hiroshi <hsbt@ruby-lang.org>
+  AuthorDate: 2017-12-13 14:31:00 +0900
+  Commit:     SHIBATA Hiroshi <hsbt@ruby-lang.org>
+  CommitDate: 2017-12-13 14:31:00 +0900
+
+    Bump release date
+
+commit be7fadb654340282ff71a500a47f88a0b4c47a1d
+  Author:     SHIBATA Hiroshi <hsbt@ruby-lang.org>
+  AuthorDate: 2017-12-13 14:30:42 +0900
+  Commit:     SHIBATA Hiroshi <hsbt@ruby-lang.org>
+  CommitDate: 2017-12-13 14:30:42 +0900
+
+    Added badge of Travis
+
+commit 97aca32b82f6cd8c309ae515e36d86c4d4822e4c
+  Author:     SHIBATA Hiroshi <hsbt@ruby-lang.org>
+  AuthorDate: 2017-12-13 14:23:26 +0900
+  Commit:     SHIBATA Hiroshi <hsbt@ruby-lang.org>
+  CommitDate: 2017-12-13 14:23:26 +0900
+
+    prepare to release 1.0.0
+
+commit 744646073bcd4e7c5b65ae5921cf4c1d5697e35e
+  Author:     SHIBATA Hiroshi <hsbt@ruby-lang.org>
+  AuthorDate: 2017-11-28 12:17:10 +0900
+  Commit:     SHIBATA Hiroshi <hsbt@ruby-lang.org>
+  CommitDate: 2017-11-28 12:20:44 +0900
+
+    Pick commits from ruby core repository.
+
+      * https://github.com/ruby/ruby/commit/0f7fed9253
+      * https://github.com/ruby/ruby/commit/8fc8587e05
+      * https://github.com/ruby/ruby/commit/1333c0f0df
+      * https://github.com/ruby/ruby/commit/e4ff51b05a
+      * https://github.com/ruby/ruby/commit/1852b4a866
+      * https://github.com/ruby/ruby/commit/b5b2bd86f1
+      * https://github.com/ruby/ruby/commit/253fd5fe6b
+
+commit 0e8f8547412d33a35752ef4272d78fc18cf3a5ed
+  Author:     SHIBATA Hiroshi <hsbt@ruby-lang.org>
+  AuthorDate: 2017-10-20 16:51:22 +0900
+  Commit:     SHIBATA Hiroshi <hsbt@ruby-lang.org>
+  CommitDate: 2017-10-20 16:51:22 +0900
+
+    Update README with rdoc of Etc module
+
+commit 86a04b45feed2bc88d44399e127ed675d5d0f41c
+  Author:     SHIBATA Hiroshi <hsbt@ruby-lang.org>
+  AuthorDate: 2017-09-13 14:32:17 +0900
+  Commit:     SHIBATA Hiroshi <hsbt@ruby-lang.org>
+  CommitDate: 2017-09-13 14:32:17 +0900
+
+    make frozen
+
+commit 91ce5d0039fe10d86b35a3c114fabb9a7ae86344
+  Author:     SHIBATA Hiroshi <hsbt@ruby-lang.org>
+  AuthorDate: 2017-07-18 14:38:26 +0900
+  Commit:     SHIBATA Hiroshi <hsbt@ruby-lang.org>
+  CommitDate: 2017-07-18 14:38:26 +0900
+
+    fixed wrong license name

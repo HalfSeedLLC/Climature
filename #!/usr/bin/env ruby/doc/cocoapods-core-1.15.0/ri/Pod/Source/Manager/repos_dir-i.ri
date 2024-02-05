@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"repos_dir:ETI"#Pod::Source::Manager#repos_dir;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"C@return [Pathname] The directory that contains the source repo;To:RDoc::Markup::Verbatim;	[I"directories.;T:@format0:
+@fileI")lib/cocoapods-core/source/manager.rb;T:0@omit_headings_from_table_of_contents_below0F@I"Pod::Source::Manager;TcRDoc::NormalClass0

@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"platform_variant:ETI"4Pod::Xcode::XCFramework::Slice#platform_variant;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"D@return [Symbol] the platform variant. Either :simulator or nil;T:
+@fileI"9lib/cocoapods/xcode/xcframework/xcframework_slice.rb;T:0@omit_headings_from_table_of_contents_below0F@I"#Pod::Xcode::XCFramework::Slice;TcRDoc::NormalClass0

@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"internal_data:ETI" Pod::Lockfile#internal_data;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"?@return [String] the hash used to initialize the Lockfile.;T:
+@fileI"#lib/cocoapods-core/lockfile.rb;T:0@omit_headings_from_table_of_contents_below0F@I"Pod::Lockfile;TcRDoc::NormalClass0

@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"use_input_output_paths?:ETI"BPod::Installer::UserProjectIntegrator#use_input_output_paths?;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"P@return [Boolean] whether to use input/output paths for build phase scripts;T:
+@fileI"7lib/cocoapods/installer/user_project_integrator.rb;T:0@omit_headings_from_table_of_contents_below0F@I"*Pod::Installer::UserProjectIntegrator;TcRDoc::NormalClass0

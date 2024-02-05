@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"platform:ETI",Pod::Xcode::XCFramework::Slice#platform;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I".@return [Platform] the supported platform;T:
+@fileI"9lib/cocoapods/xcode/xcframework/xcframework_slice.rb;T:0@omit_headings_from_table_of_contents_below0F@I"#Pod::Xcode::XCFramework::Slice;TcRDoc::NormalClass0

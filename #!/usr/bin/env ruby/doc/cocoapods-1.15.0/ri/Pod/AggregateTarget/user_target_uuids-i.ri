@@ -1,0 +1,4 @@
+U:RDoc::Attr[iI"user_target_uuids:ETI"+Pod::AggregateTarget#user_target_uuids;TI"R;T:publico:RDoc::Markup::Document:@parts[	o:RDoc::Markup::Paragraph;	[I"K@return [Array<String>] the list of the UUIDs of the user targets that;To:RDoc::Markup::Verbatim;	[I"Fwill be integrated by this target as identified by the analyzer.
+;T:@format0o;
+;	[I"M@note   The target instances are not stored to prevent editing different;To;;	[I"instances.;T;0:
+@fileI"-lib/cocoapods/target/aggregate_target.rb;T:0@omit_headings_from_table_of_contents_below0F@I"Pod::AggregateTarget;TcRDoc::NormalClass0

@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"podfile:ETI"Pod::Installer#podfile;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"N@return [Podfile] The Podfile specification that contains the information;To:RDoc::Markup::Verbatim;	[I"*of the Pods that should be installed.;T:@format0:
+@fileI"lib/cocoapods/installer.rb;T:0@omit_headings_from_table_of_contents_below0F@I"Pod::Installer;TcRDoc::NormalClass0

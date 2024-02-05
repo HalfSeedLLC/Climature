@@ -1,0 +1,73 @@
+-*- coding: utf-8 -*-
+
+commit 714e8658570a49bf258d63b41a10c95445b7dce6
+  Author:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  AuthorDate: 2022-01-05 12:23:00 +0900
+  Commit:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  CommitDate: 2022-01-05 12:33:23 +0900
+
+    Force update tags
+
+commit c8a133fe95877bfd0264a2db8c657b3f7800af7f
+  Author:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  AuthorDate: 2022-01-03 21:38:03 +0900
+  Commit:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  CommitDate: 2022-01-03 21:38:03 +0900
+
+    Exclude change logs for pre 1.0
+
+commit 7dbb4909785207abf2a8cdc2a5e55399eb7f3327
+  Author:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  AuthorDate: 2022-01-03 18:11:17 +0900
+  Commit:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  CommitDate: 2022-01-03 18:11:17 +0900
+
+    Fetch tags for change logs
+
+commit e8ecce3442fde54eb651f382b56949acf3df0ec0
+  Author:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  AuthorDate: 2022-01-03 18:06:18 +0900
+  Commit:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  CommitDate: 2022-01-03 18:06:18 +0900
+
+    Derive extra_rdoc_files from files
+
+commit 3d8de7d52c86e5bdb7749fe6684540e7663973fc
+  Author:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  AuthorDate: 2022-01-02 19:25:10 +0900
+  Commit:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  CommitDate: 2022-01-02 21:56:29 +0900
+
+    Build package
+
+commit 5cabc3996aeb76b5b4ea401ac042a53c29255a3b
+  Author:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  AuthorDate: 2022-01-02 21:37:47 +0900
+  Commit:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  CommitDate: 2022-01-02 21:42:16 +0900
+
+    Move development dependencies to Gemfile
+
+commit f87fe7ad934cdd74992bf55c2b88cd986be3dc15
+  Author:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  AuthorDate: 2022-01-02 15:15:52 +0900
+  Commit:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  CommitDate: 2022-01-02 15:15:52 +0900
+
+    Note for rb_deprecate_constant [ci skip]
+
+commit 143edbd215dbf48d7636e5a2c038ef7a2e6fcf56
+  Author:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  AuthorDate: 2022-01-02 14:54:03 +0900
+  Commit:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  CommitDate: 2022-01-02 15:02:15 +0900
+
+    Remove deprecate constants under Struct
+
+commit ca41f182f6141da53c8c56c5ed8c3e17998a9ece
+  Author:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  AuthorDate: 2022-01-02 14:53:30 +0900
+  Commit:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  CommitDate: 2022-01-02 14:53:30 +0900
+
+    bump up to 1.4.0

@@ -1,0 +1,124 @@
+-*- coding: utf-8 -*-
+
+commit d504e4e93c3d78ce525101945af84554d1a088e0
+  Author:     Hiroshi SHIBATA <hsbt@ruby-lang.org>
+  AuthorDate: 2020-12-23 13:58:48 +0900
+  Commit:     Hiroshi SHIBATA <hsbt@ruby-lang.org>
+  CommitDate: 2020-12-23 13:58:48 +0900
+
+    Bump version to 1.2.0
+
+commit fd94f4444f6aab0ca552d799d20a55f689cc01f0
+  Author:     Hiroshi SHIBATA <hsbt@ruby-lang.org>
+  AuthorDate: 2020-12-23 13:58:03 +0900
+  Commit:     Hiroshi SHIBATA <hsbt@ruby-lang.org>
+  CommitDate: 2020-12-23 13:58:03 +0900
+
+    Use ruby core test suite for assert_ractor
+
+commit 8898e2ffcb91a67e1d1afa0852ee79f737e69539
+  Author:     Marc-Andre Lafortune <github@marc-andre.ca>
+  AuthorDate: 2020-12-21 23:31:11 -0500
+  Commit:     Hiroshi SHIBATA <hsbt@ruby-lang.org>
+  CommitDate: 2020-12-23 12:54:53 +0900
+
+    [ruby/etc] Make Ractor safe
+
+commit 13ade43d7fa93d3bf426458637f31d4265ada1c7
+  Author:     Marc-Andre Lafortune <github@marc-andre.ca>
+  AuthorDate: 2020-12-22 00:02:45 -0500
+  Commit:     Hiroshi SHIBATA <hsbt@ruby-lang.org>
+  CommitDate: 2020-12-23 12:54:32 +0900
+
+    [ruby/etc] Refactor locks using mutex API
+
+commit b229f5498d97dfb770560e4bc1e163c60f7de8dc
+  Author:     Hiroshi SHIBATA <hsbt@ruby-lang.org>
+  AuthorDate: 2020-08-18 20:15:59 +0900
+  Commit:     Hiroshi SHIBATA <hsbt@ruby-lang.org>
+  CommitDate: 2020-09-14 15:47:07 +0900
+
+    Update the license for the default gems to dual licenses
+
+commit 6a4ab1c0c2e931590f34225edf60066a4a4fb084
+  Author:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  AuthorDate: 2020-04-09 12:23:15 +0900
+  Commit:     Hiroshi SHIBATA <hsbt@ruby-lang.org>
+  CommitDate: 2020-06-09 21:00:14 +0900
+
+    Ignore upper bits of pw_change on macOS too
+
+commit b42863873903ff4853b53b16694031a6adcadbc3
+  Author:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  AuthorDate: 2020-04-09 09:24:07 +0900
+  Commit:     Hiroshi SHIBATA <hsbt@ruby-lang.org>
+  CommitDate: 2020-06-09 21:00:01 +0900
+
+    Ignore upper bits of pw_expire on macOS
+
+    `pw_expire` is declared as `time_t`, but actually not, and
+    `getpwuid` returns a garbage there.
+
+    Also the declaration of `struct passwd` in pwd.h and the manual
+    page contradict each other, interal `pw_fields` is mentioned only
+    in the latter.  Maybe there is a confusion.
+
+commit 283543c591e93225fd536e2b3e074eda1b68b35a
+  Author:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  AuthorDate: 2020-04-08 16:06:30 +0900
+  Commit:     Hiroshi SHIBATA <hsbt@ruby-lang.org>
+  CommitDate: 2020-06-09 20:59:50 +0900
+
+    Suppress -Wshorten-64-to-32 warnings
+
+commit 91bdcc7833b60426624b4006a84e30db7632c887
+  Author:     Yusuke Endoh <mame@ruby-lang.org>
+  AuthorDate: 2020-02-12 17:28:29 +0900
+  Commit:     Hiroshi SHIBATA <hsbt@ruby-lang.org>
+  CommitDate: 2020-06-09 20:59:02 +0900
+
+    test/etc/test_etc.rb: skip some tests on Android
+
+    Android user management seems different from normal Unix system.
+
+commit 25c538120ce241cb644911f6d75e73333be4305d
+  Author:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  AuthorDate: 2020-04-01 15:18:00 +0900
+  Commit:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  CommitDate: 2020-04-01 17:47:36 +0900
+
+    Deprecate names under `Struct`
+
+commit d8f1dd85d30ad8049037c419c9974f753a14d43f
+  Author:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  AuthorDate: 2020-04-01 15:34:01 +0900
+  Commit:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  CommitDate: 2020-04-01 16:02:46 +0900
+
+    Drop binary gems support
+
+    Revert "Added build:mingw" e1674c18f5a0faf881b362363f428d139baef3b4.
+
+commit b2f2eeac25fde8cd9fab8583b0ecfcc41006bdef
+  Author:     Hiroshi SHIBATA <hsbt@ruby-lang.org>
+  AuthorDate: 2020-04-01 15:48:24 +0900
+  Commit:     Hiroshi SHIBATA <hsbt@ruby-lang.org>
+  CommitDate: 2020-04-01 15:48:24 +0900
+
+    Unify tests configuration for GitHub Actions
+
+commit 4efe98be491c11253b058c8a0a52718bb8e4b54d
+  Author:     Hiroshi SHIBATA <hsbt@ruby-lang.org>
+  AuthorDate: 2019-12-05 20:45:55 +0900
+  Commit:     Hiroshi SHIBATA <hsbt@ruby-lang.org>
+  CommitDate: 2019-12-05 20:45:55 +0900
+
+    Bye Bye Travis CI. Thanks.
+
+commit fb090dc3a54e27af1841928ab18c96206f2bc566
+  Author:     Hiroshi SHIBATA <hsbt@ruby-lang.org>
+  AuthorDate: 2019-12-05 20:45:38 +0900
+  Commit:     Hiroshi SHIBATA <hsbt@ruby-lang.org>
+  CommitDate: 2019-12-05 20:45:38 +0900
+
+    Use GitHub Actions instead of Travis CI.

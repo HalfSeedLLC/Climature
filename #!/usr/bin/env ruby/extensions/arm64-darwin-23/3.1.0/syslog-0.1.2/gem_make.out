@@ -1,0 +1,22 @@
+current directory: /Users/johnathanhill/Documents/GitHub/WeatherApp/#!/usr/bin/env ruby/gems/syslog-0.1.2/ext/syslog
+/Users/johnathanhill/.rbenv/versions/3.1.2/bin/ruby extconf.rb
+checking for -llog... no
+checking for syslog.h... yes
+checking for openlog()... yes
+checking for setlogmask()... yes
+creating Makefile
+
+current directory: /Users/johnathanhill/Documents/GitHub/WeatherApp/#!/usr/bin/env ruby/gems/syslog-0.1.2/ext/syslog
+make DESTDIR\= sitearchdir\=./.gem.20240203-796-qwxcgf sitelibdir\=./.gem.20240203-796-qwxcgf clean
+
+current directory: /Users/johnathanhill/Documents/GitHub/WeatherApp/#!/usr/bin/env ruby/gems/syslog-0.1.2/ext/syslog
+make DESTDIR\= sitearchdir\=./.gem.20240203-796-qwxcgf sitelibdir\=./.gem.20240203-796-qwxcgf
+compiling syslog.c
+linking shared-object syslog.bundle
+
+current directory: /Users/johnathanhill/Documents/GitHub/WeatherApp/#!/usr/bin/env ruby/gems/syslog-0.1.2/ext/syslog
+make DESTDIR\= sitearchdir\=./.gem.20240203-796-qwxcgf sitelibdir\=./.gem.20240203-796-qwxcgf install
+/usr/bin/install -c -m 0755 syslog.bundle ./.gem.20240203-796-qwxcgf
+
+current directory: /Users/johnathanhill/Documents/GitHub/WeatherApp/#!/usr/bin/env ruby/gems/syslog-0.1.2/ext/syslog
+make DESTDIR\= sitearchdir\=./.gem.20240203-796-qwxcgf sitelibdir\=./.gem.20240203-796-qwxcgf clean

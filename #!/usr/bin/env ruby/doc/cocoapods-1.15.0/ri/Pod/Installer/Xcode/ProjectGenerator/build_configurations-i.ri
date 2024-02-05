@@ -1,0 +1,4 @@
+U:RDoc::Attr[iI"build_configurations:ETI"APod::Installer::Xcode::ProjectGenerator#build_configurations;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"J@return [Hash{String=>Symbol}] A hash representing all the user build;To:RDoc::Markup::Verbatim;	[I"=configurations across all integration targets. Each key
+;TI"Acorresponds to the name of a configuration and its value to
+;TI"'its type (`:debug` or `:release`).;T:@format0:
+@fileI"Nlib/cocoapods/installer/xcode/pods_project_generator/project_generator.rb;T:0@omit_headings_from_table_of_contents_below0F@I",Pod::Installer::Xcode::ProjectGenerator;TcRDoc::NormalClass0

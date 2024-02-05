@@ -1,0 +1,83 @@
+-*- coding: utf-8 -*-
+
+commit 85ca541d0b2fc5205ac8bf87c93b95ac0bb272b4
+  Author:     Hiroshi SHIBATA <hsbt@ruby-lang.org>
+  AuthorDate: 2021-10-19 20:51:17 +0900
+  Commit:     Hiroshi SHIBATA <hsbt@ruby-lang.org>
+  CommitDate: 2021-10-19 20:51:17 +0900
+
+    Bump up etc version to 1.3.0
+
+commit 7cbf03d22d74f50ab3a488d2c52fcd4901355466
+  Author:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  AuthorDate: 2021-10-19 00:29:57 +0900
+  Commit:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  CommitDate: 2021-10-19 14:02:26 +0900
+
+    Remove unnecessary declaration
+
+    Fix #12
+
+commit c989bacc4caf2d05331fbb0ab9dddd9c8a670709
+  Author:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  AuthorDate: 2021-10-14 13:17:13 +0900
+  Commit:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  CommitDate: 2021-10-14 18:38:22 +0900
+
+    Get rid of alloca in the loop
+
+commit e0a1dd99f0b9663bc33bee12a1f66028ccec622b
+  Author:     Hiroshi SHIBATA <hsbt@ruby-lang.org>
+  AuthorDate: 2021-09-11 13:26:43 +0900
+  Commit:     Hiroshi SHIBATA <hsbt@ruby-lang.org>
+  CommitDate: 2021-09-11 13:26:43 +0900
+
+    Bump up the latest version of CoreAssertions
+
+commit 3ee4906dc7e9bf9d18f173695a3d4976df2f1807
+  Author:     Peter Zhu <peter@peterzhu.ca>
+  AuthorDate: 2021-03-23 15:35:44 +0000
+  Commit:     Hiroshi SHIBATA <hsbt@ruby-lang.org>
+  CommitDate: 2021-04-27 20:56:04 +0900
+
+    Fix leaked file descriptor in passwd test
+
+commit f7dcc64f746f4cde6f9695ef6266343da017f66b
+  Author:     Hiroshi SHIBATA <hsbt@ruby-lang.org>
+  AuthorDate: 2021-03-30 11:23:39 +0900
+  Commit:     Hiroshi SHIBATA <hsbt@ruby-lang.org>
+  CommitDate: 2021-03-30 11:23:39 +0900
+
+    Use stable version of actions/checkout
+
+commit 12bbf59f9a9c8bbbc4808745003d9ab9c3815399
+  Author:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  AuthorDate: 2021-01-11 11:35:01 +0900
+  Commit:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  CommitDate: 2021-01-11 11:35:01 +0900
+
+    CI for 3.0
+
+commit 0c5900bd21668fd286e56d112ca9d64fe2d578db
+  Author:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  AuthorDate: 2021-01-11 11:31:52 +0900
+  Commit:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  CommitDate: 2021-01-11 11:31:52 +0900
+
+    Added fallback definition of RUBY_ATOMIC_EXCHANGE
+
+commit f017bdfedfb89f89bd9b0c6928660fe2f4ff957f
+  Author:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  AuthorDate: 2021-01-11 11:14:28 +0900
+  Commit:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  CommitDate: 2021-01-11 11:21:26 +0900
+
+    Check blocking variables at release
+
+commit 2748288b25f8ff9540cc032154d913d909f20635
+  Author:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  AuthorDate: 2020-12-23 16:30:16 +0900
+  Commit:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  CommitDate: 2021-01-11 11:20:37 +0900
+
+    etc: use atomic operation instead of mutex

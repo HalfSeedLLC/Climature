@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"swift_version:ETI"!Pod::Validator#swift_version;TI"RW;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"l@return [String] The SWIFT_VERSION that should be used to validate the pod. This is set by passing the ;TI"3`--swift-version` parameter during validation.;T:
+@fileI"lib/cocoapods/validator.rb;T:0@omit_headings_from_table_of_contents_below0F@I"Pod::Validator;TcRDoc::NormalClass0

@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"source:ETI"!Pod::Source::Acceptor#source;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"C@return [Source] the source where the podspec should be added.;T:
+@fileI"*lib/cocoapods-core/source/acceptor.rb;T:0@omit_headings_from_table_of_contents_below0F@I"Pod::Source::Acceptor;TcRDoc::NormalClass0

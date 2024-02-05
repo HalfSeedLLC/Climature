@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"podfile_dependency_cache:ETI"FPod::Installer::Analyzer::AnalysisResult#podfile_dependency_cache;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"S@return [PodfileDependencyCache] the cache of all dependencies in the podfile.;T:
+@fileI"8lib/cocoapods/installer/analyzer/analysis_result.rb;T:0@omit_headings_from_table_of_contents_below0F@I"-Pod::Installer::Analyzer::AnalysisResult;TcRDoc::NormalClass0

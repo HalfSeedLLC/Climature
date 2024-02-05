@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"frameworks_by_config:ETI"?Pod::Generator::EmbedFrameworksScript#frameworks_by_config;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"U@return [Hash{String => Array<FrameworkPaths>}] Multiple lists of frameworks per;To:RDoc::Markup::Verbatim;	[I"configuration.;T:@format0:
+@fileI"7lib/cocoapods/generator/embed_frameworks_script.rb;T:0@omit_headings_from_table_of_contents_below0F@I"*Pod::Generator::EmbedFrameworksScript;TcRDoc::NormalClass0

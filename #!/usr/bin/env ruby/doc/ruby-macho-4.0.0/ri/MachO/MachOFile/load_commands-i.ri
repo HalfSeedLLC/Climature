@@ -1,0 +1,4 @@
+U:RDoc::Attr[iI"load_commands:ETI"#MachO::MachOFile#load_commands;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"K@return [Array<LoadCommands::LoadCommand>] an array of the file's load;To:RDoc::Markup::Verbatim;	[I"commands
+;T:@format0o;
+;	[I"C@note load commands are provided in order of ascending offset.;T:
+@fileI"lib/macho/macho_file.rb;T:0@omit_headings_from_table_of_contents_below0F@I"MachO::MachOFile;TcRDoc::NormalClass0

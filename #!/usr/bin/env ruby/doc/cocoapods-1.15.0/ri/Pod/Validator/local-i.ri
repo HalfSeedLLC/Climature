@@ -1,0 +1,5 @@
+U:RDoc::Attr[iI"
+local:ETI"Pod::Validator#local;TI"RW;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"U@return [Boolean] whether the validation should be performed against the root of;To:RDoc::Markup::Verbatim;	[I"1the podspec instead to its original source.
+;T:@format0o;
+;	[I"4@note   Uses the `:path` option of the Podfile.;T:
+@fileI"lib/cocoapods/validator.rb;T:0@omit_headings_from_table_of_contents_below0F@I"Pod::Validator;TcRDoc::NormalClass0

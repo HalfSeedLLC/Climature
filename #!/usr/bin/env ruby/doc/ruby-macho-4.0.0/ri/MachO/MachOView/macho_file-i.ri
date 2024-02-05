@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"macho_file:ETI" MachO::MachOView#macho_file;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"2@return [MachOFile] that this view belongs to;T:
+@fileI"lib/macho/view.rb;T:0@omit_headings_from_table_of_contents_below0F@I"MachO::MachOView;TcRDoc::NormalClass0

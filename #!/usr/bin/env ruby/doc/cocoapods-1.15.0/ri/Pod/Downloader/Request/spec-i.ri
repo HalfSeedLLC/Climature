@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"	spec:ETI""Pod::Downloader::Request#spec;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"M@return [Specification,Nil] The specification for the pod whose download;To:RDoc::Markup::Verbatim;	[I"is being requested.;T:@format0:
+@fileI"(lib/cocoapods/downloader/request.rb;T:0@omit_headings_from_table_of_contents_below0F@I"Pod::Downloader::Request;TcRDoc::NormalClass0

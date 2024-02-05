@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"platform:ETI"2Pod::Installer::Analyzer::PodVariant#platform;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"$@return [Platform] the platform;T:
+@fileI"4lib/cocoapods/installer/analyzer/pod_variant.rb;T:0@omit_headings_from_table_of_contents_below0F@I")Pod::Installer::Analyzer::PodVariant;TcRDoc::NormalClass0

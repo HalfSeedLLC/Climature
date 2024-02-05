@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"(test_dependent_targets_by_spec_name:ETI"7Pod::PodTarget#test_dependent_targets_by_spec_name;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"X@return [Hash{String=>Array<PodTarget>}] all target dependencies by test spec name.;T:
+@fileI"'lib/cocoapods/target/pod_target.rb;T:0@omit_headings_from_table_of_contents_below0F@I"Pod::PodTarget;TcRDoc::NormalClass0

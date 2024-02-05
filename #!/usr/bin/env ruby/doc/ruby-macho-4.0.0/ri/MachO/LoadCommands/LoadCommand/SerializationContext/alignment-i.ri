@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"alignment:ETI"EMachO::LoadCommands::LoadCommand::SerializationContext#alignment;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"C@return [Integer] the constant alignment value used to pad the;To:RDoc::Markup::Verbatim;	[I"serialized load command;T:@format0:
+@fileI"lib/macho/load_commands.rb;T:0@omit_headings_from_table_of_contents_below0F@I";MachO::LoadCommands::LoadCommand::SerializationContext;TcRDoc::NormalClass0

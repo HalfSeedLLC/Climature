@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"native_target_uuid:ETI"DPod::Installer::ProjectCache::TargetMetadata#native_target_uuid;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"@return [String];To:RDoc::Markup::Verbatim;	[I"-The UUID of the native target installed.;T:@format0:
+@fileI"=lib/cocoapods/installer/project_cache/target_metadata.rb;T:0@omit_headings_from_table_of_contents_below0F@I"1Pod::Installer::ProjectCache::TargetMetadata;TcRDoc::NormalClass0

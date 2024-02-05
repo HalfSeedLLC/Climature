@@ -1,0 +1,3 @@
+U:RDoc::Attr[iI"fail_fast:ETI"Pod::Validator#fail_fast;TI"RW;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"P@return [Boolean] whether the linter should fail as soon as the first build;To:RDoc::Markup::Verbatim;	[I"Fvariant causes an error. Helpful for i.e. multi-platforms specs,
+;TI"specs with subspecs.;T:@format0:
+@fileI"lib/cocoapods/validator.rb;T:0@omit_headings_from_table_of_contents_below0F@I"Pod::Validator;TcRDoc::NormalClass0

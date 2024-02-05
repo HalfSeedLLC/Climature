@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"sources:ETI"7Pod::Installer::SourceProviderHooksContext#sources;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"H@return [Array<Source>] The source objects to send to the installer;T:
+@fileI"=lib/cocoapods/installer/source_provider_hooks_context.rb;T:0@omit_headings_from_table_of_contents_below0F@I"/Pod::Installer::SourceProviderHooksContext;TcRDoc::NormalClass0

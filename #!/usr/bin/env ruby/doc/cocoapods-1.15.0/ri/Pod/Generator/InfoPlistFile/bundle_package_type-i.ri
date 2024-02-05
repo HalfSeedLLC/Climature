@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"bundle_package_type:ETI"6Pod::Generator::InfoPlistFile#bundle_package_type;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"K@return [Symbol] the CFBundlePackageType of the target this Info.plist;To:RDoc::Markup::Verbatim;	[I"file is for.;T:@format0:
+@fileI"/lib/cocoapods/generator/info_plist_file.rb;T:0@omit_headings_from_table_of_contents_below0F@I""Pod::Generator::InfoPlistFile;TcRDoc::NormalClass0

@@ -1,0 +1,4 @@
+U:RDoc::Attr[iI"referrers:ETI"9Xcodeproj::Project::Object::AbstractObject#referrers;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"D@return [Array<ObjectList>] The list of the objects that have a;To:RDoc::Markup::Verbatim;	[I"reference to this object.
+;T:@format0o;
+;	[I"@visibility private;T:
+@fileI"$lib/xcodeproj/project/object.rb;T:0@omit_headings_from_table_of_contents_below0F@I"/Xcodeproj::Project::Object::AbstractObject;TcRDoc::NormalClass0

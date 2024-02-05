@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"params:ETI"8Pod::ExternalSources::AbstractExternalSource#params;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"D@return [Hash{Symbol => String}] the hash representation of the;To:RDoc::Markup::Verbatim;	[I"external source.;T:@format0:
+@fileI"?lib/cocoapods/external_sources/abstract_external_source.rb;T:0@omit_headings_from_table_of_contents_below0F@I"1Pod::ExternalSources::AbstractExternalSource;TcRDoc::NormalClass0

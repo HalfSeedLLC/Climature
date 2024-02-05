@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"sandbox:ETI"5Pod::Installer::Xcode::PodsProjectWriter#sandbox;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"@return [Sandbox] sandbox;To:RDoc::Markup::Verbatim;	[I"The Pods sandbox instance.;T:@format0:
+@fileI"Plib/cocoapods/installer/xcode/pods_project_generator/pods_project_writer.rb;T:0@omit_headings_from_table_of_contents_below0F@I"-Pod::Installer::Xcode::PodsProjectWriter;TcRDoc::NormalClass0

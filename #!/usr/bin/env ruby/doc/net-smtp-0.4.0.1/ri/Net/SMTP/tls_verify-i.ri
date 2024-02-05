@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"tls_verify:ETI"Net::SMTP#tls_verify;TI"RW;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"/If +true+, verify th server's certificate.;T:
+@fileI"lib/net/smtp.rb;T:0@omit_headings_from_table_of_contents_below0F@I"Net::SMTP;TcRDoc::NormalClass0

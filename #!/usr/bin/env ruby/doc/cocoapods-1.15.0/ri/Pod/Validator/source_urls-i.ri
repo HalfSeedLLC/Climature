@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"source_urls:ETI"Pod::Validator#source_urls;TI"R;T:privateo:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"G@return [Array<String>] an array of source URLs used to create the;To:RDoc::Markup::Verbatim;	[I"*{Podfile} used in the linting process;T:@format0:
+@fileI"lib/cocoapods/validator.rb;T:0@omit_headings_from_table_of_contents_below0F@I"Pod::Validator;TcRDoc::NormalClass0

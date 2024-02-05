@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"target:ETI"KPod::Installer::Xcode::PodsProjectGenerator::PodTargetInstaller#target;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"4@return [PodTarget] @see TargetInstaller#target;T:
+@fileI"Qlib/cocoapods/installer/xcode/pods_project_generator/pod_target_installer.rb;T:0@omit_headings_from_table_of_contents_below0F@I"DPod::Installer::Xcode::PodsProjectGenerator::PodTargetInstaller;TcRDoc::NormalClass0

@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"sandbox:ETI"/Pod::Installer::PodSourceInstaller#sandbox;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"/@return [Sandbox] The installation target.;T:
+@fileI"4lib/cocoapods/installer/pod_source_installer.rb;T:0@omit_headings_from_table_of_contents_below0F@I"'Pod::Installer::PodSourceInstaller;TcRDoc::NormalClass0

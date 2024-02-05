@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"target:ETI"QPod::Installer::Xcode::PodsProjectGenerator::TargetInstallationResult#target;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"@return [Target] target;To:RDoc::Markup::Verbatim;	[I"0The target this installation result is for.;T:@format0:
+@fileI"Wlib/cocoapods/installer/xcode/pods_project_generator/target_installation_result.rb;T:0@omit_headings_from_table_of_contents_below0F@I"JPod::Installer::Xcode::PodsProjectGenerator::TargetInstallationResult;TcRDoc::NormalClass0

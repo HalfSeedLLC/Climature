@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"set:ETI"+Pod::Specification::Set::Presenter#set;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"4@return [Set] the set that should be presented.;T:
+@fileI"6lib/cocoapods-core/specification/set/presenter.rb;T:0@omit_headings_from_table_of_contents_below0F@I"'Pod::Specification::Set::Presenter;TcRDoc::NormalClass0

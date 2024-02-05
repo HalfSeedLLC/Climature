@@ -1,0 +1,4 @@
+U:RDoc::Attr[iI"	keys:ETI",Pod::Specification::DSL::Attribute#keys;TI"R;T:publico:RDoc::Markup::Document:@parts[	o:RDoc::Markup::Paragraph;	[I"I@return [Array, Hash] the list of the accepted keys for an attribute;To:RDoc::Markup::Verbatim;	[I"wrapped by a Hash.
+;T:@format0o;
+;	[I"F@note   A hash is accepted to group the keys associated only with;To;;	[I"7certain keys (see the source attribute of a Spec).;T;0:
+@fileI"6lib/cocoapods-core/specification/dsl/attribute.rb;T:0@omit_headings_from_table_of_contents_below0F@I"'Pod::Specification::DSL::Attribute;TcRDoc::NormalClass0

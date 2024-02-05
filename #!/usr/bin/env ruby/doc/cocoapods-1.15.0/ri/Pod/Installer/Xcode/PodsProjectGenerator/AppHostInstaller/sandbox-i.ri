@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"sandbox:ETI"JPod::Installer::Xcode::PodsProjectGenerator::AppHostInstaller#sandbox;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"@return [Sandbox];To:RDoc::Markup::Verbatim;	[I",The sandbox used for this installation.;T:@format0:
+@fileI"Olib/cocoapods/installer/xcode/pods_project_generator/app_host_installer.rb;T:0@omit_headings_from_table_of_contents_below0F@I"BPod::Installer::Xcode::PodsProjectGenerator::AppHostInstaller;TcRDoc::NormalClass0

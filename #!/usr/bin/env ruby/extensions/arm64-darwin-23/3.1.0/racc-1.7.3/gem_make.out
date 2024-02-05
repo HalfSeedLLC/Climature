@@ -1,0 +1,18 @@
+current directory: /Users/johnathanhill/Documents/GitHub/WeatherApp/#!/usr/bin/env ruby/gems/racc-1.7.3/ext/racc/cparse
+/Users/johnathanhill/.rbenv/versions/3.1.2/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /Users/johnathanhill/Documents/GitHub/WeatherApp/#!/usr/bin/env ruby/gems/racc-1.7.3/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20240203-796-jbtltp sitelibdir\=./.gem.20240203-796-jbtltp clean
+
+current directory: /Users/johnathanhill/Documents/GitHub/WeatherApp/#!/usr/bin/env ruby/gems/racc-1.7.3/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20240203-796-jbtltp sitelibdir\=./.gem.20240203-796-jbtltp
+compiling cparse.c
+linking shared-object racc/cparse.bundle
+
+current directory: /Users/johnathanhill/Documents/GitHub/WeatherApp/#!/usr/bin/env ruby/gems/racc-1.7.3/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20240203-796-jbtltp sitelibdir\=./.gem.20240203-796-jbtltp install
+/usr/bin/install -c -m 0755 cparse.bundle ./.gem.20240203-796-jbtltp/racc
+
+current directory: /Users/johnathanhill/Documents/GitHub/WeatherApp/#!/usr/bin/env ruby/gems/racc-1.7.3/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20240203-796-jbtltp sitelibdir\=./.gem.20240203-796-jbtltp clean

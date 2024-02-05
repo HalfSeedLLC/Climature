@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"installation_options:ETI"@Pod::Installer::Xcode::TargetValidator#installation_options;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"Z@return [InstallationOptions] The installation options used during this installation.;T:
+@fileI"6lib/cocoapods/installer/xcode/target_validator.rb;T:0@omit_headings_from_table_of_contents_below0F@I"+Pod::Installer::Xcode::TargetValidator;TcRDoc::NormalClass0

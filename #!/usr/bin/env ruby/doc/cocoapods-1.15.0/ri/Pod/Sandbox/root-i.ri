@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"	root:ETI"Pod::Sandbox#root;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"0@return [Pathname] the root of the sandbox.;T:
+@fileI"lib/cocoapods/sandbox.rb;T:0@omit_headings_from_table_of_contents_below0F@I"Pod::Sandbox;TcRDoc::NormalClass0

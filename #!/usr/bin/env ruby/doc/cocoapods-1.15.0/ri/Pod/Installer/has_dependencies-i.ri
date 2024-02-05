@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"has_dependencies:ETI"$Pod::Installer#has_dependencies;TI"RW;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"E@return [Boolean] Whether it has dependencies. Defaults to true.;T:
+@fileI"lib/cocoapods/installer.rb;T:0@omit_headings_from_table_of_contents_below0F@I"Pod::Installer;TcRDoc::NormalClass0

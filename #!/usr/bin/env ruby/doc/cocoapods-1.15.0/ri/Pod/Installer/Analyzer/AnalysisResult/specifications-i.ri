@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"specifications:ETI"<Pod::Installer::Analyzer::AnalysisResult#specifications;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"p@return [Array<Specification>] the specifications of the resolved version of Pods that should be installed.;T:
+@fileI"8lib/cocoapods/installer/analyzer/analysis_result.rb;T:0@omit_headings_from_table_of_contents_below0F@I"-Pod::Installer::Analyzer::AnalysisResult;TcRDoc::NormalClass0

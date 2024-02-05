@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"pod_targets:ETI"8Pod::Installer::Xcode::ProjectGenerator#pod_targets;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"+@return [Array<PodTarget>] pod_targets;To:RDoc::Markup::Verbatim;	[I"0Array of pod targets this project includes.;T:@format0:
+@fileI"Nlib/cocoapods/installer/xcode/pods_project_generator/project_generator.rb;T:0@omit_headings_from_table_of_contents_below0F@I",Pod::Installer::Xcode::ProjectGenerator;TcRDoc::NormalClass0

@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"modseq:ETI"#Net::IMAP::SearchResult#modseq;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"EA modification sequence number, as described by the +CONDSTORE+ ;TI"extension in {[RFC7162 ;TI"J§3.1.6]}[https://www.rfc-editor.org/rfc/rfc7162.html#section-3.1.6].;T:
+@fileI""lib/net/imap/search_result.rb;T:0@omit_headings_from_table_of_contents_below0F@I"Net::IMAP::SearchResult;TcRDoc::NormalClass0

@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"project_object_version:ETI"NPod::Installer::ProjectCache::ProjectCacheAnalyzer#project_object_version;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"@@return [Integer] The object version from the user project.;T:
+@fileI"Dlib/cocoapods/installer/project_cache/project_cache_analyzer.rb;T:0@omit_headings_from_table_of_contents_below0F@I"7Pod::Installer::ProjectCache::ProjectCacheAnalyzer;TcRDoc::NormalClass0

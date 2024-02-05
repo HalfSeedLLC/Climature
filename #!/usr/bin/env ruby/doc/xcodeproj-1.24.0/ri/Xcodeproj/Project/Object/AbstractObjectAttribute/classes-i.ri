@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"classes:ETI"@Xcodeproj::Project::Object::AbstractObjectAttribute#classes;TI"RW;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"C@return [Array<Class>] the list of the classes accepted by the;To:RDoc::Markup::Verbatim;	[I"attribute.;T:@format0:
+@fileI"/lib/xcodeproj/project/object_attributes.rb;T:0@omit_headings_from_table_of_contents_below0F@I"8Xcodeproj::Project::Object::AbstractObjectAttribute;TcRDoc::NormalClass0

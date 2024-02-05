@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"attributes:ETI"!Xcodeproj::Config#attributes;TI"RW;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"I@return [Hash{String => String}] The attributes of the settings file;To:RDoc::Markup::Verbatim;	[I"8excluding frameworks, weak_framework and libraries.;T:@format0:
+@fileI"lib/xcodeproj/config.rb;T:0@omit_headings_from_table_of_contents_below0F@I"Xcodeproj::Config;TcRDoc::NormalClass0

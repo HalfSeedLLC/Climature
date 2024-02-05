@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"ignore_public_only_results:ETI".Pod::Validator#ignore_public_only_results;TI"RW;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"I@return [Boolean] Whether attributes that affect only public sources;To:RDoc::Markup::Verbatim;	[I"Bool be skipped.;T:@format0:
+@fileI"lib/cocoapods/validator.rb;T:0@omit_headings_from_table_of_contents_below0F@I"Pod::Validator;TcRDoc::NormalClass0

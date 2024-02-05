@@ -1,0 +1,19 @@
+current directory: /Users/johnathanhill/Documents/GitHub/WeatherApp/#!/usr/bin/env ruby/gems/debug-1.9.1/ext/debug
+/Users/johnathanhill/.rbenv/versions/3.1.2/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /Users/johnathanhill/Documents/GitHub/WeatherApp/#!/usr/bin/env ruby/gems/debug-1.9.1/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20240203-796-k11iy8 sitelibdir\=./.gem.20240203-796-k11iy8 clean
+
+current directory: /Users/johnathanhill/Documents/GitHub/WeatherApp/#!/usr/bin/env ruby/gems/debug-1.9.1/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20240203-796-k11iy8 sitelibdir\=./.gem.20240203-796-k11iy8
+compiling debug.c
+compiling iseq_collector.c
+linking shared-object debug/debug.bundle
+
+current directory: /Users/johnathanhill/Documents/GitHub/WeatherApp/#!/usr/bin/env ruby/gems/debug-1.9.1/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20240203-796-k11iy8 sitelibdir\=./.gem.20240203-796-k11iy8 install
+/usr/bin/install -c -m 0755 debug.bundle ./.gem.20240203-796-k11iy8/debug
+
+current directory: /Users/johnathanhill/Documents/GitHub/WeatherApp/#!/usr/bin/env ruby/gems/debug-1.9.1/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20240203-796-k11iy8 sitelibdir\=./.gem.20240203-796-k11iy8 clean

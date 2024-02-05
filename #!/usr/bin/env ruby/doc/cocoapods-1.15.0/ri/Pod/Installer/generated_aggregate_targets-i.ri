@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI" generated_aggregate_targets:ETI"/Pod::Installer#generated_aggregate_targets;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"n@return [Array<AggregateTarget>] The list of aggregate targets that were generated from the installation.;T:
+@fileI"lib/cocoapods/installer.rb;T:0@omit_headings_from_table_of_contents_below0F@I"Pod::Installer;TcRDoc::NormalClass0

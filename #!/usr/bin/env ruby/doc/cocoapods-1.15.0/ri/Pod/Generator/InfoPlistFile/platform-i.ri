@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"platform:ETI"+Pod::Generator::InfoPlistFile#platform;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"U@return [Platform] The platform to use for when generating this Info.plist file.;T:
+@fileI"/lib/cocoapods/generator/info_plist_file.rb;T:0@omit_headings_from_table_of_contents_below0F@I""Pod::Generator::InfoPlistFile;TcRDoc::NormalClass0

@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"xml_element:ETI"7Xcodeproj::XCScheme::XMLElementWrapper#xml_element;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"@return [REXML::Element];To:RDoc::Markup::Verbatim;	[I"JThe XML node wrapped and manipulated by this XMLElementWrapper object;T:@format0:
+@fileI"0lib/xcodeproj/scheme/xml_element_wrapper.rb;T:0@omit_headings_from_table_of_contents_below0F@I"+Xcodeproj::XCScheme::XMLElementWrapper;TcRDoc::NormalClass0

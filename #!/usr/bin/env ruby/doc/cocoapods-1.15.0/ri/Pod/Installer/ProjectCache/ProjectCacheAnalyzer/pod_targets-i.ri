@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"pod_targets:ETI"CPod::Installer::ProjectCache::ProjectCacheAnalyzer#pod_targets;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"8@return [Array<PodTarget>] The list of pod targets.;T:
+@fileI"Dlib/cocoapods/installer/project_cache/project_cache_analyzer.rb;T:0@omit_headings_from_table_of_contents_below0F@I"7Pod::Installer::ProjectCache::ProjectCacheAnalyzer;TcRDoc::NormalClass0

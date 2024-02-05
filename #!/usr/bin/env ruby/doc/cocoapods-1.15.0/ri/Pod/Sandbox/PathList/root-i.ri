@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"	root:ETI" Pod::Sandbox::PathList#root;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"H@return [Pathname] The root of the list whose files and directories;To:RDoc::Markup::Verbatim;	[I"1are used to perform the matching operations.;T:@format0:
+@fileI"'lib/cocoapods/sandbox/path_list.rb;T:0@omit_headings_from_table_of_contents_below0F@I"Pod::Sandbox::PathList;TcRDoc::NormalClass0

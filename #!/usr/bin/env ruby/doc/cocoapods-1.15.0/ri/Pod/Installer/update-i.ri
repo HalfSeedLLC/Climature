@@ -1,0 +1,4 @@
+U:RDoc::Attr[iI"update:ETI"Pod::Installer#update;TI"RW;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"E@return [Hash, Boolean, nil] Pods that have been requested to be;To:RDoc::Markup::Verbatim;	[I"4updated or true if all Pods should be updated.
+;TI"FIf all Pods should been updated the contents of the Lockfile are
+;TI">not taken into account for deciding what Pods to install.;T:@format0:
+@fileI"lib/cocoapods/installer.rb;T:0@omit_headings_from_table_of_contents_below0F@I"Pod::Installer;TcRDoc::NormalClass0

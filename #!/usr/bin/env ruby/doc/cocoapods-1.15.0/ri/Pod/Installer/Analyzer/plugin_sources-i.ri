@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"plugin_sources:ETI",Pod::Installer::Analyzer#plugin_sources;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"B@return [Array<Source>] Sources provided by plugins or `nil`.;T:
+@fileI"(lib/cocoapods/installer/analyzer.rb;T:0@omit_headings_from_table_of_contents_below0F@I"Pod::Installer::Analyzer;TcRDoc::NormalClass0

@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"parent:ETI"Pod::Specification#parent;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"G@return [Specification] the parent of the specification unless the;To:RDoc::Markup::Verbatim;	[I"specification is a root.;T:@format0:
+@fileI"(lib/cocoapods-core/specification.rb;T:0@omit_headings_from_table_of_contents_below0F@I"Pod::Specification;TcRDoc::NormalClass0

@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"cocoapods_target_label:ETI"^Pod::Installer::BaseInstallHooksContext::UmbrellaTargetDescription#cocoapods_target_label;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"/@return [String] The label for the target.;T:
+@fileI":lib/cocoapods/installer/base_install_hooks_context.rb;T:0@omit_headings_from_table_of_contents_below0F@I"GPod::Installer::BaseInstallHooksContext::UmbrellaTargetDescription;TcRDoc::NormalClass0

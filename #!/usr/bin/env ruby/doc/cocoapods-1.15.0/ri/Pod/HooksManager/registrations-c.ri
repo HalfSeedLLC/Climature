@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"registrations:ETI"%Pod::HooksManager::registrations;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"I@return [Hash{Symbol => Array<Hook>}] The list of the hooks that are;To:RDoc::Markup::Verbatim;	[I"#registered for each hook name.;T:@format0:
+@fileI"#lib/cocoapods/hooks_manager.rb;T:0@omit_headings_from_table_of_contents_below0T@I"Pod::HooksManager;TcRDoc::NormalModule0

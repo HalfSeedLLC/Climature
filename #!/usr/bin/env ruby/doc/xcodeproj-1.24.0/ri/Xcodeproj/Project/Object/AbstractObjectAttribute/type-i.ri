@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"	type:ETI"=Xcodeproj::Project::Object::AbstractObjectAttribute#type;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"E@return [Symbol] the type of the attribute. It can be `:simple`,;To:RDoc::Markup::Verbatim;	[I"`:to_one`, `:to_many`.;T:@format0:
+@fileI"/lib/xcodeproj/project/object_attributes.rb;T:0@omit_headings_from_table_of_contents_below0F@I"8Xcodeproj::Project::Object::AbstractObjectAttribute;TcRDoc::NormalClass0

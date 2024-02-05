@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"url:ETI"Pod::Downloader::Base#url;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"3@return [String] the url of the remote source.;T:
+@fileI"%lib/cocoapods-downloader/base.rb;T:0@omit_headings_from_table_of_contents_below0F@I"Pod::Downloader::Base;TcRDoc::NormalClass0

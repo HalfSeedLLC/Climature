@@ -1,0 +1,38 @@
+current directory: /Users/johnathanhill/Documents/GitHub/WeatherApp/#!/usr/bin/env ruby/gems/etc-1.4.3/ext/etc
+/Users/johnathanhill/.rbenv/versions/3.1.2/bin/ruby extconf.rb
+checking for sys/utsname.h... yes
+checking for getpwnam() in -lsun... no
+checking for uname((struct utsname *)NULL) in sys/utsname.h... yes
+checking for getlogin()... yes
+checking for getpwent()... yes
+checking for getgrent()... yes
+checking for sysconf()... yes
+checking for confstr()... yes
+checking for fpathconf()... yes
+checking for struct passwd.pw_gecos in pwd.h... yes
+checking for struct passwd.pw_change in pwd.h... yes
+checking for struct passwd.pw_quota in pwd.h... no
+checking for struct passwd.pw_age in pwd.h... no
+checking for struct passwd.pw_class in pwd.h... yes
+checking for struct passwd.pw_comment in pwd.h... no
+checking for struct passwd.pw_expire in pwd.h... yes
+checking for struct passwd.pw_passwd in pwd.h... yes
+checking for struct group.gr_passwd in grp.h... yes
+checking for rb_deprecate_constant(Qnil, "None")... yes
+checking for rb_io_descriptor()... yes
+creating Makefile
+
+current directory: /Users/johnathanhill/Documents/GitHub/WeatherApp/#!/usr/bin/env ruby/gems/etc-1.4.3/ext/etc
+make DESTDIR\= sitearchdir\=./.gem.20240203-796-747qwt sitelibdir\=./.gem.20240203-796-747qwt clean
+
+current directory: /Users/johnathanhill/Documents/GitHub/WeatherApp/#!/usr/bin/env ruby/gems/etc-1.4.3/ext/etc
+make DESTDIR\= sitearchdir\=./.gem.20240203-796-747qwt sitelibdir\=./.gem.20240203-796-747qwt
+compiling etc.c
+linking shared-object etc.bundle
+
+current directory: /Users/johnathanhill/Documents/GitHub/WeatherApp/#!/usr/bin/env ruby/gems/etc-1.4.3/ext/etc
+make DESTDIR\= sitearchdir\=./.gem.20240203-796-747qwt sitelibdir\=./.gem.20240203-796-747qwt install
+/usr/bin/install -c -m 0755 etc.bundle ./.gem.20240203-796-747qwt
+
+current directory: /Users/johnathanhill/Documents/GitHub/WeatherApp/#!/usr/bin/env ruby/gems/etc-1.4.3/ext/etc
+make DESTDIR\= sitearchdir\=./.gem.20240203-796-747qwt sitelibdir\=./.gem.20240203-796-747qwt clean

@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"simple_attributes_hash:ETI"FXcodeproj::Project::Object::AbstractObject#simple_attributes_hash;TI"R;T:privateo:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"/@return [Hash] the simple attributes hash.;T:
+@fileI"/lib/xcodeproj/project/object_attributes.rb;T:0@omit_headings_from_table_of_contents_below0F@I"/Xcodeproj::Project::Object::AbstractObject;TcRDoc::NormalClass0

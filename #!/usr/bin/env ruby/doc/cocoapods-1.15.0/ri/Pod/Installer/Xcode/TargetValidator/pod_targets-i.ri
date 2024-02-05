@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"pod_targets:ETI"7Pod::Installer::Xcode::TargetValidator#pod_targets;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"I@return [Array<PodTarget>] The pod targets that should be validated.;T:
+@fileI"6lib/cocoapods/installer/xcode/target_validator.rb;T:0@omit_headings_from_table_of_contents_below0F@I"+Pod::Installer::Xcode::TargetValidator;TcRDoc::NormalClass0

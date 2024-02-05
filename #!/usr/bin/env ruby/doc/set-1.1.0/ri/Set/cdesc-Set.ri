@@ -1,0 +1,110 @@
+U:RDoc::NormalClass[iI"Set:ET@I"Object;To:RDoc::Markup::Document:@parts[o;;[(o:RDoc::Markup::Paragraph;[I"¡This library provides the Set class, which implements a collection
+of unordered values with no duplicates. It is a hybrid of Array's
+intuitive inter-operation facilities and Hash's fast lookup.;To;	;[I"KThe method <code>to_set</code> is added to Enumerable for convenience.;To;	;[I"Set is easy to use with Enumerable objects (implementing <code>each</code>).
+Most of the initializer methods and binary operators accept generic
+Enumerable objects besides sets and arrays. An Enumerable object
+can be converted to Set using the <code>to_set</code> method.;To;	;[I"ESet uses Hash as storage, so you must note the following points:;To:RDoc::Markup::List:
+@type:BULLET:@items[o:RDoc::Markup::ListItem:@label0;[o;	;[I"†Equality of elements is determined according to Object#eql? and
+ Object#hash. Use Set#compare_by_identity to make a set compare
+ its elements by their identity.;To;;0;[o;	;[I"ùSet assumes that the identity of each element does not change
+ while it is stored. Modifying an element of a set will render the
+ set to an unreliable state.;To;;0;[o;	;[I"{When a string is to be stored, a frozen copy of the string is
+ stored instead unless the original string is already frozen.;TS:RDoc::Markup::Heading:
+leveli:	textI"Comparison;To;	;[I"\The comparison operators <code><</code>, <code>></code>, <code><=</code>, and <code>>=</code> are implemented as
+shorthand for the {proper_,}{subset?,superset?} methods. The <code><=></code>
+operator reflects this order, or return <code>nil</code> for sets that both
+have distinct elements (<code>{x, y}</code> vs. <code>{x, z}</code> for example).;TS;;i;I"Example;To:RDoc::Markup::Verbatim;[I"ërequire 'set'
+s1 = Set[1, 2]                        #=> #<Set: {1, 2}>
+s2 = [1, 2].to_set                    #=> #<Set: {1, 2}>
+s1 == s2                              #=> true
+s1.add("foo")                         #=> #<Set: {1, 2, "foo"}>
+s1.merge([2, 6])                      #=> #<Set: {1, 2, "foo", 6}>
+s1.subset?(s2)                        #=> false
+s2.subset?(s1)                        #=> true
+;T:@format:	rubyS;;i;I"Contact;To;
+;;;[o;;0;[o;	;[I"AAkinori MUSHA <mailto:knu@iDaemons.org> (current maintainer);TS;;i;I"What's Here;To;	;[I"*First, what's elsewhere. \Class \Set:;To;
+;;;[o;;0;[o;	;[I"uInherits from {class Object}[https://docs.ruby-lang.org/en/master/Object.html#class-Object-label-What-27s+Here].;To;;0;[o;	;[I"ßIncludes {module Enumerable}[https://docs.ruby-lang.org/en/master/Enumerable.html#module-Enumerable-label-What-27s+Here],
+ which provides dozens of additional methods.;To;	;[I"äIn particular, class \Set does not have many methods of its own
+for fetching or for iterating.
+Instead, it relies on those in \Enumerable.;To;	;[I";Here, class \Set provides methods that are useful for:;To;
+;;;[o;;0;[o;	;[I"B{Creating a Set}[#class-Set-label-Methods+for+Creating+a+Set];To;;0;[o;	;[I"B{Set Operations}[#class-Set-label-Methods+for+Set+Operations];To;;0;[o;	;[I"8{Comparing}[#class-Set-label-Methods+for+Comparing];To;;0;[o;	;[I"6{Querying}[#class-Set-label-Methods+for+Querying];To;;0;[o;	;[I"8{Assigning}[#class-Set-label-Methods+for+Assigning];To;;0;[o;	;[I"6{Deleting}[#class-Set-label-Methods+for+Deleting];To;;0;[o;	;[I":{Converting}[#class-Set-label-Methods+for+Converting];To;;0;[o;	;[I"8{Iterating}[#class-Set-label-Methods+for+Iterating];To;;0;[o;	;[I"3{And more....}[#class-Set-label-Other+Methods];TS;;i;I" Methods for Creating a \Set;To;
+;;;[o;;0;[o;	;[I";::[]:
+ Returns a new set containing the given objects.;To;;0;[o;	;[I"í::new:
+ Returns a new set containing either the given objects
+ (if no block given) or the return values from the called block
+ (if a block given).;TS;;i;I" Methods for \Set Operations;To;
+;;;[	o;;0;[o;	;[I"ü{|}[#method-i-7C] (aliased as #union and #+):
+ Returns a new set containing all elements from +self+
+ and all elements from a given enumerable (no duplicates).;To;;0;[o;	;[I"Ç{&}[#method-i-26] (aliased as #intersection):
+ Returns a new set containing all elements common to +self+
+ and a given enumerable.;To;;0;[o;	;[I"|{-}[#method-i-2D] (aliased as #difference):
+ Returns a copy of +self+ with all elements
+ in a given enumerable removed.;To;;0;[o;	;[I"{\^}[#method-i-5E]:
+ Returns a new set containing all elements from +self+
+ and a given enumerable except those common to both.;TS;;i;I"Methods for Comparing;To;
+;;;[o;;0;[o;	;[I"w{<=>}[#method-i-3C-3D-3E]:
+ Returns -1, 0, or 1 as +self+ is less than, equal to,
+ or greater than a given object.;To;;0;[o;	;[I"t{==}[#method-i-3D-3D]:
+ Returns whether +self+ and a given enumerable are equal,
+ as determined by Object#eql?.;To;;0;[o;	;[I"f#compare_by_identity?:
+ Returns whether the set considers only identity
+ when comparing elements.;TS;;i;I"Methods for Querying;To;
+;;;[o;;0;[o;	;[I"@#length (aliased as #size):
+ Returns the count of elements.;To;;0;[o;	;[I"7#empty?:
+ Returns whether the set has no elements.;To;;0;[o;	;[I"h#include? (aliased as #member? and #===):
+ Returns whether a given object is an element in the set.;To;;0;[o;	;[I"i#subset? (aliased as {<=}[#method-i-3C-3D]):
+ Returns whether a given object is a subset of the set.;To;;0;[o;	;[I"w#proper_subset? (aliased as {<}[#method-i-3C]):
+ Returns whether a given enumerable is a proper subset of the set.;To;;0;[o;	;[I"r#superset? (aliased as {>=}[#method-i-3E-3D]]):
+ Returns whether a given enumerable is a superset of the set.;To;;0;[o;	;[I"{#proper_superset? (aliased as {>}[#method-i-3E]):
+ Returns whether a given enumerable is a proper superset of the set.;To;;0;[o;	;[I"o#disjoint?:
+ Returns +true+ if the set and a given enumerable
+ have no common elements, +false+ otherwise.;To;;0;[o;	;[I"r#intersect?:
+ Returns +true+ if the set and a given enumerable:
+ have any common elements, +false+ otherwise.;To;;0;[o;	;[I"f#compare_by_identity?:
+ Returns whether the set considers only identity
+ when comparing elements.;TS;;i;I"Methods for Assigning;To;
+;;;[	o;;0;[o;	;[I"L#add (aliased as #<<):
+ Adds a given object to the set; returns +self+.;To;;0;[o;	;[I"u#add?:
+ If the given object is not an element in the set,
+ adds it and returns +self+; otherwise, returns +nil+.;To;;0;[o;	;[I"]#merge:
+ Merges the elements of each given enumerable object to the set; returns +self+.;To;;0;[o;	;[I"Z#replace:
+ Replaces the contents of the set with the contents
+ of a given enumerable.;TS;;i;I"Methods for Deleting;To;
+;;;[o;;0;[o;	;[I">#clear:
+ Removes all elements in the set; returns +self+.;To;;0;[o;	;[I"C#delete:
+ Removes a given object from the set; returns +self+.;To;;0;[o;	;[I"w#delete?:
+ If the given object is an element in the set,
+ removes it and returns +self+; otherwise, returns +nil+.;To;;0;[o;	;[I"H#subtract:
+ Removes each given object from the set; returns +self+.;To;;0;[o;	;[I">#delete_if - Removes elements specified by a given block.;To;;0;[o;	;[I"V#select! (aliased as #filter!):
+ Removes elements not specified by a given block.;To;;0;[o;	;[I"@#keep_if:
+ Removes elements not specified by a given block.;To;;0;[o;	;[I";#reject!
+ Removes elements specified by a given block.;TS;;i;I"Methods for Converting;To;
+;;;[o;;0;[o;	;[I"`#classify:
+ Returns a hash that classifies the elements,
+ as determined by the given block.;To;;0;[o;	;[I"T#collect! (aliased as #map!):
+ Replaces each element with a block return-value.;To;;0;[o;	;[I"¨#divide:
+ Returns a hash that classifies the elements,
+ as determined by the given block;
+ differs from #classify in that the block may accept
+ either one or two arguments.;To;;0;[o;	;[I"ó#flatten:
+ Returns a new set that is a recursive flattening of +self+.
+ #flatten!:
+ Replaces each nested set in +self+ with the elements from that set.;To;;0;[o;	;[I"L#inspect (aliased as #to_s):
+ Returns a string displaying the elements.;To;;0;[o;	;[I"|#join:
+ Returns a string containing all elements, converted to strings
+ as needed, and joined by the given record separator.;To;;0;[o;	;[I":#to_a:
+ Returns an array containing all set elements.;To;;0;[o;	;[I"á#to_set:
+ Returns +self+ if given no arguments and no block;
+ with a block given, returns a new set consisting of block
+ return values.;TS;;i;I"Methods for Iterating;To;
+;;;[o;;0;[o;	;[I"J#each:
+ Calls the block with each successive element; returns +self+.;TS;;i;I"Other Methods;To;
+;;;[o;;0;[o;	;[I"l#reset:
+ Resets the internal state; useful if an object
+ has been modified while an element in the set.;T:
+@fileI"lib/set.rb;T:0@omit_headings_from_table_of_contents_below0;0;0[ [U:RDoc::Constant[i I"VERSION;TI"Set::VERSION;T:public0o;;[ ;@o;0@o@cRDoc::NormalClass0[[I"Enumerable;To;;[ ;@o;0I"lib/set.rb;T[[I"
+class;T[[;[[I"[];T@~[I"new;T@~[:protected[ [:private[ [I"instance;T[[;[>[I"&;T@~[I"+;T@~[I"-;T@~[I"<;T@~[I"<<;T@~[I"<=;T@~[I"<=>;T@~[I"==;T@~[I"===;T@~[I">;T@~[I">=;T@~[I"^;T@~[I"add;T@~[I"	add?;T@~[I"classify;T@~[I"
+clear;T@~[I"collect!;T@~[I"compare_by_identity;T@~[I"compare_by_identity?;T@~[I"delete;T@~[I"delete?;T@~[I"delete_if;T@~[I"difference;T@~[I"disjoint?;T@~[I"divide;T@~[I"	each;T@~[I"empty?;T@~[I"filter!;T@~[I"flatten;T@~[I"flatten!;T@~[I"include?;T@~[I"initialize_clone;T@~[I"initialize_dup;T@~[I"inspect;T@~[I"intersect?;T@~[I"intersection;T@~[I"	join;T@~[I"keep_if;T@~[I"length;T@~[I"	map!;T@~[I"member?;T@~[I"
+merge;T@~[I"proper_subset?;T@~[I"proper_superset?;T@~[I"reject!;T@~[I"replace;T@~[I"
+reset;T@~[I"select!;T@~[I"	size;T@~[I"subset?;T@~[I"subtract;T@~[I"superset?;T@~[I"	to_a;T@~[I"	to_s;T@~[I"to_set;T@~[I"
+union;T@~[I"|;T@~[;[ [;[ [ [U:RDoc::Context::Section[i 0o;;[ ;0;0[@o@ocRDoc::TopLevel

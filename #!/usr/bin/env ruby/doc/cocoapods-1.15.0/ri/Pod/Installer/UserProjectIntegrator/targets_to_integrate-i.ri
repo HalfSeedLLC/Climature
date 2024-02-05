@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"targets_to_integrate:ETI"?Pod::Installer::UserProjectIntegrator#targets_to_integrate;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"r@return [Array<AggregateTarget>] the targets that require integration. This will always be equal or a smaller;To:RDoc::Markup::Verbatim;	[I"subset of #targets.;T:@format0:
+@fileI"7lib/cocoapods/installer/user_project_integrator.rb;T:0@omit_headings_from_table_of_contents_below0F@I"*Pod::Installer::UserProjectIntegrator;TcRDoc::NormalClass0

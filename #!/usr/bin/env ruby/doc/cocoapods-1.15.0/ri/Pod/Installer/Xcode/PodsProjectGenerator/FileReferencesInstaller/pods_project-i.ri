@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"pods_project:ETI"VPod::Installer::Xcode::PodsProjectGenerator::FileReferencesInstaller#pods_project;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"G@return [Project] The project to install the file references into.;T:
+@fileI"Vlib/cocoapods/installer/xcode/pods_project_generator/file_references_installer.rb;T:0@omit_headings_from_table_of_contents_below0F@I"IPod::Installer::Xcode::PodsProjectGenerator::FileReferencesInstaller;TcRDoc::NormalClass0

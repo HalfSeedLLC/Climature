@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"test_xcconfig?:ETI"APod::Target::BuildSettings::PodTargetSettings#test_xcconfig?;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"@return [Boolean];To:RDoc::Markup::Verbatim;	[I";whether settings are being generated for a test bundle;T:@format0:
+@fileI"+lib/cocoapods/target/build_settings.rb;T:0@omit_headings_from_table_of_contents_below0F@I"2Pod::Target::BuildSettings::PodTargetSettings;TcRDoc::NormalClass0

@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"platform_name:ETI"/Pod::Specification::Consumer#platform_name;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"J@return [Symbol] The name of the platform for which the specification;To:RDoc::Markup::Verbatim;	[I"needs to be consumed.;T:@format0:
+@fileI"1lib/cocoapods-core/specification/consumer.rb;T:0@omit_headings_from_table_of_contents_below0F@I"!Pod::Specification::Consumer;TcRDoc::NormalClass0

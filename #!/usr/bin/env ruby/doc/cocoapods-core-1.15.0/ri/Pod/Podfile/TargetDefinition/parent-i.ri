@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"parent:ETI"*Pod::Podfile::TargetDefinition#parent;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"L@return [TargetDefinition, Podfile] the parent target definition or the;To:RDoc::Markup::Verbatim;	[I"%Podfile if the receiver is root.;T:@format0:
+@fileI"4lib/cocoapods-core/podfile/target_definition.rb;T:0@omit_headings_from_table_of_contents_below0F@I"#Pod::Podfile::TargetDefinition;TcRDoc::NormalClass0

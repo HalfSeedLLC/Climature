@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"key_hash:ETI":Pod::Installer::ProjectCache::TargetCacheKey#key_hash;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"%@return [Hash{String => Object}];To:RDoc::Markup::Verbatim;	[I"BThe hash containing key-value pairs that identify the target.;T:@format0:
+@fileI">lib/cocoapods/installer/project_cache/target_cache_key.rb;T:0@omit_headings_from_table_of_contents_below0F@I"1Pod::Installer::ProjectCache::TargetCacheKey;TcRDoc::NormalClass0

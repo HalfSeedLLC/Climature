@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"config:ETI"7Pod::Installer::Xcode::PodsProjectGenerator#config;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"9@return [Config] the global CocoaPods configuration.;T:
+@fileI"<lib/cocoapods/installer/xcode/pods_project_generator.rb;T:0@omit_headings_from_table_of_contents_below0F@I"0Pod::Installer::Xcode::PodsProjectGenerator;TcRDoc::NormalClass0

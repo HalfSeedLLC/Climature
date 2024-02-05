@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"consumer:ETI"1Pod::Specification::Linter::Results#consumer;TI"RW;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"<@return [Specification::Consumer] the current consumer.;T:
+@fileI"6lib/cocoapods-core/specification/linter/result.rb;T:0@omit_headings_from_table_of_contents_below0F@I"(Pod::Specification::Linter::Results;TcRDoc::NormalClass0

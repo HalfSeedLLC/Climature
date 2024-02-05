@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"priority:ETI"#Test::Unit::TestSuite#priority;TI"RW;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"9Test suite that has higher priority is ran prior to ;TI"*test suites that have lower priority.;T:
+@fileI"lib/test/unit/testsuite.rb;T:0@omit_headings_from_table_of_contents_below0F@I"Test::Unit::TestSuite;TcRDoc::NormalClass0

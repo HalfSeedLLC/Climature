@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"add_main:ETI"KPod::Installer::Xcode::PodsProjectGenerator::AppHostInstaller#add_main;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"G@return [Boolean] whether the app host installer should add main.m;T:
+@fileI"Olib/cocoapods/installer/xcode/pods_project_generator/app_host_installer.rb;T:0@omit_headings_from_table_of_contents_below0F@I"BPod::Installer::Xcode::PodsProjectGenerator::AppHostInstaller;TcRDoc::NormalClass0

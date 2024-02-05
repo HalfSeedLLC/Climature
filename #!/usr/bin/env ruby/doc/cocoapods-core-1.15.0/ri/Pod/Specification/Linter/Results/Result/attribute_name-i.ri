@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"attribute_name:ETI"?Pod::Specification::Linter::Results::Result#attribute_name;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"F@return[String] the name of the attribute associated with result.;T:
+@fileI"6lib/cocoapods-core/specification/linter/result.rb;T:0@omit_headings_from_table_of_contents_below0F@I"0Pod::Specification::Linter::Results::Result;TcRDoc::NormalClass0

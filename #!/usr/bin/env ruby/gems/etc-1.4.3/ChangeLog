@@ -1,0 +1,145 @@
+-*- coding: utf-8 -*-
+
+commit 743c26086d6c6012a9fbf68463f0b8b4bf1bd89a
+  Author:     Hiroshi SHIBATA <hsbt@ruby-lang.org>
+  AuthorDate: 2023-12-13 13:58:24 +0900
+  Commit:     Hiroshi SHIBATA <hsbt@ruby-lang.org>
+  CommitDate: 2023-12-13 13:58:24 +0900
+
+    Bump up 1.4.3
+
+commit e4c71e59969d7f3580974b91556451d2b09071f6
+  Author:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  AuthorDate: 2023-11-05 20:42:13 +0900
+  Commit:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  CommitDate: 2023-11-05 20:42:13 +0900
+
+    Fix inconsistent dll linkage warning
+
+commit a9e4d4730d10051b3179380268216c8f56ddb26b
+  Author:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  AuthorDate: 2023-10-29 16:14:44 +0900
+  Commit:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  CommitDate: 2023-10-29 16:14:44 +0900
+
+    Start 1.4.3
+
+commit 676c954e91909a3af7cb67f4386234e2ad390271
+  Author:     Hiroshi SHIBATA <hsbt@ruby-lang.org>
+  AuthorDate: 2023-10-05 15:07:25 +0900
+  Commit:     Hiroshi SHIBATA <hsbt@ruby-lang.org>
+  CommitDate: 2023-10-05 15:27:56 +0900
+
+    Use test-unit-ruby-core gem
+
+commit cfbc607126e9673afd5424312992852c56e3edbc
+  Author:     dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+  AuthorDate: 2023-09-11 04:57:03 +0000
+  Commit:     Hiroshi SHIBATA <hsbt@ruby-lang.org>
+  CommitDate: 2023-09-11 14:01:19 +0900
+
+    Bump actions/checkout from 3 to 4
+
+    Bumps [actions/checkout](https://github.com/actions/checkout) from 3 to 4.
+    - [Release notes](https://github.com/actions/checkout/releases)
+    - [Changelog](https://github.com/actions/checkout/blob/main/CHANGELOG.md)
+    - [Commits](https://github.com/actions/checkout/compare/v3...v4)
+
+    ---
+    updated-dependencies:
+    - dependency-name: actions/checkout
+      dependency-type: direct:production
+      update-type: version-update:semver-major
+    ...
+
+    Signed-off-by: dependabot[bot] <support@github.com>
+
+commit f7fa1884fa3474f3f81f29739817cb334753f489
+  Author:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  AuthorDate: 2023-07-13 00:34:45 +0900
+  Commit:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  CommitDate: 2023-07-13 00:34:45 +0900
+
+    Declare `getlogin` even if unistd.h is not available
+
+    Although MinGW provides this header but not the function, Windows
+    version ruby provides the function.
+
+commit b95ddef386486e033735f4f8ac4ddb9abc0c1173
+  Author:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  AuthorDate: 2023-07-12 21:03:29 +0900
+  Commit:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  CommitDate: 2023-07-12 23:11:13 +0900
+
+    Chec if the target file exists, not "depend" file
+
+commit 1ab19d581502876824483edccfca0777598e7f53
+  Author:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  AuthorDate: 2023-07-12 20:39:16 +0900
+  Commit:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  CommitDate: 2023-07-12 23:10:54 +0900
+
+    Fix for srcdir with spaces
+
+    Fixes #22.
+    Build failure when the ruby installed directory name contains spaces.
+
+commit 365398ea47feb65d2370fa576c8e992eb3a0d99e
+  Author:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  AuthorDate: 2023-07-12 16:20:30 +0900
+  Commit:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  CommitDate: 2023-07-12 16:20:30 +0900
+
+    Declare `getlogin` only if unistd.h is not available
+
+commit 40b69c7a5e8524cd95794cde9d4ba9595eef29f9
+  Author:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  AuthorDate: 2023-07-12 16:08:55 +0900
+  Commit:     Nobuyoshi Nakada <nobu@ruby-lang.org>
+  CommitDate: 2023-07-12 16:08:55 +0900
+
+    Update test
+
+commit f4b5e888ba2d1f8e87a6d2111be5d0a58e5da682
+  Author:     Benoit Daloze <eregontp@gmail.com>
+  AuthorDate: 2023-05-29 21:27:35 +0200
+  Commit:     Benoit Daloze <eregontp@gmail.com>
+  CommitDate: 2023-05-29 21:31:49 +0200
+
+    Add TruffleRuby in CI
+
+commit 51856850035d78a671ae13c7969adf768bae2e9a
+  Author:     Benoit Daloze <eregontp@gmail.com>
+  AuthorDate: 2023-05-29 21:26:06 +0200
+  Commit:     Benoit Daloze <eregontp@gmail.com>
+  CommitDate: 2023-05-29 21:31:49 +0200
+
+    Use the correct pattern for the fallback of rb_io_descriptor()
+
+    * See https://github.com/ruby/io-console/pull/43/commits/d1d9aef45ceb14365fdf0ebee3e5ea06f27da682
+
+commit ea15eceb1348e8efd24896669a7351a2f530eff6
+  Author:     Samuel Williams <samuel.williams@oriontransfer.co.nz>
+  AuthorDate: 2023-05-28 14:08:25 +0900
+  Commit:     GitHub <noreply@github.com>
+  CommitDate: 2023-05-28 14:08:25 +0900
+
+    Remove usage of IO internals. (#26)
+
+commit f6be64c8adcf25a97610b861d57d9ad26169b090
+  Author:     Hiroshi SHIBATA <hsbt@ruby-lang.org>
+  AuthorDate: 2023-03-24 13:00:18 +0900
+  Commit:     Hiroshi SHIBATA <hsbt@ruby-lang.org>
+  CommitDate: 2023-03-24 13:35:24 +0900
+
+    Update test libraries from https://github.com/ruby/ruby/commit/b4e438d8aabaf4bba2b27f374c787543fae07c58
+
+commit 7a81385ff554fa6083534103d3aa794878418848
+  Author:     Keishi Tanaka <k-tanaka@ruby-dev.jp>
+  AuthorDate: 2023-01-21 14:30:27 +0900
+  Commit:     GitHub <noreply@github.com>
+  CommitDate: 2023-01-21 14:30:27 +0900
+
+    Migrate set-output to $GITHUB_OUTPUT (#24)
+
+    https://github.blog/changelog/2022-10-11-github-actions-deprecating-save-state-and-set-output-commands/

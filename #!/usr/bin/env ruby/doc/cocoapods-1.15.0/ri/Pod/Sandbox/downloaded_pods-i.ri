@@ -1,0 +1,7 @@
+U:RDoc::Attr[iI"downloaded_pods:ETI"!Pod::Sandbox#downloaded_pods;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"A@return [Array<String>] The names of the pods that have been;To:RDoc::Markup::Verbatim;	[
+I"8downloaded before the installation process begins.
+;TI"8These are distinct from the pre-downloaded pods in
+;TI"6that these do not necessarily come from external
+;TI"3sources, and are only downloaded right before
+;TI"=installation if the parallel_pod_downloads option is on.;T:@format0:
+@fileI"lib/cocoapods/sandbox.rb;T:0@omit_headings_from_table_of_contents_below0F@I"Pod::Sandbox;TcRDoc::NormalClass0

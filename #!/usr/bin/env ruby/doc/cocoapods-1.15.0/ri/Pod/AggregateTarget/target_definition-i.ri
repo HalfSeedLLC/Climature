@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"target_definition:ETI"+Pod::AggregateTarget#target_definition;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"I@return [TargetDefinition] the target definition of the Podfile that;To:RDoc::Markup::Verbatim;	[I"generated this target.;T:@format0:
+@fileI"-lib/cocoapods/target/aggregate_target.rb;T:0@omit_headings_from_table_of_contents_below0F@I"Pod::AggregateTarget;TcRDoc::NormalClass0

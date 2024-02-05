@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"sources_manager:ETI""Pod::Resolver#sources_manager;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"K@return [Source::Manager] the manager to use for dependency resolution;T:
+@fileI"lib/cocoapods/resolver.rb;T:0@omit_headings_from_table_of_contents_below0F@I"Pod::Resolver;TcRDoc::NormalClass0

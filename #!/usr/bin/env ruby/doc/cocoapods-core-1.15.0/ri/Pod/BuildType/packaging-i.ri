@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"packaging:ETI"Pod::BuildType#packaging;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"X@return [Symbol] the packaging for this build type, one of #KNOWN_PACKAGING_OPTIONS;T:
+@fileI"%lib/cocoapods-core/build_type.rb;T:0@omit_headings_from_table_of_contents_below0F@I"Pod::BuildType;TcRDoc::NormalClass0

@@ -1,0 +1,62 @@
+current directory: /Users/johnathanhill/Documents/GitHub/WeatherApp/#!/usr/bin/env ruby/gems/readline-ext-0.2.0/ext/readline
+/Users/johnathanhill/.rbenv/versions/3.1.2/bin/ruby extconf.rb
+checking for rb_io_descriptor()... yes
+checking for tgetnum() in -lncurses... yes
+checking for readline/readline.h... yes
+checking for readline/history.h... yes
+checking for readline() in -lreadline... yes
+checking for rl_getc() in stdio.h,readline/readline.h,readline/history.h... yes
+checking for rl_getc_function() in stdio.h,readline/readline.h,readline/history.h... yes
+checking for rl_filename_completion_function() in stdio.h,readline/readline.h,readline/history.h... yes
+checking for rl_username_completion_function() in stdio.h,readline/readline.h,readline/history.h... yes
+checking for rl_completion_matches() in stdio.h,readline/readline.h,readline/history.h... yes
+checking for rl_refresh_line() in stdio.h,readline/readline.h,readline/history.h... yes
+checking for rl_deprep_term_function in stdio.h,readline/readline.h,readline/history.h... yes
+checking for rl_completion_append_character in stdio.h,readline/readline.h,readline/history.h... yes
+checking for rl_completion_quote_character in stdio.h,readline/readline.h,readline/history.h... yes
+checking for rl_basic_word_break_characters in stdio.h,readline/readline.h,readline/history.h... yes
+checking for rl_completer_word_break_characters in stdio.h,readline/readline.h,readline/history.h... yes
+checking for rl_basic_quote_characters in stdio.h,readline/readline.h,readline/history.h... yes
+checking for rl_completer_quote_characters in stdio.h,readline/readline.h,readline/history.h... yes
+checking for rl_filename_quote_characters in stdio.h,readline/readline.h,readline/history.h... yes
+checking for rl_attempted_completion_over in stdio.h,readline/readline.h,readline/history.h... yes
+checking for rl_library_version in stdio.h,readline/readline.h,readline/history.h... yes
+checking for rl_editing_mode in stdio.h,readline/readline.h,readline/history.h... yes
+checking for rl_line_buffer in stdio.h,readline/readline.h,readline/history.h... yes
+checking for rl_point in stdio.h,readline/readline.h,readline/history.h... yes
+checking for rl_char_is_quoted_p in stdio.h,readline/readline.h,readline/history.h... yes
+checking for rl_event_hook in stdio.h,readline/readline.h,readline/history.h... yes
+checking for rl_catch_sigwinch in stdio.h,readline/readline.h,readline/history.h... yes
+checking for rl_catch_signals in stdio.h,readline/readline.h,readline/history.h... yes
+checking for rl_pre_input_hook in stdio.h,readline/readline.h,readline/history.h... yes
+checking for rl_special_prefixes in stdio.h,readline/readline.h,readline/history.h... yes
+checking for rl_cleanup_after_signal() in stdio.h,readline/readline.h,readline/history.h... yes
+checking for rl_free_line_state() in stdio.h,readline/readline.h,readline/history.h... yes
+checking for rl_clear_signals() in stdio.h,readline/readline.h,readline/history.h... yes
+checking for rl_set_screen_size() in stdio.h,readline/readline.h,readline/history.h... yes
+checking for rl_get_screen_size() in stdio.h,readline/readline.h,readline/history.h... yes
+checking for rl_vi_editing_mode() in stdio.h,readline/readline.h,readline/history.h... yes
+checking for rl_emacs_editing_mode() in stdio.h,readline/readline.h,readline/history.h... yes
+checking for replace_history_entry() in stdio.h,readline/readline.h,readline/history.h... yes
+checking for remove_history() in stdio.h,readline/readline.h,readline/history.h... yes
+checking for clear_history() in stdio.h,readline/readline.h,readline/history.h... yes
+checking for rl_redisplay() in stdio.h,readline/readline.h,readline/history.h... yes
+checking for rl_insert_text() in stdio.h,readline/readline.h,readline/history.h... yes
+checking for rl_delete_text() in stdio.h,readline/readline.h,readline/history.h... yes
+checking for rl_hook_func_t* in stdio.h,readline/readline.h,readline/history.h... yes
+creating Makefile
+
+current directory: /Users/johnathanhill/Documents/GitHub/WeatherApp/#!/usr/bin/env ruby/gems/readline-ext-0.2.0/ext/readline
+make DESTDIR\= sitearchdir\=./.gem.20240203-796-9y2vg4 sitelibdir\=./.gem.20240203-796-9y2vg4 clean
+
+current directory: /Users/johnathanhill/Documents/GitHub/WeatherApp/#!/usr/bin/env ruby/gems/readline-ext-0.2.0/ext/readline
+make DESTDIR\= sitearchdir\=./.gem.20240203-796-9y2vg4 sitelibdir\=./.gem.20240203-796-9y2vg4
+compiling readline.c
+linking shared-object readline.bundle
+
+current directory: /Users/johnathanhill/Documents/GitHub/WeatherApp/#!/usr/bin/env ruby/gems/readline-ext-0.2.0/ext/readline
+make DESTDIR\= sitearchdir\=./.gem.20240203-796-9y2vg4 sitelibdir\=./.gem.20240203-796-9y2vg4 install
+/usr/bin/install -c -m 0755 readline.bundle ./.gem.20240203-796-9y2vg4
+
+current directory: /Users/johnathanhill/Documents/GitHub/WeatherApp/#!/usr/bin/env ruby/gems/readline-ext-0.2.0/ext/readline
+make DESTDIR\= sitearchdir\=./.gem.20240203-796-9y2vg4 sitelibdir\=./.gem.20240203-796-9y2vg4 clean

@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"version:ETI"*Pod::Generator::InfoPlistFile#version;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"Z@return [String] version The version to use for when generating this Info.plist file.;T:
+@fileI"/lib/cocoapods/generator/info_plist_file.rb;T:0@omit_headings_from_table_of_contents_below0F@I""Pod::Generator::InfoPlistFile;TcRDoc::NormalClass0

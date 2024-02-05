@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"lockfile:ETI"Pod::Installer#lockfile;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"J@return [Lockfile] The Lockfile that stores the information about the;To:RDoc::Markup::Verbatim;	[I".Pods previously installed on any machine.;T:@format0:
+@fileI"lib/cocoapods/installer.rb;T:0@omit_headings_from_table_of_contents_below0F@I"Pod::Installer;TcRDoc::NormalClass0

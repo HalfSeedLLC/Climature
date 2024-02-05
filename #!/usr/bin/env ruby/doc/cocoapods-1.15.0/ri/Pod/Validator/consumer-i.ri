@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"consumer:ETI"Pod::Validator#consumer;TI"RW;T:privateo:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"M@return [Consumer] the consumer for the current platform being validated;T:
+@fileI"lib/cocoapods/validator.rb;T:0@omit_headings_from_table_of_contents_below0F@I"Pod::Validator;TcRDoc::NormalClass0

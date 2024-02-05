@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"machos:ETI"MachO::FatFile#machos;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I";@return [Array<MachOFile>] an array of Mach-O binaries;T:
+@fileI"lib/macho/fat_file.rb;T:0@omit_headings_from_table_of_contents_below0F@I"MachO::FatFile;TcRDoc::NormalClass0

@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"	path:ETI"!Pod::Xcode::XCFramework#path;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"A@return [Pathname] path the path to the .xcframework on disk;T:
+@fileI"'lib/cocoapods/xcode/xcframework.rb;T:0@omit_headings_from_table_of_contents_below0F@I"Pod::Xcode::XCFramework;TcRDoc::NormalClass0
