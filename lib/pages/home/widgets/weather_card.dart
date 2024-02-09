@@ -7,6 +7,7 @@ class WeatherCard extends StatelessWidget {
     required this.time,
     required this.forecast,
     required this.degrees,
+    this.onPressed,
     this.fontColor = WeatherColors.black,
     this.backgroundColor = WeatherColors.white,
     Key? key,
@@ -16,6 +17,7 @@ class WeatherCard extends StatelessWidget {
   final String time;
   final String forecast;
   final String degrees;
+  final void Function()? onPressed;
   final Color fontColor;
   final Color backgroundColor;
 
@@ -24,7 +26,7 @@ class WeatherCard extends StatelessWidget {
       decoration: BoxDecoration(
           color: backgroundColor, borderRadius: BorderRadius.circular(15)),
       child: TextButton(
-        onPressed: () => print(''),
+        onPressed: () => onPressed?.call(),
         child: SizedBox(
           height: 100,
           child: Padding(

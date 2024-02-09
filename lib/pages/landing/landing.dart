@@ -109,7 +109,7 @@ class _LandingState extends State<Landing> with TickerProviderStateMixin {
                     const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
                 child: ActionButton(
                   title: 'GET STARTED',
-                  onPressed: () => router.go(Home.route),
+                  onPressed: () => router.push(Home.route),
                 ),
               ),
             ),

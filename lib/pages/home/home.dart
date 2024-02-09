@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/pages/city/city_list.dart';
 import 'package:weather_app/pages/home/widgets/weather_card.dart';
+import 'package:weather_app/router/router.dart';
 import 'package:weather_app/theme/colors.dart';
 
 class Home extends StatefulWidget {
@@ -91,11 +93,14 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                           style: Theme.of(context).textTheme.headlineSmall,
                         ),
                         const SizedBox(height: 15),
-                        const WeatherCard(
+                        WeatherCard(
                           city: 'Fresno',
                           time: '03:22 AM',
                           degrees: '12',
                           forecast: 'Light rain forecasted',
+                          onPressed: () async {
+                            router.push(CityList.route);
+                          },
                         ),
                         const SizedBox(height: 30),
                         Text(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:weather_app/pages/city/city_list.dart';
 
 import '../pages/home/home.dart';
 import '../pages/landing/landing.dart';
@@ -12,8 +13,9 @@ CustomTransitionPage buildPageWithDefaultTransition<T>({
   return CustomTransitionPage<T>(
       key: state.pageKey,
       child: child,
-      transitionDuration: const Duration(milliseconds: 700),
-      reverseTransitionDuration: const Duration(milliseconds: 700),
+      maintainState: false,
+      transitionDuration: const Duration(milliseconds: 500),
+      reverseTransitionDuration: const Duration(milliseconds: 350),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         return Stack(
           children: [
@@ -39,5 +41,10 @@ final GoRouter router = GoRouter(
           context: context, state: state, child: const Home()),
       // builder: (BuildContext context, GoRouterState state) => const Home(),
     ),
+    GoRoute(
+      path: CityList.route,
+      pageBuilder: (context, state) => buildPageWithDefaultTransition(
+          context: context, state: state, child: const CityList()),
+    )
   ],
 );
