@@ -41,9 +41,10 @@ class WeatherCard extends StatelessWidget {
                   children: [
                     Row(
                       children: [
-                        const Icon(
-                            size: 30, Icons.sunny, color: Color(0xFFF19E39)),
-                        const SizedBox(width: 10),
+                        Image.asset(
+                            width: 60,
+                            height: 60,
+                            'assets/weather/icons/day/113.png'),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -62,7 +63,6 @@ class WeatherCard extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 5),
                     Text(
                       forecast,
                       style: Theme.of(context)

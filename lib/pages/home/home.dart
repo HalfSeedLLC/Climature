@@ -134,6 +134,17 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                       Theme.of(context).textTheme.bodyMedium,
                                   prefixIcon: const Icon(Icons.search,
                                       color: Color(0xFF7F7F7F)),
+                                  suffixIcon: searchQuery.isNotEmpty
+                                      ? TextButton(
+                                          onPressed: () {
+                                            textController.clear();
+                                          },
+                                          child: const Icon(
+                                              size: 18,
+                                              Icons.cancel,
+                                              color: Color(0xFFAAAAAA)),
+                                        )
+                                      : null,
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10.0),
                                   ),
@@ -152,6 +163,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                 child: TextButton(
                                   onPressed: () {
                                     _searchFocusNode.unfocus();
+                                    textController.clear();
                                   },
                                   child: Text(
                                     'Cancel',
@@ -465,7 +477,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                                                   .bodySmall,
                                                             ),
                                                             Text(
-                                                              ', FL, United States of Dominica Republica of',
+                                                              ', FL, United States',
                                                               style: Theme.of(
                                                                       context)
                                                                   .textTheme

@@ -13,6 +13,8 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   go_router: ^13.1.0
+  http: ^1.2.0
+  intl: ^0.19.0
 
 dev_dependencies:
   flutter_test:
@@ -25,6 +27,8 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/weather/icons/day/
+    - assets/weather/icons/night/
 
   fonts:
     - family: Gilroy-Regular
