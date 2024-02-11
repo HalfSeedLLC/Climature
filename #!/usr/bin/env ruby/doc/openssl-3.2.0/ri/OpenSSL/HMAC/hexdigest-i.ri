@@ -1,3 +1,0 @@
-U:RDoc::AnyMethod[iI"hexdigest:ETI"OpenSSL::HMAC#hexdigest;TF:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"MReturns the authentication code an instance represents as a hex-encoded ;TI"string.;T:
-@fileI"ext/openssl/ossl_hmac.c;T:0@omit_headings_from_table_of_contents_below0I"hmac.hexdigest -> string
-;T0[[I"inspect;T@	[I"	to_s;T@	I"();T@FI"	HMAC;TcRDoc::NormalClass00
