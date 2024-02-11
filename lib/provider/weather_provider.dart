@@ -13,7 +13,6 @@ class WeatherProvider {
     final uri = Uri.parse(
         'http://api.weatherapi.com/v1/forecast.json?key=${dotenv.env["WEATHER_API_KEY"]!}&q=$city&days=3&aqi=yes');
     final response = await client.get(uri);
-    final Map<String, dynamic> data = json.decode(response.body);
 
     if (response.statusCode == 200) {
       return Forecast.fromJson(const Utf8Decoder().convert(response.bodyBytes));

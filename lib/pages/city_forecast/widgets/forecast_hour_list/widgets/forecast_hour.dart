@@ -25,9 +25,10 @@ class ForecastHour extends StatelessWidget {
                 .headlineSmall!
                 .copyWith(fontSize: 15, letterSpacing: 0),
           ),
-          SizedBox(
-              height: 35,
-              child: Image.asset(width: 35, height: 35, iconAssetPath)),
+          if (iconAssetPath.isNotEmpty)
+            SizedBox(
+                height: 35,
+                child: Image.asset(width: 35, height: 35, iconAssetPath)),
           Padding(
             padding: const EdgeInsets.only(top: 7),
             child: Text(

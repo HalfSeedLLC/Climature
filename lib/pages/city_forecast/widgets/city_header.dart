@@ -10,6 +10,7 @@ class CityHeader extends StatelessWidget {
     required this.tempHi,
     required this.tempLow,
     required this.iconAsset,
+    required this.airQualityMessage,
     Key? key,
   }) : super(key: key);
 
@@ -19,11 +20,12 @@ class CityHeader extends StatelessWidget {
   final String tempHi;
   final String tempLow;
   final String iconAsset;
+  final String airQualityMessage;
 
   @override
   Widget build(BuildContext context) => DecoratedBox(
         decoration: BoxDecoration(
-            color: WeatherColors.slime,
+            color: const Color(0xFFF9F9F9),
             borderRadius: BorderRadius.circular(40)),
         child: SafeArea(
           child: Padding(
@@ -48,7 +50,7 @@ class CityHeader extends StatelessWidget {
                                       height: 1,
                                       fontSize: 30,
                                       color: WeatherColors.black)),
-                          Text('Moderate',
+                          Text(airQualityMessage,
                               style: Theme.of(context)
                                   .textTheme
                                   .labelSmall!
