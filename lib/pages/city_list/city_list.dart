@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app/pages/city/city_list.dart';
-import 'package:weather_app/pages/home/widgets/weather_card.dart';
+import 'package:weather_app/pages/city_forecast/city_forecast.dart';
+import 'package:weather_app/pages/city_list/widgets/weather_card.dart';
 import 'package:weather_app/router/router.dart';
 import 'package:weather_app/theme/colors.dart';
 
-class Home extends StatefulWidget {
-  const Home({
+class CityList extends StatefulWidget {
+  const CityList({
     Key? key,
   }) : super(key: key);
 
-  static const route = '/home';
+  static const route = '/CityList';
   @override
-  State<Home> createState() => _HomeState();
+  State<CityList> createState() => _CityListState();
 }
 
-class _HomeState extends State<Home> with TickerProviderStateMixin {
+class _CityListState extends State<CityList> with TickerProviderStateMixin {
   late FocusNode _searchFocusNode;
   late AnimationController _animationController;
   late AnimationController _searchAnimationController;
@@ -212,7 +212,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                         degrees: '12',
                                         forecast: 'Light rain forecasted',
                                         onPressed: () async {
-                                          router.push(CityList.route);
+                                          router.push(CityForecast.route);
                                         },
                                       ),
                                       const SizedBox(height: 30),

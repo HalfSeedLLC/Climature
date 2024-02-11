@@ -1,18 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app/router/router.dart';
 import 'package:weather_app/theme/colors.dart';
+import 'package:weather_app/respository/weather_repository.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  await dotenv.load(fileName: ".env");
+  final weatherRepository = WeatherRepository();
+
+  runApp(RepositoryProvider(
+    create: (context) => weatherRepository,
+    child: const WeatherApp(),
+  ));
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class WeatherApp extends StatelessWidget {
+  const WeatherApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'Flutter Demo',
+      title: 'Weather App',
       theme: ThemeData(
           useMaterial3: true,
           fontFamily: 'Gilroy-Regular',

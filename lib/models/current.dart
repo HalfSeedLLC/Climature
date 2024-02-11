@@ -9,7 +9,6 @@ class Current {
     required this.lastUpdated,
     required this.tempC,
     required this.tempF,
-    required this.itsDay,
     required this.condition,
     required this.windMph,
     required this.windKph,
@@ -29,13 +28,14 @@ class Current {
     required this.gustMph,
     required this.gustKph,
     required this.airQuality,
+    this.itsDay,
   });
 
   final int lastUpdatedEpoch;
   final String lastUpdated;
   final double tempC;
   final double tempF;
-  final int itsDay;
+  final int? itsDay;
   final Condition condition;
   final double windMph;
   final double windKph;
@@ -141,30 +141,31 @@ class Current {
 
   factory Current.fromMap(Map<String, dynamic> map) {
     return Current(
-      lastUpdatedEpoch: map['lastUpdatedEpoch'] as int,
-      lastUpdated: map['lastUpdated'] as String,
-      tempC: map['tempC'] as double,
-      tempF: map['tempF'] as double,
-      itsDay: map['itsDay'] as int,
+      lastUpdatedEpoch: map['last_updated_epoch'] as int,
+      lastUpdated: map['last_updated'] as String,
+      tempC: map['temp_c'] as double,
+      tempF: map['temp_f'] as double,
+      itsDay: map['its_day'] as int?,
       condition: Condition.fromMap(map['condition'] as Map<String, dynamic>),
-      windMph: map['windMph'] as double,
-      windKph: map['windKph'] as double,
-      windDegree: map['windDegree'] as int,
-      windDir: map['windDir'] as String,
-      pressureMb: map['pressureMb'] as double,
-      pressureIn: map['pressureIn'] as double,
-      precipitationMm: map['precipitationMm'] as double,
-      precipitationIn: map['precipitationIn'] as double,
+      windMph: map['wind_mph'] as double,
+      windKph: map['wind_kph'] as double,
+      windDegree: map['wind_degree'] as int,
+      windDir: map['wind_dir'] as String,
+      pressureMb: map['pressure_mb'] as double,
+      pressureIn: map['pressure_in'] as double,
+      precipitationMm: map['precip_mm'] as double,
+      precipitationIn: map['precip_in'] as double,
       humidity: map['humidity'] as int,
       cloud: map['cloud'] as int,
-      feelsLikeC: map['feelsLikeC'] as double,
-      feelsLikeF: map['feelsLikeF'] as double,
-      visibilityKilometers: map['visibilityKilometers'] as double,
-      visibilityMiles: map['visibilityMiles'] as double,
+      feelsLikeC: map['feelslike_c'] as double,
+      feelsLikeF: map['feelslike_f'] as double,
+      visibilityKilometers: map['vis_km'] as double,
+      visibilityMiles: map['vis_miles'] as double,
       uv: map['uv'] as double,
-      gustMph: map['gustMph'] as double,
-      gustKph: map['gustKph'] as double,
-      airQuality: AirQuality.fromMap(map['airQuality'] as Map<String, dynamic>),
+      gustMph: map['gust_mph'] as double,
+      gustKph: map['gust_kph'] as double,
+      airQuality:
+          AirQuality.fromMap(map['air_quality'] as Map<String, dynamic>),
     );
   }
 

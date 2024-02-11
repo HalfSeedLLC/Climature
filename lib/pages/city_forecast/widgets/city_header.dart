@@ -1,10 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/pages/city_forecast/utils/utils.dart';
 import 'package:weather_app/theme/colors.dart';
 
 class CityHeader extends StatelessWidget {
   const CityHeader({
+    required this.title,
+    required this.currentTemp,
+    required this.condition,
+    required this.tempHi,
+    required this.tempLow,
+    required this.iconAsset,
     Key? key,
   }) : super(key: key);
+
+  final String title;
+  final String condition;
+  final String currentTemp;
+  final String tempHi;
+  final String tempLow;
+  final String iconAsset;
 
   @override
   Widget build(BuildContext context) => DecoratedBox(
@@ -13,7 +27,7 @@ class CityHeader extends StatelessWidget {
             borderRadius: BorderRadius.circular(40)),
         child: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
+            padding: const EdgeInsets.only(left: 20, right: 20),
             child: Stack(
               alignment: Alignment.topCenter,
               children: [
@@ -26,7 +40,7 @@ class CityHeader extends StatelessWidget {
                         crossAxisAlignment: WrapCrossAlignment.center,
                         direction: Axis.vertical,
                         children: [
-                          Text('Melbourne',
+                          Text(title,
                               style: Theme.of(context)
                                   .textTheme
                                   .labelSmall!
@@ -51,7 +65,7 @@ class CityHeader extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text('12',
+                            Text(currentTemp,
                                 style: Theme.of(context)
                                     .textTheme
                                     .titleLarge!
@@ -76,8 +90,12 @@ class CityHeader extends StatelessWidget {
                         spacing: 10,
                         crossAxisAlignment: WrapCrossAlignment.center,
                         children: [
-                          const Icon(Icons.cloud),
-                          Text('Mostly Clear',
+                          if (iconAsset.isNotEmpty)
+                            Image.asset(
+                                width: 35,
+                                height: 35,
+                                getWeatherIconAsset(iconAsset: iconAsset)),
+                          Text(condition,
                               style: Theme.of(context)
                                   .textTheme
                                   .labelSmall!
@@ -93,7 +111,7 @@ class CityHeader extends StatelessWidget {
                           spacing: 10,
                           crossAxisAlignment: WrapCrossAlignment.center,
                           children: [
-                            Text('H: 25°',
+                            Text('H: $tempHi°',
                                 style: Theme.of(context)
                                     .textTheme
                                     .labelSmall!
@@ -102,7 +120,7 @@ class CityHeader extends StatelessWidget {
                                         fontSize: 15,
                                         color: WeatherColors.black)),
                             const Icon(size: 7, Icons.circle),
-                            Text('L: 17°',
+                            Text('L: $tempLow°',
                                 style: Theme.of(context)
                                     .textTheme
                                     .labelSmall!

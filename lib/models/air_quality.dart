@@ -42,8 +42,8 @@ class AirQuality {
       so2: map['so2'] as double,
       pm2_5: map['pm2_5'] as double,
       pm10: map['pm10'] as double,
-      usEpaIndex: map['usEpaIndex'] as int,
-      gbDefraIndex: map['gbDefraIndex'] as int,
+      usEpaIndex: map['us-epa-index'] as int,
+      gbDefraIndex: map['gb-defra-index'] as int,
     );
   }
 

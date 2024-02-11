@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:weather_app/pages/city/city_list.dart';
-
-import '../pages/home/home.dart';
+import 'package:weather_app/logic/forecast_cubit/forecast_cubit.dart';
+import 'package:weather_app/respository/weather_repository.dart';
+import '../pages/city_forecast/city_forecast.dart';
+import '../pages/city_list/city_list.dart';
 import '../pages/landing/landing.dart';
 
 CustomTransitionPage buildPageWithDefaultTransition<T>({
@@ -36,15 +38,28 @@ final GoRouter router = GoRouter(
             buildPageWithDefaultTransition(
                 context: context, state: state, child: const Landing())),
     GoRoute(
-      path: Home.route,
-      pageBuilder: (context, state) => buildPageWithDefaultTransition(
-          context: context, state: state, child: const Home()),
-      // builder: (BuildContext context, GoRouterState state) => const Home(),
-    ),
-    GoRoute(
       path: CityList.route,
       pageBuilder: (context, state) => buildPageWithDefaultTransition(
-          context: context, state: state, child: const CityList()),
+          context: context,
+          state: state,
+          child: BlocProvider(
+            create: (context) => ForecastCubit(
+                weatherRepository:
+                    RepositoryProvider.of<WeatherRepository>(context)),
+            child: const CityList(),
+          )),
+    ),
+    GoRoute(
+      path: CityForecast.route,
+      pageBuilder: (context, state) => buildPageWithDefaultTransition(
+          context: context,
+          state: state,
+          child: BlocProvider(
+            create: (context) => ForecastCubit(
+                weatherRepository:
+                    RepositoryProvider.of<WeatherRepository>(context)),
+            child: const CityForecast(),
+          )),
     )
   ],
 );

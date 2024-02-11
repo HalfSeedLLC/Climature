@@ -61,11 +61,11 @@ class Location {
       name: map['name'] as String,
       region: map['region'] as String,
       country: map['country'] as String,
-      latitude: map['latitude'] as double,
-      longitude: map['longitude'] as double,
-      timezone: map['timezone'] as String,
-      localTimeEpoch: map['localTimeEpoch'] as int,
-      localTime: map['localTime'] as String,
+      latitude: map['lat'] as double,
+      longitude: map['lon'] as double,
+      timezone: map['tz_id'] as String,
+      localTimeEpoch: map['localtime_epoch'] as int,
+      localTime: map['localtime'] as String,
     );
   }
 

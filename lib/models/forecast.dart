@@ -10,22 +10,22 @@ class Forecast {
   Forecast({
     required this.location,
     required this.current,
-    required this.forecastDays,
+    required this.forecast,
   });
 
   final Location location;
   final Current current;
-  final List<ForecastDay> forecastDays;
+  final Map<String, List<ForecastDay>> forecast;
 
   Forecast copyWith({
     Location? location,
     Current? current,
-    List<ForecastDay>? forecastDays,
+    Map<String, List<ForecastDay>>? forecast,
   }) {
     return Forecast(
       location: location ?? this.location,
       current: current ?? this.current,
-      forecastDays: forecastDays ?? this.forecastDays,
+      forecast: forecast ?? this.forecast,
     );
   }
 
@@ -33,7 +33,7 @@ class Forecast {
     return <String, dynamic>{
       'location': location.toMap(),
       'current': current.toMap(),
-      'forecastDays': forecastDays.map((x) => x.toMap()).toList(),
+      'forecast': forecast,
     };
   }
 
@@ -41,9 +41,14 @@ class Forecast {
     return Forecast(
       location: Location.fromMap(map['location'] as Map<String, dynamic>),
       current: Current.fromMap(map['current'] as Map<String, dynamic>),
-      forecastDays: List<ForecastDay>.from(
-        (map['forecastDays'] as List<int>).map<ForecastDay>(
-          (x) => ForecastDay.fromMap(x as Map<String, dynamic>),
+      forecast: Map<String, List<dynamic>>.from(
+              map['forecast'] as Map<String, dynamic>)
+          .map(
+        (key, value) => MapEntry(
+          key,
+          (value)
+              .map((e) => ForecastDay.fromMap(e as Map<String, dynamic>))
+              .toList(),
         ),
       ),
     );
@@ -56,7 +61,7 @@ class Forecast {
 
   @override
   String toString() =>
-      'Forecast(location: $location, current: $current, forecastDays: $forecastDays)';
+      'Forecast(location: $location, current: $current, forecast: $forecast)';
 
   @override
   bool operator ==(covariant Forecast other) {
@@ -64,10 +69,9 @@ class Forecast {
 
     return other.location == location &&
         other.current == current &&
-        listEquals(other.forecastDays, forecastDays);
+        mapEquals(other.forecast, forecast);
   }
 
   @override
-  int get hashCode =>
-      location.hashCode ^ current.hashCode ^ forecastDays.hashCode;
+  int get hashCode => location.hashCode ^ current.hashCode ^ forecast.hashCode;
 }

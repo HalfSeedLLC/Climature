@@ -20,3 +20,13 @@ List<String> getDayOfWeekStrings() {
 
   return ['Today', tomorrow, dayAfterTomorrow];
 }
+
+String getWeatherIconAsset({required String iconAsset}) {
+  int lastIndex = iconAsset.lastIndexOf('/');
+  int secondToLastIndex = iconAsset.lastIndexOf('/', lastIndex - 1);
+  if (secondToLastIndex != -1) {
+    return 'assets/weather/icons/${iconAsset.substring(secondToLastIndex + 1)}';
+  } else {
+    return iconAsset;
+  }
+}

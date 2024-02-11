@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app/pages/home/home.dart';
+import 'package:weather_app/pages/city_list/city_list.dart';
 import 'package:weather_app/router/router.dart';
 import 'package:weather_app/theme/colors.dart';
 import 'package:weather_app/widgets/action_button.dart';
@@ -109,7 +109,7 @@ class _LandingState extends State<Landing> with TickerProviderStateMixin {
                     const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
                 child: ActionButton(
                   title: 'GET STARTED',
-                  onPressed: () => router.push(Home.route),
+                  onPressed: () => router.push(CityList.route),
                 ),
               ),
             ),

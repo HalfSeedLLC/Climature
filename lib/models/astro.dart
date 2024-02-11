@@ -62,10 +62,10 @@ class Astro {
       sunset: map['sunset'] as String,
       moonrise: map['moonrise'] as String,
       moonset: map['moonset'] as String,
-      moonPhase: map['moonPhase'] as String,
-      moonIllumination: map['moonIllumination'] as int,
-      isMoonUp: map['isMoonUp'] as bool,
-      isSunUp: map['isSunUp'] as bool,
+      moonPhase: map['moon_phase'] as String,
+      moonIllumination: map['moon_illumination'] as int,
+      isMoonUp: map['is_moon_up'] == 1,
+      isSunUp: map['is_sun_up'] == 1,
     );
   }
 
