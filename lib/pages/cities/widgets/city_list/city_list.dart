@@ -40,50 +40,58 @@ class CityList extends StatelessWidget {
                 height: double.infinity,
                 child: textController.text.isNotEmpty
                     ? SingleChildScrollView(
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 10),
-                          child: Wrap(
-                              runSpacing: 10,
-                              children: List.generate(
-                                  state.cities.length,
-                                  (i) => TextButton(
-                                        onPressed: () async {
-                                          await context
-                                              .read<CityListCubit>()
-                                              .addToFavorites(
-                                                  city: state.cities
-                                                      .elementAt(i)
-                                                      .name);
+                        child: state.cities.isEmpty
+                            ? const Center(
+                                child: Text('No cities or airports found'),
+                              )
+                            : Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 10),
+                                child: Wrap(
+                                    runSpacing: 10,
+                                    children: List.generate(
+                                        state.cities.length,
+                                        (i) => TextButton(
+                                              onPressed: () async {
+                                                await context
+                                                    .read<CityListCubit>()
+                                                    .addToFavorites(
+                                                        city: state.cities
+                                                            .elementAt(i)
+                                                            .name);
 
-                                          onDismissSearch.call();
-                                        },
-                                        child: DecoratedBox(
-                                          decoration: BoxDecoration(
-                                            color: i == 0
-                                                ? WeatherColors.ev1
-                                                : Colors.transparent,
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                          ),
-                                          child: SizedBox(
-                                            width: double.infinity,
-                                            child: Padding(
-                                              padding: const EdgeInsets.all(15),
-                                              child: SingleChildScrollView(
-                                                scrollDirection:
-                                                    Axis.horizontal,
-                                                child: Text(
-                                                  '${state.cities.elementAt(i).name}, ${state.cities.elementAt(i).region} ${state.cities.elementAt(i).country}',
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .bodySmall,
+                                                onDismissSearch.call();
+                                              },
+                                              child: DecoratedBox(
+                                                decoration: BoxDecoration(
+                                                  color: i == 0
+                                                      ? WeatherColors.ev1
+                                                      : Colors.transparent,
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                ),
+                                                child: SizedBox(
+                                                  width: double.infinity,
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            15),
+                                                    child:
+                                                        SingleChildScrollView(
+                                                      scrollDirection:
+                                                          Axis.horizontal,
+                                                      child: Text(
+                                                        '${state.cities.elementAt(i).name}, ${state.cities.elementAt(i).region} ${state.cities.elementAt(i).country}',
+                                                        style: Theme.of(context)
+                                                            .textTheme
+                                                            .bodySmall,
+                                                      ),
+                                                    ),
+                                                  ),
                                                 ),
                                               ),
-                                            ),
-                                          ),
-                                        ),
-                                      ))),
-                        ),
+                                            ))),
+                              ),
                       )
                     : null,
               ),

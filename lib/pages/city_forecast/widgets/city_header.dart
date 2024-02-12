@@ -105,14 +105,17 @@ class CityHeader extends StatelessWidget {
                                     getWeatherIconAsset(iconAsset: iconAsset)),
                               ),
                             ),
-                          Text(condition,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .labelSmall!
-                                  .copyWith(
-                                      height: 1,
-                                      fontSize: 18,
-                                      color: WeatherColors.black))
+                          Padding(
+                            padding: const EdgeInsets.only(left: 10.0),
+                            child: Text(condition,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .labelSmall!
+                                    .copyWith(
+                                        height: 1,
+                                        fontSize: 18,
+                                        color: WeatherColors.black)),
+                          )
                         ],
                       ),
                       Padding(

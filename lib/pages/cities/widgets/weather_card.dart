@@ -27,12 +27,6 @@ class WeatherCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final String weatherIconAsset = getWeatherIconAsset(iconAsset: iconAsset);
-    print(weatherIconAsset);
-    final bool isSmallerIcon =
-        weatherIconAsset == 'assets/weather/icons/day/113.png' ||
-            weatherIconAsset == 'assets/weather/icons/night/113.png';
-
     return DecoratedBox(
         decoration: BoxDecoration(
             color: backgroundColor, borderRadius: BorderRadius.circular(15)),

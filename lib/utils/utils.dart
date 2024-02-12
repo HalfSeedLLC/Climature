@@ -29,13 +29,12 @@ String getUserFriendlyHour({required String dateTime}) {
 
   List<String> timeParts = time.split(':');
   int hour = int.parse(timeParts[0]);
-  int minute = int.parse(timeParts[1]);
 
   String hourString = hourOf12HourFormat(hour);
 
   String period = hour >= 12 ? 'PM' : 'AM';
 
-  return '$hourString:$minute $period';
+  return '$hourString$period';
 }
 
 String hourOf12HourFormat(int hour) {
