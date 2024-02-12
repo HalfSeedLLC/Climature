@@ -212,7 +212,7 @@ class Hour {
       time: map['time'] as String,
       tempC: map['temp_c'] as double,
       tempF: map['temp_f'] as double,
-      itsDay: map['its_day'] as int,
+      itsDay: map['is_day'] as int,
       condition: Condition.fromMap(map['condition'] as Map<String, dynamic>),
       windMph: map['wind_mph'] as double,
       windKph: map['wind_kph'] as double,

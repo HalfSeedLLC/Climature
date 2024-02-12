@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app/pages/city_forecast/utils/utils.dart';
+import 'package:weather_app/utils/utils.dart';
 import 'package:weather_app/theme/colors.dart';
 
 class CityHeader extends StatelessWidget {
@@ -93,10 +93,18 @@ class CityHeader extends StatelessWidget {
                         crossAxisAlignment: WrapCrossAlignment.center,
                         children: [
                           if (iconAsset.isNotEmpty)
-                            Image.asset(
-                                width: 35,
-                                height: 35,
-                                getWeatherIconAsset(iconAsset: iconAsset)),
+                            SizedBox(
+                              width: 20,
+                              height: 45,
+                              child: OverflowBox(
+                                maxWidth: double.infinity,
+                                maxHeight: double.infinity,
+                                child: Image.asset(
+                                    width: 50,
+                                    height: 50,
+                                    getWeatherIconAsset(iconAsset: iconAsset)),
+                              ),
+                            ),
                           Text(condition,
                               style: Theme.of(context)
                                   .textTheme

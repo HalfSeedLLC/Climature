@@ -22,6 +22,49 @@ String getDayOfWeekString({required String date}) {
   }
 }
 
+String getUserFriendlyHour({required String dateTime}) {
+  List<String> parts = dateTime.split(' ');
+
+  String time = parts[1];
+
+  List<String> timeParts = time.split(':');
+  int hour = int.parse(timeParts[0]);
+  int minute = int.parse(timeParts[1]);
+
+  String hourString = hourOf12HourFormat(hour);
+
+  String period = hour >= 12 ? 'PM' : 'AM';
+
+  return '$hourString:$minute $period';
+}
+
+String hourOf12HourFormat(int hour) {
+  // Convert hour to 12-hour format
+  if (hour == 0) {
+    return '12';
+  } else if (hour <= 12) {
+    return hour.toString();
+  } else {
+    return (hour - 12).toString();
+  }
+}
+
+String getUserFriendlyTime({required String dateTime}) {
+  List<String> parts = dateTime.split(' ');
+
+  String time = parts[1];
+
+  List<String> timeParts = time.split(':');
+  int hour = int.parse(timeParts[0]);
+  int minute = int.parse(timeParts[1]);
+
+  String hourString = hourOf12HourFormat(hour);
+
+  String period = hour >= 12 ? 'PM' : 'AM';
+
+  return '$hourString:$minute $period';
+}
+
 String getAirQualityMessage({required int? usEpaIndex}) {
   switch (usEpaIndex) {
     case 1:

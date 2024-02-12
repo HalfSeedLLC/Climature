@@ -1,14 +1,17 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
+import 'package:weather_app/utils/utils.dart';
 import 'package:weather_app/pages/city_forecast/widgets/forecast_hour_list/widgets/forecast_hour.dart';
 
+import '../../../../models/hour.dart';
 import '../../../../theme/colors.dart';
 
 class ForecastHourList extends StatelessWidget {
   const ForecastHourList({
+    required this.forecastHours,
     Key? key,
   }) : super(key: key);
+
+  final List<Hour> forecastHours;
 
   @override
   Widget build(BuildContext context) => DecoratedBox(
@@ -56,12 +59,21 @@ class ForecastHourList extends StatelessWidget {
                     child: Wrap(
                       spacing: 30,
                       children: List.generate(
-                          13,
+                          forecastHours.length,
                           (i) => ForecastHour(
-                              time: i == 0
-                                  ? 'Now'
-                                  : '${i + 1}${i.isEven ? 'AM' : 'PM'} ',
-                              temperature: '${Random().nextInt(60) + 50}')),
+                                time: i == 0
+                                    ? 'Now'
+                                    : '${getUserFriendlyHour(dateTime: forecastHours.elementAt(i).time)} ',
+                                temperature: forecastHours
+                                    .elementAt(i)
+                                    .tempF
+                                    .toStringAsFixed(0),
+                                iconAssetPath: getWeatherIconAsset(
+                                    iconAsset: forecastHours
+                                        .elementAt(i)
+                                        .condition
+                                        .icon),
+                              )),
                     ),
                   ),
                 )

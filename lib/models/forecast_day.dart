@@ -49,17 +49,15 @@ class ForecastDay {
 
   factory ForecastDay.fromMap(Map<String, dynamic> map) {
     return ForecastDay(
-      date: map['date'] as String,
-      dateEpoch: map['date_epoch'] as int,
-      day: Day.fromMap(map['day'] as Map<String, dynamic>),
-      astro: Astro.fromMap(map['astro'] as Map<String, dynamic>),
-      hours: (map['hours'] as List<dynamic>?)
-              ?.map<Hour>(
-                (hourMap) => Hour.fromMap(hourMap as Map<String, dynamic>),
-              )
-              .toList() ??
-          [],
-    );
+        date: map['date'] as String,
+        dateEpoch: map['date_epoch'] as int,
+        day: Day.fromMap(map['day'] as Map<String, dynamic>),
+        astro: Astro.fromMap(map['astro'] as Map<String, dynamic>),
+        hours: (map['hour'] as List<dynamic>)
+            .map<Hour>(
+              (hourMap) => Hour.fromMap(hourMap as Map<String, dynamic>),
+            )
+            .toList());
   }
 
   String toJson() => json.encode(toMap());

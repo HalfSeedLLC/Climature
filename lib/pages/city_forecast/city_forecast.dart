@@ -3,7 +3,7 @@ import 'package:weather_app/pages/city_forecast/widgets/next_hour.dart';
 import 'package:weather_app/theme/colors.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../logic/forecast_cubit/forecast_cubit.dart';
-import 'package:weather_app/pages/city_forecast/utils/utils.dart';
+import 'package:weather_app/utils/utils.dart';
 import 'package:weather_app/pages/city_forecast/widgets/air_quality.dart';
 import 'package:weather_app/pages/city_forecast/widgets/city_header.dart';
 import 'package:weather_app/pages/city_forecast/widgets/forecast_hour_list/forecast_hour_list.dart';
@@ -15,6 +15,7 @@ class CityForecast extends StatefulWidget {
   }) : super(key: key);
 
   static const route = '/city';
+  static const name = 'City Forecast';
 
   @override
   State<CityForecast> createState() => _CityForecast();
@@ -89,7 +90,9 @@ class _CityForecast extends State<CityForecast>
                                         iconAsset: state.forecast?.current
                                                 .condition.icon ??
                                             ''),
-                                    const ForecastHourList(),
+                                    ForecastHourList(
+                                        forecastHours:
+                                            state.hourlyForecast ?? []),
                                     FutureForecast(
                                         forecastDays: state.forecastDays),
                                     const AirQuality()

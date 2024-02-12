@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../theme/colors.dart';
-import '../utils/utils.dart';
+import '../../../utils/utils.dart';
 
 class NextHour extends StatelessWidget {
   const NextHour({
@@ -25,11 +25,20 @@ class NextHour extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
+                  const SizedBox(width: 15),
                   if (iconAsset.isNotEmpty)
-                    Image.asset(
-                        width: 50,
-                        height: 50,
-                        getWeatherIconAsset(iconAsset: iconAsset)),
+                    SizedBox(
+                      width: 20,
+                      height: 45,
+                      child: OverflowBox(
+                        maxWidth: double.infinity,
+                        maxHeight: double.infinity,
+                        child: Image.asset(
+                            width: 55,
+                            height: 55,
+                            getWeatherIconAsset(iconAsset: iconAsset)),
+                      ),
+                    ),
                   const SizedBox(width: 15),
                   Wrap(
                     spacing: 5,

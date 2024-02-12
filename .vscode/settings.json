@@ -1,9 +1,12 @@
 {
     "cSpell.words": [
         "Astro",
+        "Debouncer",
         "Defra",
         "dotenv",
         "respository",
+        "sublist",
+        "unfocus",
         "vsync"
     ]
 }
