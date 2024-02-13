@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app/pages/cities/widgets/city_list/city_list.dart';
+import 'package:weather_app/pages/cities/widgets/weather_card/weather_card_skeleton.dart';
 import 'package:weather_app/pages/city_forecast/city_forecast.dart';
-import 'package:weather_app/pages/cities/widgets/weather_card.dart';
+import 'package:weather_app/pages/cities/widgets/weather_card/weather_card.dart';
 import 'package:weather_app/router/router.dart';
 import 'package:weather_app/theme/colors.dart';
 import 'package:weather_app/utils/utils.dart';
@@ -270,31 +271,33 @@ class _CitiesState extends State<Cities> with TickerProviderStateMixin {
                                                         .headlineSmall,
                                                   ),
                                                   const SizedBox(height: 15),
-                                                  if (state
-                                                      .favoritesMeta.isNotEmpty)
-                                                    WeatherCard(
-                                                      city: 'Fresno',
-                                                      time: '03:22 AM',
-                                                      degrees: '12',
-                                                      forecast:
-                                                          'Light rain forecasted',
-                                                      iconAsset: state
-                                                          .favoritesMeta
-                                                          .first
-                                                          .current
-                                                          .condition
-                                                          .icon,
-                                                      onPressed: () async {
-                                                        router.pushNamed(
-                                                            CityForecast.name,
-                                                            pathParameters: {
-                                                              'city': 'Fresno'
-                                                            });
-                                                      },
-                                                    ),
+                                                  state.isLoading
+                                                      ? const WeatherCardSkeleton()
+                                                      : WeatherCard(
+                                                          city: 'Fresno',
+                                                          time: '03:22 AM',
+                                                          degrees: '12',
+                                                          forecast:
+                                                              'Light rain forecasted',
+                                                          iconAsset: state
+                                                              .favoritesMeta
+                                                              .first
+                                                              .current
+                                                              .condition
+                                                              .icon,
+                                                          onPressed: () async {
+                                                            router.pushNamed(
+                                                                CityForecast
+                                                                    .name,
+                                                                pathParameters: {
+                                                                  'city':
+                                                                      'Fresno'
+                                                                });
+                                                          },
+                                                        ),
                                                   const SizedBox(height: 30),
                                                   Text(
-                                                    'Favorite List',
+                                                    'Your favorites',
                                                     style: Theme.of(context)
                                                         .textTheme
                                                         .headlineSmall,
@@ -313,66 +316,81 @@ class _CitiesState extends State<Cities> with TickerProviderStateMixin {
                                                               .value,
                                                       duration: const Duration(
                                                           milliseconds: 25),
-                                                      child: Wrap(
-                                                        runSpacing: 12,
-                                                        children: List.generate(
-                                                          state.favoritesMeta
-                                                              .length,
-                                                          (i) => WeatherCard(
-                                                            city: state
-                                                                .favoritesMeta
-                                                                .elementAt(i)
-                                                                .location
-                                                                .name,
-                                                            time: getUserFriendlyTime(
-                                                                dateTime: state
+                                                      child: state.isLoading
+                                                          ? Wrap(
+                                                              runSpacing: 12,
+                                                              children:
+                                                                  List.generate(
+                                                                      7,
+                                                                      (i) =>
+                                                                          const WeatherCardSkeleton()),
+                                                            )
+                                                          : Wrap(
+                                                              runSpacing: 12,
+                                                              children:
+                                                                  List.generate(
+                                                                state
                                                                     .favoritesMeta
-                                                                    .elementAt(
-                                                                        i)
-                                                                    .location
-                                                                    .localTime),
-                                                            degrees: state
-                                                                .favoritesMeta
-                                                                .elementAt(i)
-                                                                .current
-                                                                .tempF
-                                                                .toStringAsFixed(
-                                                                    0),
-                                                            forecast: state
-                                                                .favoritesMeta
-                                                                .elementAt(i)
-                                                                .current
-                                                                .condition
-                                                                .text,
-                                                            fontColor:
-                                                                WeatherColors
-                                                                    .white,
-                                                            backgroundColor:
-                                                                WeatherColors
-                                                                    .ev1,
-                                                            iconAsset: state
-                                                                .favoritesMeta
-                                                                .elementAt(i)
-                                                                .current
-                                                                .condition
-                                                                .icon,
-                                                            onPressed:
-                                                                () async {
-                                                              router.pushNamed(
-                                                                  CityForecast
+                                                                    .length,
+                                                                (i) =>
+                                                                    WeatherCard(
+                                                                  city: state
+                                                                      .favoritesMeta
+                                                                      .elementAt(
+                                                                          i)
+                                                                      .location
                                                                       .name,
-                                                                  pathParameters: {
-                                                                    'city': state
-                                                                        .favoritesMeta
-                                                                        .elementAt(
-                                                                            i)
-                                                                        .location
-                                                                        .name
-                                                                  });
-                                                            },
-                                                          ),
-                                                        ),
-                                                      ),
+                                                                  time: getUserFriendlyTime(
+                                                                      dateTime: state
+                                                                          .favoritesMeta
+                                                                          .elementAt(
+                                                                              i)
+                                                                          .location
+                                                                          .localTime),
+                                                                  degrees: state
+                                                                      .favoritesMeta
+                                                                      .elementAt(
+                                                                          i)
+                                                                      .current
+                                                                      .tempF
+                                                                      .toStringAsFixed(
+                                                                          0),
+                                                                  forecast: state
+                                                                      .favoritesMeta
+                                                                      .elementAt(
+                                                                          i)
+                                                                      .current
+                                                                      .condition
+                                                                      .text,
+                                                                  fontColor:
+                                                                      WeatherColors
+                                                                          .white,
+                                                                  backgroundColor:
+                                                                      WeatherColors
+                                                                          .ev1,
+                                                                  iconAsset: state
+                                                                      .favoritesMeta
+                                                                      .elementAt(
+                                                                          i)
+                                                                      .current
+                                                                      .condition
+                                                                      .icon,
+                                                                  onPressed:
+                                                                      () async {
+                                                                    router.pushNamed(
+                                                                        CityForecast
+                                                                            .name,
+                                                                        pathParameters: {
+                                                                          'city': state
+                                                                              .favoritesMeta
+                                                                              .elementAt(i)
+                                                                              .location
+                                                                              .name
+                                                                        });
+                                                                  },
+                                                                ),
+                                                              ),
+                                                            ),
                                                     ),
                                                   )
                                                 ],

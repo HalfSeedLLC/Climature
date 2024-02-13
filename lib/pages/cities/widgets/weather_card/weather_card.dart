@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:weather_app/theme/colors.dart';
 
-import '../../../utils/utils.dart';
+import '../../../../utils/utils.dart';
 
 class WeatherCard extends StatelessWidget {
   const WeatherCard({

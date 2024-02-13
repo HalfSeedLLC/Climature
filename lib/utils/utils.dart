@@ -38,7 +38,6 @@ String getUserFriendlyHour({required String dateTime}) {
 }
 
 String hourOf12HourFormat(int hour) {
-  // Convert hour to 12-hour format
   if (hour == 0) {
     return '12';
   } else if (hour <= 12) {
