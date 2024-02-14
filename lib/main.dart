@@ -27,6 +27,8 @@ class WeatherApp extends StatelessWidget {
           fontFamily: 'Gilroy-Regular',
           textButtonTheme: const TextButtonThemeData(
               style: ButtonStyle(
+                  minimumSize: MaterialStatePropertyAll(Size.zero),
+                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                   splashFactory: NoSplash.splashFactory,
                   overlayColor: MaterialStatePropertyAll(Colors.transparent),
                   padding: MaterialStatePropertyAll(EdgeInsets.zero))),
