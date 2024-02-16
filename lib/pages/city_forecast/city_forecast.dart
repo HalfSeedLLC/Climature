@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:weather_app/pages/city_forecast/widgets/feels_like.dart';
-import 'package:weather_app/pages/city_forecast/widgets/forecast_hour_list/sunrise.dart';
+import 'package:weather_app/pages/city_forecast/widgets/sunrise.dart';
 import 'package:weather_app/pages/city_forecast/widgets/humidity.dart';
 import 'package:weather_app/pages/city_forecast/widgets/pressure.dart';
 import 'package:weather_app/pages/city_forecast/widgets/rainfall.dart';

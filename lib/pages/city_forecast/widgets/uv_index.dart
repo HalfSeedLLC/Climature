@@ -67,8 +67,8 @@ class UVIndex extends StatelessWidget {
                     ),
                     Text('Use sun protection 11AM - 3PM',
                         style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                            height: 1.25,
-                            fontSize: 18,
+                            height: 1.5,
+                            fontSize: 16,
                             fontWeight: FontWeight.w200,
                             // letterSpacing:
                             //     1,

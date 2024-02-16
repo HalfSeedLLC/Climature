@@ -55,7 +55,7 @@ class Rainfall extends StatelessWidget {
                 Text('Next expected is .15" rain Thu.',
                     style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                         height: 1.5,
-                        fontSize: 18,
+                        fontSize: 16,
                         fontWeight: FontWeight.w200,
                         // letterSpacing:
                         //     1,

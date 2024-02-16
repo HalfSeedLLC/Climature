@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../theme/colors.dart';
+import '../../../theme/colors.dart';
 
 class Sunrise extends StatelessWidget {
   const Sunrise({
@@ -37,7 +37,7 @@ class Sunrise extends StatelessWidget {
                 Text('Sunset: 5:27PM',
                     style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                         height: 1.25,
-                        fontSize: 18,
+                        fontSize: 16,
                         fontWeight: FontWeight.w200,
                         // letterSpacing:
                         //     1,

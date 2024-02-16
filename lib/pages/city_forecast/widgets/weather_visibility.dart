@@ -37,7 +37,7 @@ class WeatherVisibility extends StatelessWidget {
                 Text("it's perfectly clear right now",
                     style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                         height: 1.5,
-                        fontSize: 18,
+                        fontSize: 16,
                         fontWeight: FontWeight.w200,
                         // letterSpacing:
                         //     1,

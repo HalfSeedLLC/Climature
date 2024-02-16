@@ -22,7 +22,7 @@ class Humidity extends StatelessWidget {
                   crossAxisAlignment: WrapCrossAlignment.center,
                   spacing: 7,
                   children: [
-                    Icon(Icons.device_thermostat, color: WeatherColors.white),
+                    Icon(Icons.invert_colors, color: WeatherColors.slime),
                     Text('HUMIDITY')
                   ],
                 ),
@@ -37,7 +37,7 @@ class Humidity extends StatelessWidget {
                 Text('The dew point is 17° right now.',
                     style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                         height: 1.5,
-                        fontSize: 18,
+                        fontSize: 16,
                         fontWeight: FontWeight.w200,
                         // letterSpacing:
                         //     1,

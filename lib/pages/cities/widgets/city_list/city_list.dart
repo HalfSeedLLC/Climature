@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app/pages/cities/widgets/city_list/cubit/city_list_cubit.dart';
 
@@ -53,12 +54,15 @@ class CityList extends StatelessWidget {
                                         state.cities.length,
                                         (i) => TextButton(
                                               onPressed: () async {
-                                                await context
-                                                    .read<CityListCubit>()
-                                                    .addToFavorites(
-                                                        city: state.cities
-                                                            .elementAt(i)
-                                                            .name);
+                                                Future.wait([
+                                                  context
+                                                      .read<CityListCubit>()
+                                                      .addToFavorites(
+                                                          city: state.cities
+                                                              .elementAt(i)
+                                                              .name),
+                                                  HapticFeedback.mediumImpact()
+                                                ]);
 
                                                 onDismissSearch.call();
                                               },
