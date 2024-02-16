@@ -23,10 +23,13 @@ class ForecastCubit extends Cubit<ForecastState> {
   final WeatherRepository weatherRepository;
 
   void init() async {
-    getForecast(city: city);
+    await getForecast(city: city);
+
+    Future.delayed(const Duration(milliseconds: 500));
+    emit(state.copyWith(isLoading: false));
   }
 
-  void getForecast({required String city}) async {
+  Future<void> getForecast({required String city}) async {
     final forecast = await weatherRepository.getForecast(city: city);
 
     if (forecast != null) {

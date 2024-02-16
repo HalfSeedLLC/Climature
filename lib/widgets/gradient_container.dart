@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
 
+enum SkeletonTheme { dark, light }
+
 class GradientContainer extends StatefulWidget {
   const GradientContainer({
     this.width = 20,
     this.height = 20,
     this.borderRadius = 20,
+    this.theme = SkeletonTheme.dark,
     Key? key,
   }) : super(key: key);
 
   final double width;
   final double height;
   final double borderRadius;
+  final SkeletonTheme theme;
 
   @override
   State<GradientContainer> createState() => _GradientContainerState();
@@ -61,12 +65,19 @@ class _GradientContainerState extends State<GradientContainer>
             gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
-              colors: const [
-                Color(0xFF252525),
-                Color(0xFF1C1C1C),
-                Color(0xFF252525),
-                Color(0xFF353535)
-              ],
+              colors: widget.theme == SkeletonTheme.dark
+                  ? [
+                      const Color(0xFF252525),
+                      const Color(0xFF1C1C1C),
+                      const Color(0xFF252525),
+                      const Color(0xFF353535)
+                    ]
+                  : [
+                      const Color(0xFFE1E1E1),
+                      const Color(0xFFEEEEEE),
+                      const Color(0xFFDDDDDD),
+                      const Color(0xFFEEEEEE)
+                    ],
               stops: [
                 0.0,
                 _animation.value,

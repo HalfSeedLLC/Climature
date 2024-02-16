@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 abstract class WeatherColors {
   // Solid Colors
   static const black = Colors.black;
-  static const white = Colors.white;
+  static const white = Color(0xFFF3F3F3);
   static const slime = Color(0xFFC5FF25);
 
   // Font Colors

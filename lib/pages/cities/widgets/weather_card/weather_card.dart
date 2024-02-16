@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:weather_app/theme/colors.dart';
-
-import '../../../../theme/colors.dart';
 import '../../../../utils/utils.dart';
 
 class WeatherCard extends StatelessWidget {
@@ -69,26 +67,32 @@ class WeatherCard extends StatelessWidget {
                                 const SizedBox(
                                   width: 7,
                                 ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      city,
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .labelLarge!
-                                          .copyWith(
-                                              color: fontColor,
-                                              height: 1,
-                                              overflow: TextOverflow.ellipsis),
-                                    ),
-                                    Text(
-                                      time,
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .labelSmall,
-                                    ),
-                                  ],
+                                SizedBox(
+                                  width: constraints.maxWidth -
+                                      (isEditMode ? 105 : 200),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        city,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .labelLarge!
+                                            .copyWith(
+                                                color: fontColor,
+                                                height: 1,
+                                                overflow:
+                                                    TextOverflow.ellipsis),
+                                      ),
+                                      Text(
+                                        time,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .labelSmall,
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ],
                             ),

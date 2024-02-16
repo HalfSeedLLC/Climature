@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app/pages/cities/widgets/city_list/city_list.dart';
 import 'package:weather_app/pages/cities/widgets/weather_card/weather_card_skeleton.dart';
@@ -134,6 +135,7 @@ class _CitiesState extends State<Cities> with TickerProviderStateMixin {
                                                   context
                                                       .read<CityListCubit>()
                                                       .toggleEditMode();
+                                                  HapticFeedback.mediumImpact();
                                                 },
                                                 child: state.isEditMode
                                                     ? const Icon(
@@ -318,6 +320,8 @@ class _CitiesState extends State<Cities> with TickerProviderStateMixin {
                                                                     Expanded(
                                                                       child:
                                                                           WeatherCard(
+                                                                        isEditMode:
+                                                                            state.isEditMode,
                                                                         city: state.favoriteCityMeta?.location.name ??
                                                                             '',
                                                                         time: getUserFriendlyTime(
@@ -348,9 +352,14 @@ class _CitiesState extends State<Cities> with TickerProviderStateMixin {
                                                                         style: const ButtonStyle(
                                                                             padding:
                                                                                 MaterialStatePropertyAll(EdgeInsets.all(20))),
-                                                                        onPressed: () => context
-                                                                            .read<CityListCubit>()
-                                                                            .removeFavoriteCity(),
+                                                                        onPressed:
+                                                                            () async {
+                                                                          Future
+                                                                              .wait([
+                                                                            context.read<CityListCubit>().removeFavoriteCity(),
+                                                                            HapticFeedback.mediumImpact()
+                                                                          ]);
+                                                                        },
                                                                         child:
                                                                             Container(
                                                                           height:
@@ -461,7 +470,12 @@ class _CitiesState extends State<Cities> with TickerProviderStateMixin {
                                                                                 children: [
                                                                                   TextButton(
                                                                                     style: const ButtonStyle(padding: MaterialStatePropertyAll(EdgeInsets.zero)),
-                                                                                    onPressed: () => context.read<CityListCubit>().removeFromFavorites(city: state.favorites.elementAt(i)),
+                                                                                    onPressed: () async {
+                                                                                      Future.wait([
+                                                                                        context.read<CityListCubit>().removeFromFavorites(city: state.favorites.elementAt(i)),
+                                                                                        HapticFeedback.mediumImpact()
+                                                                                      ]);
+                                                                                    },
                                                                                     child: Padding(
                                                                                       padding: const EdgeInsets.only(left: 15),
                                                                                       child: Container(
@@ -480,7 +494,12 @@ class _CitiesState extends State<Cities> with TickerProviderStateMixin {
                                                                                   ),
                                                                                   TextButton(
                                                                                     style: const ButtonStyle(padding: MaterialStatePropertyAll(EdgeInsets.zero)),
-                                                                                    onPressed: () => context.read<CityListCubit>().updateFavoriteCity(city: state.favoritesMeta.elementAt(i).location.name),
+                                                                                    onPressed: () {
+                                                                                      Future.wait([
+                                                                                        context.read<CityListCubit>().updateFavoriteCity(city: state.favoritesMeta.elementAt(i).location.name),
+                                                                                        HapticFeedback.mediumImpact()
+                                                                                      ]);
+                                                                                    },
                                                                                     child: Padding(
                                                                                       padding: const EdgeInsets.only(right: 15),
                                                                                       child: Container(

@@ -1,5 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/pages/city_forecast/widgets/feels_like.dart';
+import 'package:weather_app/pages/city_forecast/widgets/forecast_hour_list/sunrise.dart';
+import 'package:weather_app/pages/city_forecast/widgets/humidity.dart';
+import 'package:weather_app/pages/city_forecast/widgets/pressure.dart';
+import 'package:weather_app/pages/city_forecast/widgets/rainfall.dart';
+import 'package:weather_app/pages/city_forecast/widgets/uv_index.dart';
 import 'package:weather_app/pages/city_forecast/widgets/next_hour.dart';
+import 'package:weather_app/pages/city_forecast/widgets/weather_visibility.dart';
+import 'package:weather_app/pages/city_forecast/widgets/wind.dart';
 import 'package:weather_app/theme/colors.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../logic/forecast_cubit/forecast_cubit.dart';
@@ -56,6 +64,7 @@ class _CityForecast extends State<CityForecast>
                             child: OverflowBox(
                               maxHeight: 350,
                               child: CityHeader(
+                                isLoading: state.isLoading,
                                 title: state.forecast?.location.name ?? '',
                                 condition:
                                     state.forecast?.current.condition.text ??
@@ -84,6 +93,7 @@ class _CityForecast extends State<CityForecast>
                                   runSpacing: 15,
                                   children: [
                                     NextHour(
+                                        isLoading: state.isLoading,
                                         condition: state.forecast?.current
                                                 .condition.text ??
                                             '',
@@ -95,7 +105,35 @@ class _CityForecast extends State<CityForecast>
                                             state.hourlyForecast ?? []),
                                     FutureForecast(
                                         forecastDays: state.forecastDays),
-                                    const AirQuality()
+                                    const AirQuality(),
+                                    const Row(
+                                      children: [
+                                        Expanded(child: UVIndex()),
+                                        SizedBox(width: 10),
+                                        Expanded(child: Sunrise()),
+                                      ],
+                                    ),
+                                    const Row(
+                                      children: [
+                                        Expanded(child: Wind()),
+                                        SizedBox(width: 10),
+                                        Expanded(child: Rainfall()),
+                                      ],
+                                    ),
+                                    const Row(
+                                      children: [
+                                        Expanded(child: FeelsLike()),
+                                        SizedBox(width: 10),
+                                        Expanded(child: Humidity()),
+                                      ],
+                                    ),
+                                    const Row(
+                                      children: [
+                                        Expanded(child: WeatherVisibility()),
+                                        SizedBox(width: 10),
+                                        Expanded(child: Pressure()),
+                                      ],
+                                    )
                                   ],
                                 ),
                               ),
