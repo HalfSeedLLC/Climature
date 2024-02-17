@@ -6,8 +6,13 @@ import '../../../theme/colors.dart';
 
 class Wind extends StatelessWidget {
   const Wind({
+    required this.windSpeed,
+    required this.windDegree,
     Key? key,
   }) : super(key: key);
+
+  final double windSpeed;
+  final int windDegree;
 
   @override
   Widget build(BuildContext context) => DecoratedBox(
@@ -32,9 +37,11 @@ class Wind extends StatelessWidget {
                     child: Stack(
                   alignment: Alignment.topCenter,
                   children: [
-                    const Compass(),
+                    Compass(
+                      windSpeed: windSpeed,
+                    ),
                     Transform.rotate(
-                      angle: pi / 4,
+                      angle: windDegree.toDouble() * (pi / 180),
                       child: const SizedBox(
                         width: 155,
                         height: 155,
@@ -57,18 +64,29 @@ class Wind extends StatelessWidget {
 }
 
 class Compass extends StatelessWidget {
-  const Compass({super.key});
+  const Compass({
+    required this.windSpeed,
+    Key? key,
+  }) : super(key: key);
+
+  final double windSpeed;
 
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
       size: const Size(155, 155),
-      painter: CompassPainter(),
+      painter: CompassPainter(windSpeed: windSpeed),
     );
   }
 }
 
 class CompassPainter extends CustomPainter {
+  const CompassPainter({
+    required this.windSpeed,
+  }) : super();
+
+  final double windSpeed;
+
   @override
   void paint(Canvas canvas, Size size) {
     final double centerX = size.width / 2;
@@ -152,7 +170,7 @@ class CompassPainter extends CustomPainter {
     }
 
     // Draw text in the center of the circle
-    const String mainText = '9';
+    final String mainText = '${windSpeed.toInt()}';
     const String subText = 'mph';
     const TextStyle mainTextStyle = TextStyle(
         color: WeatherColors.white, fontSize: 25, fontWeight: FontWeight.w600);
@@ -161,7 +179,7 @@ class CompassPainter extends CustomPainter {
         fontSize: 12,
         fontWeight: FontWeight.normal);
 
-    const mainTextSpan = TextSpan(text: mainText, style: mainTextStyle);
+    final mainTextSpan = TextSpan(text: mainText, style: mainTextStyle);
     const subTextSpan = TextSpan(text: subText, style: subTextStyle);
 
     final mainTextPainter = TextPainter(

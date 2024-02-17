@@ -16,50 +16,48 @@ class Sunrise extends StatelessWidget {
   final String currentTime;
 
   @override
-  Widget build(BuildContext context) {
-    print(currentTime);
-    return DecoratedBox(
-      decoration: BoxDecoration(
-          color: WeatherColors.ev1, borderRadius: BorderRadius.circular(20)),
-      child: SizedBox(
-        height: 200,
-        child: Padding(
-          padding: const EdgeInsets.all(15),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Wrap(
-                crossAxisAlignment: WrapCrossAlignment.center,
-                spacing: 7,
-                children: [
-                  Icon(Icons.wb_twilight_outlined, color: WeatherColors.white),
-                  Text('SUNRISE')
-                ],
-              ),
-              const SizedBox(height: 10),
-              Text(sunrise,
-                  style: Theme.of(context).textTheme.labelLarge!.copyWith(
-                      height: 1.5,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w500,
-                      color: WeatherColors.white)),
-              SunriseGraph(
-                sunPosition: calculateSunPosition(currentTime),
-              ),
-              Text('Sunset: $sunset',
-                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                      height: 1.25,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w200,
-                      // letterSpacing:
-                      //     1,
-                      color: WeatherColors.secondaryFont))
-            ],
+  Widget build(BuildContext context) => DecoratedBox(
+        decoration: BoxDecoration(
+            color: WeatherColors.ev1, borderRadius: BorderRadius.circular(20)),
+        child: SizedBox(
+          height: 200,
+          child: Padding(
+            padding: const EdgeInsets.all(15),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Wrap(
+                  crossAxisAlignment: WrapCrossAlignment.center,
+                  spacing: 7,
+                  children: [
+                    Icon(Icons.wb_twilight_outlined,
+                        color: WeatherColors.white),
+                    Text('SUNRISE')
+                  ],
+                ),
+                const SizedBox(height: 10),
+                Text(sunrise,
+                    style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                        height: 1.5,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                        color: WeatherColors.white)),
+                SunriseGraph(
+                  sunPosition: calculateSunPosition(currentTime),
+                ),
+                Text('Sunset: $sunset',
+                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                        height: 1.25,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w200,
+                        // letterSpacing:
+                        //     1,
+                        color: WeatherColors.secondaryFont))
+              ],
+            ),
           ),
         ),
-      ),
-    );
-  }
+      );
 }
 
 class SunriseGraph extends StatelessWidget {

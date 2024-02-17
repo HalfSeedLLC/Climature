@@ -12,14 +12,14 @@ class AirQuality {
     required this.gbDefraIndex,
   });
 
-  final double co;
-  final double no2;
-  final double o3;
-  final double so2;
-  final double pm2_5;
-  final double pm10;
-  final int usEpaIndex;
-  final int gbDefraIndex;
+  final double? co;
+  final double? no2;
+  final double? o3;
+  final double? so2;
+  final double? pm2_5;
+  final double? pm10;
+  final int? usEpaIndex;
+  final int? gbDefraIndex;
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,14 +36,14 @@ class AirQuality {
 
   factory AirQuality.fromMap(Map<String, dynamic> map) {
     return AirQuality(
-      co: map['co'] as double,
-      no2: map['no2'] as double,
-      o3: map['o3'] as double,
-      so2: map['so2'] as double,
-      pm2_5: map['pm2_5'] as double,
-      pm10: map['pm10'] as double,
-      usEpaIndex: map['us-epa-index'] as int,
-      gbDefraIndex: map['gb-defra-index'] as int,
+      co: map['co'] as double?,
+      no2: map['no2'] as double?,
+      o3: map['o3'] as double?,
+      so2: map['so2'] as double?,
+      pm2_5: map['pm2_5'] as double?,
+      pm10: map['pm10'] as double?,
+      usEpaIndex: map['us-epa-index'] as int?,
+      gbDefraIndex: map['gb-defra-index'] as int?,
     );
   }
 

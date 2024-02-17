@@ -129,25 +129,56 @@ class _CityForecast extends State<CityForecast>
                                         ),
                                       ],
                                     ),
-                                    const Row(
+                                    Row(
                                       children: [
-                                        Expanded(child: Wind()),
-                                        SizedBox(width: 10),
-                                        Expanded(child: Rainfall()),
+                                        Expanded(
+                                            child: Wind(
+                                          windSpeed:
+                                              state.forecast?.current.windMph ??
+                                                  0,
+                                          windDegree: state.forecast?.current
+                                                  .windDegree ??
+                                              0,
+                                        )),
+                                        const SizedBox(width: 10),
+                                        const Expanded(child: Rainfall()),
                                       ],
                                     ),
-                                    const Row(
+                                    Row(
                                       children: [
-                                        Expanded(child: FeelsLike()),
-                                        SizedBox(width: 10),
-                                        Expanded(child: Humidity()),
+                                        Expanded(
+                                            child: FeelsLike(
+                                          feelsLike: state.forecast?.current
+                                                  .feelsLikeF ??
+                                              0,
+                                          currentTemp:
+                                              state.forecast?.current.tempF ??
+                                                  0,
+                                        )),
+                                        const SizedBox(width: 10),
+                                        Expanded(
+                                            child: Humidity(
+                                          humidity: state
+                                                  .forecast?.current.humidity ??
+                                              0,
+                                        )),
                                       ],
                                     ),
-                                    const Row(
+                                    Row(
                                       children: [
-                                        Expanded(child: WeatherVisibility()),
-                                        SizedBox(width: 10),
-                                        Expanded(child: Pressure()),
+                                        Expanded(
+                                            child: WeatherVisibility(
+                                          visibility: state.forecast?.current
+                                                  .visibilityMiles ??
+                                              0,
+                                        )),
+                                        const SizedBox(width: 10),
+                                        Expanded(
+                                            child: Pressure(
+                                          pressure: state.forecast?.current
+                                                  .pressureIn ??
+                                              0,
+                                        )),
                                       ],
                                     )
                                   ],

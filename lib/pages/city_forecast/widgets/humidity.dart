@@ -4,8 +4,11 @@ import '../../../theme/colors.dart';
 
 class Humidity extends StatelessWidget {
   const Humidity({
+    required this.humidity,
     Key? key,
   }) : super(key: key);
+
+  final int humidity;
 
   @override
   Widget build(BuildContext context) => DecoratedBox(
@@ -27,14 +30,14 @@ class Humidity extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 15),
-                Text('89%',
+                Text('$humidity%',
                     style: Theme.of(context).textTheme.labelLarge!.copyWith(
                         height: 1.5,
                         fontSize: 30,
                         fontWeight: FontWeight.w500,
                         color: WeatherColors.white)),
                 const Spacer(),
-                Text('The dew point is 17° right now.',
+                Text('The humidity is $humidity% right now.',
                     style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                         height: 1.5,
                         fontSize: 16,

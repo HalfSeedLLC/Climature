@@ -6,21 +6,24 @@ import '../../../theme/colors.dart';
 
 class Pressure extends StatelessWidget {
   const Pressure({
+    required this.pressure,
     Key? key,
   }) : super(key: key);
+
+  final double pressure;
 
   @override
   Widget build(BuildContext context) => DecoratedBox(
         decoration: BoxDecoration(
             color: WeatherColors.ev1, borderRadius: BorderRadius.circular(20)),
-        child: const SizedBox(
+        child: SizedBox(
           height: 200,
           child: Padding(
-            padding: EdgeInsets.only(top: 15, left: 15, right: 15),
+            padding: const EdgeInsets.only(top: 15, left: 15, right: 15),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Wrap(
+                const Wrap(
                   crossAxisAlignment: WrapCrossAlignment.center,
                   spacing: 7,
                   children: [
@@ -28,7 +31,10 @@ class Pressure extends StatelessWidget {
                     Text('PRESSURE')
                   ],
                 ),
-                Center(child: PressureGauge())
+                Center(
+                    child: PressureGauge(
+                  pressure: pressure,
+                ))
               ],
             ),
           ),
@@ -37,18 +43,29 @@ class Pressure extends StatelessWidget {
 }
 
 class PressureGauge extends StatelessWidget {
-  const PressureGauge({super.key});
+  const PressureGauge({
+    required this.pressure,
+    Key? key,
+  }) : super(key: key);
+
+  final double pressure;
 
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
       size: const Size(155, 155),
-      painter: PressureGaugePainter(),
+      painter: PressureGaugePainter(pressure: pressure),
     );
   }
 }
 
 class PressureGaugePainter extends CustomPainter {
+  PressureGaugePainter({
+    required this.pressure,
+  });
+
+  final double pressure;
+
   @override
   void paint(Canvas canvas, Size size) {
     final double centerX = size.width / 2;
@@ -88,7 +105,7 @@ class PressureGaugePainter extends CustomPainter {
     }
 
     // Draw text in the center of the circle
-    const String mainText = '30.07';
+    final String mainText = '$pressure';
     const String subText = 'inHg';
     const TextStyle mainTextStyle = TextStyle(
         color: WeatherColors.white, fontSize: 25, fontWeight: FontWeight.w600);
@@ -97,7 +114,7 @@ class PressureGaugePainter extends CustomPainter {
         fontSize: 12,
         fontWeight: FontWeight.normal);
 
-    const mainTextSpan = TextSpan(text: mainText, style: mainTextStyle);
+    final mainTextSpan = TextSpan(text: mainText, style: mainTextStyle);
     const subTextSpan = TextSpan(text: subText, style: subTextStyle);
 
     final mainTextPainter = TextPainter(

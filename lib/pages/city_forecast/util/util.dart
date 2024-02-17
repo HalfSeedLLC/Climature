@@ -1,21 +1,25 @@
 double calculateSunPosition(String timeString) {
-  final List<String> parts = timeString.split(' ');
+  try {
+    final List<String> parts = timeString.split(' ');
 
-  final List<String> dateParts = parts[0].split('-');
-  final int year = int.parse(dateParts[0]);
-  final int month = int.parse(dateParts[1]);
-  final int day = int.parse(dateParts[2]);
+    final List<String> dateParts = parts[0].split('-');
+    final int year = int.parse(dateParts[0]);
+    final int month = int.parse(dateParts[1]);
+    final int day = int.parse(dateParts[2]);
 
-  final List<String> timeParts = parts[1].split(':');
-  final int hour = int.parse(timeParts[0]);
-  final int minute = int.parse(timeParts[1]);
+    final List<String> timeParts = parts[1].split(':');
+    final int hour = int.parse(timeParts[0]);
+    final int minute = int.parse(timeParts[1]);
 
-  final DateTime dateTime = DateTime(year, month, day, hour, minute);
-  final DateTime midnight =
-      DateTime(dateTime.year, dateTime.month, dateTime.day);
-  final int totalMinutes = dateTime.difference(midnight).inMinutes;
+    final DateTime dateTime = DateTime(year, month, day, hour, minute);
+    final DateTime midnight =
+        DateTime(dateTime.year, dateTime.month, dateTime.day);
+    final int totalMinutes = dateTime.difference(midnight).inMinutes;
 
-  return totalMinutes / 1440.0;
+    return totalMinutes / 1440.0;
+  } catch (err) {
+    return 0;
+  }
 }
 
 String getUVMessage({required double uv}) {
@@ -94,5 +98,21 @@ String getAQIMessage(int aqiValue) {
     return "Everyone: Avoid all outdoor physical activities. Keep activity levels low at home.";
   } else {
     return "Invalid AQI value";
+  }
+}
+
+String getWeatherDescription(int visibilityMiles) {
+  if (visibilityMiles >= 10) {
+    return "It's perfectly clear right now";
+  } else if (visibilityMiles >= 6 && visibilityMiles < 10) {
+    return "It's clear right now";
+  } else if (visibilityMiles >= 3 && visibilityMiles < 6) {
+    return "It's fair right now";
+  } else if (visibilityMiles >= 1 && visibilityMiles < 3) {
+    return "It's hazy right now";
+  } else if (visibilityMiles < 1) {
+    return "It's foggy right now";
+  } else {
+    return "Unknown weather condition";
   }
 }
