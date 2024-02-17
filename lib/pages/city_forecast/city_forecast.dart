@@ -10,12 +10,13 @@ import 'package:weather_app/pages/city_forecast/widgets/weather_visibility.dart'
 import 'package:weather_app/pages/city_forecast/widgets/wind.dart';
 import 'package:weather_app/theme/colors.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../logic/forecast_cubit/forecast_cubit.dart';
 import 'package:weather_app/utils/utils.dart';
-import 'package:weather_app/pages/city_forecast/widgets/air_quality.dart';
 import 'package:weather_app/pages/city_forecast/widgets/city_header.dart';
 import 'package:weather_app/pages/city_forecast/widgets/forecast_hour_list/forecast_hour_list.dart';
 import 'package:weather_app/pages/city_forecast/widgets/future_forecast.dart';
+
+import 'cubit/forecast_cubit.dart';
+import 'widgets/air_quality/air_quality.dart';
 
 class CityForecast extends StatefulWidget {
   const CityForecast({
@@ -105,12 +106,25 @@ class _CityForecast extends State<CityForecast>
                                             state.hourlyForecast ?? []),
                                     FutureForecast(
                                         forecastDays: state.forecastDays),
-                                    const AirQuality(),
-                                    const Row(
+                                    AirQualityCard(
+                                      airQuality:
+                                          state.forecast?.current.airQuality,
+                                    ),
+                                    Row(
                                       children: [
-                                        Expanded(child: UVIndex()),
-                                        SizedBox(width: 10),
-                                        Expanded(child: Sunrise()),
+                                        Expanded(
+                                            child: UVIndex(
+                                          uv: state.forecast?.current.uv,
+                                        )),
+                                        const SizedBox(width: 10),
+                                        Expanded(
+                                          child: Sunrise(
+                                            sunrise:
+                                                '${state.forecastDays?.first.astro.sunrise}',
+                                            sunset:
+                                                '${state.forecastDays?.first.astro.sunset}',
+                                          ),
+                                        ),
                                       ],
                                     ),
                                     const Row(

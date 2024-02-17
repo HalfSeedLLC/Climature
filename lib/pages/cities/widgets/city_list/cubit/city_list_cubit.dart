@@ -23,7 +23,11 @@ class CityListCubit extends Cubit<CityListState> {
     preferences = await SharedPreferences.getInstance();
     await getPreferences();
 
-    Future.wait([fetchFavoriteCityMeta(), fetchFavoritesMeta()]);
+    await Future.wait([fetchFavoriteCityMeta(), fetchFavoritesMeta()]);
+
+    Future.delayed(const Duration(milliseconds: 700), () {
+      emit(state.copyWith(isLoading: false));
+    });
   }
 
   Future<void> getPreferences() async {
@@ -72,10 +76,6 @@ class CityListCubit extends Cubit<CityListState> {
     }
 
     emit(state.copyWith(favoritesMeta: favoritesMeta));
-
-    Future.delayed(const Duration(milliseconds: 700), () {
-      emit(state.copyWith(isLoading: false));
-    });
   }
 
   Future<void> updateFavoriteCity({required String city}) async {

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:weather_app/logic/forecast_cubit/forecast_cubit.dart';
 import 'package:weather_app/pages/cities/widgets/city_list/cubit/city_list_cubit.dart';
 import 'package:weather_app/respository/weather_repository.dart';
 import '../pages/city_forecast/city_forecast.dart';
 import '../pages/cities/cities.dart';
+import '../pages/city_forecast/cubit/forecast_cubit.dart';
 import '../pages/landing/landing.dart';
 
 CustomTransitionPage buildPageWithDefaultTransition<T>({

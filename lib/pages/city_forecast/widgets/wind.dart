@@ -111,13 +111,13 @@ class CompassPainter extends CustomPainter {
 
         // Determine the direction label based on the angle
         if (index == '0.00') {
-          directionLabel = 'N';
-        } else if (index == '3.14') {
-          directionLabel = 'S';
-        } else if (index == '1.57') {
           directionLabel = 'E';
-        } else if (index == '4.71') {
+        } else if (index == '3.14') {
           directionLabel = 'W';
+        } else if (index == '1.57') {
+          directionLabel = 'S';
+        } else if (index == '4.71') {
+          directionLabel = 'N';
         }
 
         // Draw text labels for N, S, E, W at the longer lines

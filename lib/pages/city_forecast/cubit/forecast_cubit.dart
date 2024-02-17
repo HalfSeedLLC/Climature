@@ -5,9 +5,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app/models/forecast_day.dart';
 import 'package:weather_app/respository/weather_repository.dart';
 
-import '../../models/current.dart';
-import '../../models/forecast.dart';
-import '../../models/hour.dart';
+import '../../../models/current.dart';
+import '../../../models/forecast.dart';
+import '../../../models/hour.dart';
 
 part 'forecast_state.dart';
 
