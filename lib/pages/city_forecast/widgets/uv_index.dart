@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../theme/colors.dart';
 import '../../../widgets/air_quality_line.dart';
+import '../util/util.dart';
 
 class UVIndex extends StatelessWidget {
   const UVIndex({
@@ -10,19 +11,6 @@ class UVIndex extends StatelessWidget {
   }) : super(key: key);
 
   final double? uv;
-
-  String getUVMessage({required double uv}) {
-    if (uv <= 3) {
-      return 'You can safely enjoy being outside';
-    } else if (uv <= 5) {
-      return 'Take precaution during midday hours';
-    } else if (uv <= 7) {
-      return 'Protection against sun damage needed';
-    } else if (uv <= 10) {
-      return 'Reduce sun exposure 10AM - 4PM';
-    }
-    return 'Reduce sun exposure 10AM - 4PM';
-  }
 
   @override
   Widget build(BuildContext context) {

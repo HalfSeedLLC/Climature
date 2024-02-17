@@ -16,7 +16,7 @@ import 'package:weather_app/pages/city_forecast/widgets/forecast_hour_list/forec
 import 'package:weather_app/pages/city_forecast/widgets/future_forecast.dart';
 
 import 'cubit/forecast_cubit.dart';
-import 'widgets/air_quality/air_quality.dart';
+import 'widgets/air_quality.dart';
 
 class CityForecast extends StatefulWidget {
   const CityForecast({
@@ -123,6 +123,8 @@ class _CityForecast extends State<CityForecast>
                                                 '${state.forecastDays?.first.astro.sunrise}',
                                             sunset:
                                                 '${state.forecastDays?.first.astro.sunset}',
+                                            currentTime:
+                                                '${state.forecast?.location.localTime}',
                                           ),
                                         ),
                                       ],

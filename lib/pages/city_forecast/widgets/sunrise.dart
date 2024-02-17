@@ -1,19 +1,23 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:weather_app/pages/city_forecast/util/util.dart';
 import '../../../theme/colors.dart';
 
 class Sunrise extends StatelessWidget {
   const Sunrise({
     required this.sunrise,
     required this.sunset,
+    required this.currentTime,
     Key? key,
   }) : super(key: key);
 
   final String sunrise;
   final String sunset;
+  final String currentTime;
 
   @override
   Widget build(BuildContext context) {
+    print(currentTime);
     return DecoratedBox(
       decoration: BoxDecoration(
           color: WeatherColors.ev1, borderRadius: BorderRadius.circular(20)),
@@ -39,17 +43,8 @@ class Sunrise extends StatelessWidget {
                       fontSize: 20,
                       fontWeight: FontWeight.w500,
                       color: WeatherColors.white)),
-              Stack(
-                alignment: Alignment.center,
-                children: [
-                  CustomPaint(
-                    size: const Size(200, 80),
-                    painter: SunriseGraph(),
-                  ),
-                  const Divider(
-                    color: Colors.white,
-                  )
-                ],
+              SunriseGraph(
+                sunPosition: calculateSunPosition(currentTime),
               ),
               Text('Sunset: $sunset',
                   style: Theme.of(context).textTheme.bodyMedium!.copyWith(
@@ -67,7 +62,41 @@ class Sunrise extends StatelessWidget {
   }
 }
 
-class SunriseGraph extends CustomPainter {
+class SunriseGraph extends StatelessWidget {
+  const SunriseGraph({
+    required this.sunPosition,
+    Key? key,
+  }) : super(key: key);
+
+  final double sunPosition;
+
+  @override
+  Widget build(BuildContext context) => Stack(
+        clipBehavior: Clip.none,
+        alignment: Alignment.center,
+        children: [
+          CustomPaint(
+            size: const Size(200, 80),
+            painter: SunrisePainter(),
+          ),
+          const Divider(
+            color: Colors.white,
+          ),
+          Positioned(
+            left: sunPosition * 160,
+            child: Container(
+              width: 10,
+              height: 10,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(width: 3, color: WeatherColors.white)),
+            ),
+          )
+        ],
+      );
+}
+
+class SunrisePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final Path path = Path();
