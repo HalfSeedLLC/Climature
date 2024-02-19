@@ -1,13 +1,13 @@
 ---
-name: Feature request
-about: Suggest an idea for this project
+name: Enhancement
+about: Suggest an improvement for this project
 title: ''
 labels: ''
 assignees: ''
 
 ---
 
-## New Feature
+## Enhancement
 
 #### Description:
 
