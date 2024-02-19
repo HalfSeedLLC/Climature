@@ -7,7 +7,7 @@ assignees: ''
 
 ---
 
-## Bug Report
+## Bug Report 🪲
 
 #### Description:
 

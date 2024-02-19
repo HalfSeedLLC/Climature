@@ -7,7 +7,7 @@ assignees: ''
 
 ---
 
-## Enhancement
+## Enhancement ✨
 
 #### Description:
 
