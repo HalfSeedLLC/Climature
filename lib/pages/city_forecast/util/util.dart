@@ -116,3 +116,76 @@ String getWeatherDescription(int visibilityMiles) {
     return "Unknown weather condition";
   }
 }
+
+String getWeatherVideoAsset(String condition) {
+  String buildUrl(String fileName) {
+    return 'assets/weather/videos/$fileName.mp4';
+  }
+
+  switch (condition) {
+    case 'Sunny':
+      return buildUrl('sunny');
+    case 'Clear':
+      return buildUrl('clear');
+    case 'Partly cloudy':
+      return buildUrl('partly_cloudy');
+    case 'Cloudy':
+      return buildUrl('cloudy');
+    case 'Overcast':
+      return buildUrl('overcast');
+    case 'Mist':
+      return buildUrl('mist');
+    case 'Thundery outbreaks possible':
+      return buildUrl('lightning');
+    case 'Blizzard':
+    case 'Moderate or heavy snow with thunder':
+      return buildUrl('blizzard');
+    case 'Fog':
+    case 'Freezing fog':
+      return buildUrl('fog');
+    case 'Patchy rain possible':
+    case 'Patchy light drizzle':
+    case 'Patchy freezing drizzle possible':
+    case 'Light drizzle':
+    case 'Freezing drizzle':
+    case 'Heavy freezing drizzle':
+    case 'Patchy light rain':
+    case 'Light rain':
+    case 'Moderate rain at times':
+    case 'Moderate rain':
+    case 'Heavy rain at times':
+    case 'Heavy rain':
+    case 'Light freezing rain':
+    case 'Moderate or heavy freezing rain':
+    case 'Patchy light rain with thunder':
+    case 'Moderate or heavy rain with thunder':
+    case 'Light rain shower':
+    case 'Moderate or heavy rain shower':
+    case 'Torrential rain shower':
+      return buildUrl('rain');
+    case 'Patchy light snow':
+    case 'Light snow':
+    case 'Patchy snow possible':
+    case 'Patchy moderate snow':
+    case 'Moderate snow':
+    case 'Patchy light snow with thunder':
+    case 'Patchy heavy snow':
+    case 'Light snow showers':
+    case 'Heavy snow':
+    case 'Moderate or heavy snow showers':
+    case 'Blowing snow':
+      return buildUrl('snow');
+    case 'Ice pellets':
+    case 'Light sleet showers':
+    case 'Moderate or heavy sleet showers':
+    case 'Light showers of ice pellets':
+    case 'Moderate or heavy showers of ice pellets':
+    case 'Patchy sleet possible':
+    case 'Light sleet':
+    case 'Moderate or heavy sleet':
+      return buildUrl('hail');
+
+    default:
+      return buildUrl('mist');
+  }
+}
