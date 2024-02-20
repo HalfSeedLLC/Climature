@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 import 'package:weather_app/utils/utils.dart';
 import 'package:weather_app/theme/colors.dart';
-import 'package:weather_app/widgets/gradient_container.dart';
 
 import '../util/util.dart';
 
@@ -51,8 +50,9 @@ class _CityHeaderState extends State<CityHeader> {
   }
 
   void _initializeVideo() {
-    _controller =
-        VideoPlayerController.asset(getWeatherVideoAsset(widget.condition));
+    _controller = VideoPlayerController.asset(
+        getWeatherVideoAsset(widget.condition),
+        videoPlayerOptions: VideoPlayerOptions(mixWithOthers: true));
     _controller?.initialize().then((_) {
       _controller
         ?..play()
