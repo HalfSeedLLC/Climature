@@ -50,8 +50,9 @@ class _CityHeaderState extends State<CityHeader> {
   }
 
   void _initializeVideo() {
-    _controller =
-        VideoPlayerController.asset(getWeatherVideoAsset(widget.condition));
+    _controller = VideoPlayerController.asset(
+        getWeatherVideoAsset(widget.condition),
+        videoPlayerOptions: VideoPlayerOptions(mixWithOthers: true));
     _controller?.initialize().then((_) {
       _controller
         ?..play()
