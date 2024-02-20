@@ -60,28 +60,31 @@ class _CityForecast extends State<CityForecast>
                       opacity: _animationController.value * 1,
                       child: Column(
                         children: [
-                          SizedBox(
-                            height: 350 * _animationController.value,
-                            child: OverflowBox(
-                              maxHeight: 350,
-                              child: CityHeader(
-                                isLoading: state.isLoading,
-                                title: state.forecast?.location.name ?? '',
-                                condition:
-                                    state.forecast?.current.condition.text ??
-                                        '',
-                                currentTemp:
-                                    '${state.forecast?.current.tempF.toInt() ?? ''}',
-                                tempHi:
-                                    '${state.forecastDays?.first.day.maxTempF.toInt() ?? ''}',
-                                tempLow:
-                                    '${state.forecastDays?.first.day.minTempF.toInt() ?? ''}',
-                                iconAsset:
-                                    state.forecast?.current.condition.icon ??
-                                        '',
-                                airQualityMessage: getAirQualityMessage(
-                                    usEpaIndex: state.forecast?.current
-                                        .airQuality.usEpaIndex),
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(40),
+                            child: SizedBox(
+                              height: 350 * _animationController.value,
+                              child: OverflowBox(
+                                maxHeight: 350,
+                                child: CityHeader(
+                                  isLoading: state.isLoading,
+                                  title: state.forecast?.location.name ?? '',
+                                  condition:
+                                      state.forecast?.current.condition.text ??
+                                          '',
+                                  currentTemp:
+                                      '${state.forecast?.current.tempF.toInt() ?? ''}',
+                                  tempHi:
+                                      '${state.forecastDays?.first.day.maxTempF.toInt() ?? ''}',
+                                  tempLow:
+                                      '${state.forecastDays?.first.day.minTempF.toInt() ?? ''}',
+                                  iconAsset:
+                                      state.forecast?.current.condition.icon ??
+                                          '',
+                                  airQualityMessage: getAirQualityMessage(
+                                      usEpaIndex: state.forecast?.current
+                                          .airQuality.usEpaIndex),
+                                ),
                               ),
                             ),
                           ),
