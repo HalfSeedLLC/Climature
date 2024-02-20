@@ -466,7 +466,7 @@ class _CitiesState extends State<Cities> with TickerProviderStateMixin {
                                                                             if (state.isEditMode)
                                                                               Wrap(
                                                                                 crossAxisAlignment: WrapCrossAlignment.center,
-                                                                                spacing: 35,
+                                                                                spacing: 25,
                                                                                 children: [
                                                                                   TextButton(
                                                                                     style: const ButtonStyle(padding: MaterialStatePropertyAll(EdgeInsets.zero)),
@@ -500,21 +500,18 @@ class _CitiesState extends State<Cities> with TickerProviderStateMixin {
                                                                                         HapticFeedback.mediumImpact()
                                                                                       ]);
                                                                                     },
-                                                                                    child: Padding(
-                                                                                      padding: const EdgeInsets.only(right: 15),
-                                                                                      child: Container(
-                                                                                        height: 30,
-                                                                                        width: 30,
-                                                                                        decoration: BoxDecoration(
-                                                                                          color: const Color(0xFF3F67D8),
-                                                                                          borderRadius: BorderRadius.circular(40),
-                                                                                        ),
-                                                                                        child: const Center(
-                                                                                          child: Icon(
-                                                                                            size: 20,
-                                                                                            Icons.star,
-                                                                                            color: WeatherColors.white,
-                                                                                          ),
+                                                                                    child: Container(
+                                                                                      height: 30,
+                                                                                      width: 30,
+                                                                                      decoration: BoxDecoration(
+                                                                                        color: const Color(0xFF3F67D8),
+                                                                                        borderRadius: BorderRadius.circular(40),
+                                                                                      ),
+                                                                                      child: const Center(
+                                                                                        child: Icon(
+                                                                                          size: 20,
+                                                                                          Icons.star,
+                                                                                          color: WeatherColors.white,
                                                                                         ),
                                                                                       ),
                                                                                     ),
