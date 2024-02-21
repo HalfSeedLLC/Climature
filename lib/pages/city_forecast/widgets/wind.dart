@@ -41,7 +41,7 @@ class Wind extends StatelessWidget {
                       windSpeed: windSpeed,
                     ),
                     Transform.rotate(
-                      angle: windDegree.toDouble() * (pi / 180),
+                      angle: (windDegree.toDouble() + 180) * (pi / 180),
                       child: const SizedBox(
                         width: 155,
                         height: 155,
