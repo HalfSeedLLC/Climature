@@ -49,151 +49,173 @@ class _CityForecast extends State<CityForecast>
         builder: (context, state) {
           return Scaffold(
             backgroundColor: WeatherColors.black,
-            body: AnimatedBuilder(
-                animation: _animationController,
-                builder: (context, child) {
-                  return SizeTransition(
-                    axisAlignment: -1,
-                    sizeFactor: _animationController,
-                    child: AnimatedOpacity(
+            body: LayoutBuilder(builder: (context, constraints) {
+              return AnimatedBuilder(
+                  animation: _animationController,
+                  builder: (context, child) {
+                    return AnimatedOpacity(
                       duration: const Duration(milliseconds: 200),
                       opacity: _animationController.value * 1,
-                      child: Column(
+                      child: Stack(
                         children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(40),
+                          Align(
+                            alignment: Alignment.bottomCenter,
                             child: SizedBox(
-                              height: 350 * _animationController.value,
-                              child: OverflowBox(
-                                maxHeight: 350,
-                                child: CityHeader(
-                                  isLoading: state.isLoading,
-                                  title: state.forecast?.location.name ?? '',
-                                  condition:
-                                      state.forecast?.current.condition.text ??
-                                          '',
-                                  currentTemp:
-                                      '${state.forecast?.current.tempF.toInt() ?? ''}',
-                                  tempHi:
-                                      '${state.forecastDays?.first.day.maxTempF.toInt() ?? ''}',
-                                  tempLow:
-                                      '${state.forecastDays?.first.day.minTempF.toInt() ?? ''}',
-                                  iconAsset:
-                                      state.forecast?.current.condition.icon ??
-                                          '',
-                                  airQualityMessage: getAirQualityMessage(
-                                      usEpaIndex: state.forecast?.current
-                                          .airQuality.usEpaIndex),
+                              height: constraints.maxHeight - 340,
+                              child: SingleChildScrollView(
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 15, vertical: 20),
+                                  child: Wrap(
+                                    runSpacing: 15,
+                                    children: [
+                                      AnimatedOpacity(
+                                        opacity: state.isLoading ? 0 : 1,
+                                        duration:
+                                            const Duration(milliseconds: 1500),
+                                        child: NextHour(
+                                            isLoading: state.isLoading,
+                                            condition: state.forecast?.current
+                                                    .condition.text ??
+                                                '',
+                                            iconAsset: state.forecast?.current
+                                                    .condition.icon ??
+                                                ''),
+                                      ),
+                                      AnimatedOpacity(
+                                        opacity: state.isLoading ? 0 : 1,
+                                        duration:
+                                            const Duration(milliseconds: 2000),
+                                        child: ForecastHourList(
+                                            forecastHours:
+                                                state.hourlyForecast ?? []),
+                                      ),
+                                      AnimatedOpacity(
+                                        opacity: state.isLoading ? 0 : 1,
+                                        duration:
+                                            const Duration(milliseconds: 2500),
+                                        child: FutureForecast(
+                                            forecastDays: state.forecastDays),
+                                      ),
+                                      AirQualityCard(
+                                        airQuality:
+                                            state.forecast?.current.airQuality,
+                                      ),
+                                      Row(
+                                        children: [
+                                          Expanded(
+                                              child: UVIndex(
+                                            uv: state.forecast?.current.uv,
+                                          )),
+                                          const SizedBox(width: 10),
+                                          Expanded(
+                                            child: Sunrise(
+                                              sunrise:
+                                                  '${state.forecastDays?.first.astro.sunrise}',
+                                              sunset:
+                                                  '${state.forecastDays?.first.astro.sunset}',
+                                              currentTime:
+                                                  '${state.forecast?.location.localTime}',
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      Row(
+                                        children: [
+                                          Expanded(
+                                              child: Wind(
+                                            windSpeed: state.forecast?.current
+                                                    .windMph ??
+                                                0,
+                                            windDegree: state.forecast?.current
+                                                    .windDegree ??
+                                                0,
+                                          )),
+                                          const SizedBox(width: 10),
+                                          const Expanded(child: Rainfall()),
+                                        ],
+                                      ),
+                                      Row(
+                                        children: [
+                                          Expanded(
+                                              child: FeelsLike(
+                                            feelsLike: state.forecast?.current
+                                                    .feelsLikeF ??
+                                                0,
+                                            currentTemp:
+                                                state.forecast?.current.tempF ??
+                                                    0,
+                                          )),
+                                          const SizedBox(width: 10),
+                                          Expanded(
+                                              child: Humidity(
+                                            humidity: state.forecast?.current
+                                                    .humidity ??
+                                                0,
+                                          )),
+                                        ],
+                                      ),
+                                      Row(
+                                        children: [
+                                          Expanded(
+                                              child: WeatherVisibility(
+                                            visibility: state.forecast?.current
+                                                    .visibilityMiles ??
+                                                0,
+                                          )),
+                                          const SizedBox(width: 10),
+                                          Expanded(
+                                              child: Pressure(
+                                            pressure: state.forecast?.current
+                                                    .pressureIn ??
+                                                0,
+                                          )),
+                                        ],
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
                           ),
-                          Expanded(
-                            child: SingleChildScrollView(
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 15, vertical: 20),
-                                child: Wrap(
-                                  runSpacing: 15,
-                                  children: [
-                                    NextHour(
-                                        isLoading: state.isLoading,
-                                        condition: state.forecast?.current
-                                                .condition.text ??
-                                            '',
-                                        iconAsset: state.forecast?.current
-                                                .condition.icon ??
-                                            ''),
-                                    ForecastHourList(
-                                        forecastHours:
-                                            state.hourlyForecast ?? []),
-                                    FutureForecast(
-                                        forecastDays: state.forecastDays),
-                                    AirQualityCard(
-                                      airQuality:
-                                          state.forecast?.current.airQuality,
-                                    ),
-                                    Row(
-                                      children: [
-                                        Expanded(
-                                            child: UVIndex(
-                                          uv: state.forecast?.current.uv,
-                                        )),
-                                        const SizedBox(width: 10),
-                                        Expanded(
-                                          child: Sunrise(
-                                            sunrise:
-                                                '${state.forecastDays?.first.astro.sunrise}',
-                                            sunset:
-                                                '${state.forecastDays?.first.astro.sunset}',
-                                            currentTime:
-                                                '${state.forecast?.location.localTime}',
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        Expanded(
-                                            child: Wind(
-                                          windSpeed:
-                                              state.forecast?.current.windMph ??
-                                                  0,
-                                          windDegree: state.forecast?.current
-                                                  .windDegree ??
-                                              0,
-                                        )),
-                                        const SizedBox(width: 10),
-                                        const Expanded(child: Rainfall()),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        Expanded(
-                                            child: FeelsLike(
-                                          feelsLike: state.forecast?.current
-                                                  .feelsLikeF ??
-                                              0,
-                                          currentTemp:
-                                              state.forecast?.current.tempF ??
-                                                  0,
-                                        )),
-                                        const SizedBox(width: 10),
-                                        Expanded(
-                                            child: Humidity(
-                                          humidity: state
-                                                  .forecast?.current.humidity ??
-                                              0,
-                                        )),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        Expanded(
-                                            child: WeatherVisibility(
-                                          visibility: state.forecast?.current
-                                                  .visibilityMiles ??
-                                              0,
-                                        )),
-                                        const SizedBox(width: 10),
-                                        Expanded(
-                                            child: Pressure(
-                                          pressure: state.forecast?.current
-                                                  .pressureIn ??
-                                              0,
-                                        )),
-                                      ],
-                                    )
-                                  ],
+                          ClipRRect(
+                            clipBehavior: Clip.hardEdge,
+                            borderRadius: BorderRadius.circular(40),
+                            child: AnimatedSize(
+                              alignment: Alignment.bottomCenter,
+                              duration: const Duration(milliseconds: 750),
+                              child: SizedBox(
+                                height: 350 * _animationController.value,
+                                child: OverflowBox(
+                                  maxHeight: 350,
+                                  child: CityHeader(
+                                    isLoading: state.isLoading,
+                                    title: state.forecast?.location.name ?? '',
+                                    condition: state
+                                            .forecast?.current.condition.text ??
+                                        '',
+                                    currentTemp:
+                                        '${state.forecast?.current.tempF.toInt() ?? ''}',
+                                    tempHi:
+                                        '${state.forecastDays?.first.day.maxTempF.toInt() ?? ''}',
+                                    tempLow:
+                                        '${state.forecastDays?.first.day.minTempF.toInt() ?? ''}',
+                                    iconAsset: state
+                                            .forecast?.current.condition.icon ??
+                                        '',
+                                    airQualityMessage: getAirQualityMessage(
+                                        usEpaIndex: state.forecast?.current
+                                            .airQuality.usEpaIndex),
+                                  ),
                                 ),
                               ),
                             ),
                           ),
                         ],
                       ),
-                    ),
-                  );
-                }),
+                    );
+                  });
+            }),
           );
         },
       );

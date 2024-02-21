@@ -19,7 +19,7 @@ class WeatherProvider {
     required String city,
   }) async {
     final uri =
-        _buildUri(api: 'forecast', querySuffix: '&q=$city&days=3&aqi=yes');
+        _buildUri(api: 'forecast', querySuffix: '&q=$city&days=5&aqi=yes');
 
     final response = await _client.get(uri);
 

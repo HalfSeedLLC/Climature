@@ -35,7 +35,7 @@ class FutureForecast extends StatelessWidget {
                         const SizedBox(
                           width: 10,
                         ),
-                        Text('3-DAY-FORECAST',
+                        Text('${forecastDays?.length ?? 0}-DAY-FORECAST',
                             style: Theme.of(context)
                                 .textTheme
                                 .bodyMedium!
@@ -51,7 +51,7 @@ class FutureForecast extends StatelessWidget {
                     Wrap(
                         runSpacing: 30,
                         children: List.generate(
-                            3,
+                            forecastDays?.length ?? 0,
                             (i) => Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,

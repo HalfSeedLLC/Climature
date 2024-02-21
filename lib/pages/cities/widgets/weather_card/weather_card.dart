@@ -11,6 +11,7 @@ class WeatherCard extends StatelessWidget {
     required this.iconAsset,
     this.onPressed,
     this.isEditMode = false,
+    this.isFavorite = false,
     this.fontColor = WeatherColors.black,
     this.backgroundColor = WeatherColors.white,
     Key? key,
@@ -23,6 +24,7 @@ class WeatherCard extends StatelessWidget {
   final String iconAsset;
   final bool isEditMode;
   final void Function()? onPressed;
+  final bool isFavorite;
   final Color fontColor;
   final Color backgroundColor;
 
@@ -145,7 +147,22 @@ class WeatherCard extends StatelessWidget {
                 height: 100,
                 width: double.infinity,
               ),
-            )
+            ),
+          if (isFavorite)
+            Padding(
+              padding: const EdgeInsets.all(5),
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                    color: WeatherColors.ev1,
+                    borderRadius: BorderRadius.circular(35)),
+                child: const SizedBox(
+                    width: 20,
+                    height: 20,
+                    child: Center(
+                        child: Icon(
+                            size: 14, Icons.star, color: Color(0xFFFFFFFF)))),
+              ),
+            ),
         ],
       );
     });

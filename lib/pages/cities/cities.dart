@@ -298,8 +298,8 @@ class _CitiesState extends State<Cities> with TickerProviderStateMixin {
                                                           height: 15),
                                                       state.isLoading
                                                           ? const WeatherCardSkeleton()
-                                                          : state.favoriteCity
-                                                                  .isEmpty
+                                                          : state.favoriteCityMeta ==
+                                                                  null
                                                               ? Padding(
                                                                   padding: const EdgeInsets
                                                                       .symmetric(
@@ -320,6 +320,8 @@ class _CitiesState extends State<Cities> with TickerProviderStateMixin {
                                                                     Expanded(
                                                                       child:
                                                                           WeatherCard(
+                                                                        isFavorite:
+                                                                            true,
                                                                         isEditMode:
                                                                             state.isEditMode,
                                                                         city: state.favoriteCityMeta?.location.name ??
@@ -417,7 +419,7 @@ class _CitiesState extends State<Cities> with TickerProviderStateMixin {
                                                                           (i) =>
                                                                               const WeatherCardSkeleton()),
                                                                 )
-                                                              : state.favorites
+                                                              : state.favoritesMeta
                                                                       .isEmpty
                                                                   ? Padding(
                                                                       padding: const EdgeInsets
