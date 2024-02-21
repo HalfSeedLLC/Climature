@@ -66,112 +66,177 @@ class _CityForecast extends State<CityForecast>
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 15, vertical: 20),
-                                  child: Wrap(
-                                    runSpacing: 15,
+                                  child: Column(
                                     children: [
-                                      AnimatedOpacity(
-                                        opacity: state.isLoading ? 0 : 1,
-                                        duration:
-                                            const Duration(milliseconds: 1500),
-                                        child: NextHour(
-                                            isLoading: state.isLoading,
-                                            condition: state.forecast?.current
-                                                    .condition.text ??
-                                                '',
-                                            iconAsset: state.forecast?.current
-                                                    .condition.icon ??
-                                                ''),
-                                      ),
-                                      AnimatedOpacity(
-                                        opacity: state.isLoading ? 0 : 1,
-                                        duration:
-                                            const Duration(milliseconds: 2000),
-                                        child: ForecastHourList(
-                                            forecastHours:
-                                                state.hourlyForecast ?? []),
-                                      ),
-                                      AnimatedOpacity(
-                                        opacity: state.isLoading ? 0 : 1,
-                                        duration:
-                                            const Duration(milliseconds: 2500),
-                                        child: FutureForecast(
-                                            forecastDays: state.forecastDays),
-                                      ),
-                                      AirQualityCard(
-                                        airQuality:
-                                            state.forecast?.current.airQuality,
-                                      ),
-                                      Row(
+                                      const SizedBox(height: 5),
+                                      Wrap(
+                                        runSpacing: 15,
                                         children: [
-                                          Expanded(
-                                              child: UVIndex(
-                                            uv: state.forecast?.current.uv,
-                                          )),
-                                          const SizedBox(width: 10),
-                                          Expanded(
-                                            child: Sunrise(
-                                              sunrise:
-                                                  '${state.forecastDays?.first.astro.sunrise}',
-                                              sunset:
-                                                  '${state.forecastDays?.first.astro.sunset}',
-                                              currentTime:
-                                                  '${state.forecast?.location.localTime}',
+                                          SizedBox(
+                                            height: 95,
+                                            width: double.infinity,
+                                            child: Stack(
+                                              children: [
+                                                AnimatedPositioned(
+                                                  left: 0,
+                                                  right: 0,
+                                                  top:
+                                                      state.isLoading ? -75 : 0,
+                                                  duration: const Duration(
+                                                      milliseconds: 500),
+                                                  child: AnimatedOpacity(
+                                                    opacity:
+                                                        state.isLoading ? 0 : 1,
+                                                    duration: const Duration(
+                                                        milliseconds: 1000),
+                                                    child: NextHour(
+                                                        isLoading:
+                                                            state.isLoading,
+                                                        condition: state
+                                                                .forecast
+                                                                ?.current
+                                                                .condition
+                                                                .text ??
+                                                            '',
+                                                        iconAsset: state
+                                                                .forecast
+                                                                ?.current
+                                                                .condition
+                                                                .icon ??
+                                                            ''),
+                                                  ),
+                                                ),
+                                              ],
                                             ),
                                           ),
-                                        ],
-                                      ),
-                                      Row(
-                                        children: [
-                                          Expanded(
-                                              child: Wind(
-                                            windSpeed: state.forecast?.current
-                                                    .windMph ??
-                                                0,
-                                            windDegree: state.forecast?.current
-                                                    .windDegree ??
-                                                0,
-                                          )),
-                                          const SizedBox(width: 10),
-                                          const Expanded(child: Rainfall()),
-                                        ],
-                                      ),
-                                      Row(
-                                        children: [
-                                          Expanded(
-                                              child: FeelsLike(
-                                            feelsLike: state.forecast?.current
-                                                    .feelsLikeF ??
-                                                0,
-                                            currentTemp:
-                                                state.forecast?.current.tempF ??
+                                          SizedBox(
+                                            height: 170,
+                                            child: Stack(
+                                              children: [
+                                                AnimatedPositioned(
+                                                  left: 0,
+                                                  right: 0,
+                                                  top:
+                                                      state.isLoading ? -75 : 0,
+                                                  duration: const Duration(
+                                                      milliseconds: 900),
+                                                  child: AnimatedOpacity(
+                                                    opacity:
+                                                        state.isLoading ? 0 : 1,
+                                                    duration: const Duration(
+                                                        milliseconds: 1200),
+                                                    child: ForecastHourList(
+                                                        forecastHours: state
+                                                                .hourlyForecast ??
+                                                            []),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: 345,
+                                            child: Stack(
+                                              children: [
+                                                AnimatedPositioned(
+                                                  left: 0,
+                                                  right: 0,
+                                                  top:
+                                                      state.isLoading ? -75 : 0,
+                                                  duration: const Duration(
+                                                      milliseconds: 900),
+                                                  child: AnimatedOpacity(
+                                                    opacity:
+                                                        state.isLoading ? 0 : 1,
+                                                    duration: const Duration(
+                                                        milliseconds: 1400),
+                                                    child: FutureForecast(
+                                                        forecastDays:
+                                                            state.forecastDays),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          AirQualityCard(
+                                            airQuality: state
+                                                .forecast?.current.airQuality,
+                                          ),
+                                          Row(
+                                            children: [
+                                              Expanded(
+                                                  child: UVIndex(
+                                                uv: state.forecast?.current.uv,
+                                              )),
+                                              const SizedBox(width: 10),
+                                              Expanded(
+                                                child: Sunrise(
+                                                  sunrise:
+                                                      '${state.forecastDays?.first.astro.sunrise}',
+                                                  sunset:
+                                                      '${state.forecastDays?.first.astro.sunset}',
+                                                  currentTime:
+                                                      '${state.forecast?.location.localTime}',
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          Row(
+                                            children: [
+                                              Expanded(
+                                                  child: Wind(
+                                                windSpeed: state.forecast
+                                                        ?.current.windMph ??
                                                     0,
-                                          )),
-                                          const SizedBox(width: 10),
-                                          Expanded(
-                                              child: Humidity(
-                                            humidity: state.forecast?.current
-                                                    .humidity ??
-                                                0,
-                                          )),
+                                                windDegree: state.forecast
+                                                        ?.current.windDegree ??
+                                                    0,
+                                              )),
+                                              const SizedBox(width: 10),
+                                              const Expanded(child: Rainfall()),
+                                            ],
+                                          ),
+                                          Row(
+                                            children: [
+                                              Expanded(
+                                                  child: FeelsLike(
+                                                feelsLike: state.forecast
+                                                        ?.current.feelsLikeF ??
+                                                    0,
+                                                currentTemp: state.forecast
+                                                        ?.current.tempF ??
+                                                    0,
+                                              )),
+                                              const SizedBox(width: 10),
+                                              Expanded(
+                                                  child: Humidity(
+                                                humidity: state.forecast
+                                                        ?.current.humidity ??
+                                                    0,
+                                              )),
+                                            ],
+                                          ),
+                                          Row(
+                                            children: [
+                                              Expanded(
+                                                  child: WeatherVisibility(
+                                                visibility: state
+                                                        .forecast
+                                                        ?.current
+                                                        .visibilityMiles ??
+                                                    0,
+                                              )),
+                                              const SizedBox(width: 10),
+                                              Expanded(
+                                                  child: Pressure(
+                                                pressure: state.forecast
+                                                        ?.current.pressureIn ??
+                                                    0,
+                                              )),
+                                            ],
+                                          )
                                         ],
                                       ),
-                                      Row(
-                                        children: [
-                                          Expanded(
-                                              child: WeatherVisibility(
-                                            visibility: state.forecast?.current
-                                                    .visibilityMiles ??
-                                                0,
-                                          )),
-                                          const SizedBox(width: 10),
-                                          Expanded(
-                                              child: Pressure(
-                                            pressure: state.forecast?.current
-                                                    .pressureIn ??
-                                                0,
-                                          )),
-                                        ],
-                                      )
                                     ],
                                   ),
                                 ),
