@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:weather_app/theme/colors.dart';
+
 import '../../../../utils/utils.dart';
 
 class WeatherCard extends StatelessWidget {
@@ -34,16 +35,14 @@ class WeatherCard extends StatelessWidget {
       return Stack(
         children: [
           DecoratedBox(
-            decoration: BoxDecoration(
-                color: backgroundColor,
-                borderRadius: BorderRadius.circular(15)),
+            decoration:
+                BoxDecoration(color: backgroundColor, borderRadius: BorderRadius.circular(15)),
             child: TextButton(
               onPressed: isEditMode ? null : () => onPressed?.call(),
               child: SizedBox(
                 height: 100,
                 child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                  padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                   child: ClipRRect(
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -63,35 +62,26 @@ class WeatherCard extends StatelessWidget {
                                     child: Image.asset(
                                         width: 20,
                                         height: 20,
-                                        getWeatherIconAsset(
-                                            iconAsset: iconAsset)),
+                                        getWeatherIconAsset(iconAsset: iconAsset)),
                                   ),
                                 const SizedBox(
                                   width: 7,
                                 ),
                                 SizedBox(
-                                  width: constraints.maxWidth -
-                                      (isEditMode ? 105 : 200),
+                                  width: constraints.maxWidth - (isEditMode ? 105 : 200),
                                   child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         city,
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .labelLarge!
-                                            .copyWith(
-                                                color: fontColor,
-                                                height: 1,
-                                                overflow:
-                                                    TextOverflow.ellipsis),
+                                        style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                                            color: fontColor,
+                                            height: 1,
+                                            overflow: TextOverflow.ellipsis),
                                       ),
                                       Text(
                                         time,
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .labelSmall,
+                                        style: Theme.of(context).textTheme.labelSmall,
                                       ),
                                     ],
                                   ),
@@ -118,17 +108,11 @@ class WeatherCard extends StatelessWidget {
                                 style: Theme.of(context)
                                     .textTheme
                                     .titleLarge!
-                                    .copyWith(
-                                        color: fontColor, letterSpacing: 1),
+                                    .copyWith(color: fontColor, letterSpacing: 1),
                               ),
                               Text('°',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .titleMedium!
-                                      .copyWith(
-                                          fontSize: 40,
-                                          fontWeight: FontWeight.w100,
-                                          color: fontColor))
+                                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                                      fontSize: 40, fontWeight: FontWeight.w100, color: fontColor))
                             ],
                           ),
                       ],
@@ -146,21 +130,6 @@ class WeatherCard extends StatelessWidget {
               child: const SizedBox(
                 height: 100,
                 width: double.infinity,
-              ),
-            ),
-          if (isFavorite)
-            Padding(
-              padding: const EdgeInsets.all(5),
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                    color: WeatherColors.ev1,
-                    borderRadius: BorderRadius.circular(35)),
-                child: const SizedBox(
-                    width: 20,
-                    height: 20,
-                    child: Center(
-                        child: Icon(
-                            size: 14, Icons.star, color: Color(0xFFFFFFFF)))),
               ),
             ),
         ],

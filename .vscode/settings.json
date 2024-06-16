@@ -2,6 +2,7 @@
     "cSpell.words": [
         "ARGB",
         "Astro",
+        "Climature",
         "cupertino",
         "Debouncer",
         "Defra",
@@ -12,5 +13,32 @@
         "sublist",
         "unfocus",
         "vsync"
-    ]
+    ],
+    "files.associations": {
+        "*.arb": "json"
+    },
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll": "explicit",
+        "source.addMissingImports": "explicit",
+        "source.organizeImports": "explicit"
+    },
+    "editor.defaultFormatter": "Dart-Code.dart-code",
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "cmake.configureOnOpen": false,
+    "dart.previewFlutterUiGuides": true,
+    "dart.previewFlutterUiGuidesCustomTracking": true,
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "dart.flutterSdkPath": ".fvm/flutter_sdk",
+
+    "search.exclude": {
+        "**/.fvm": true
+    },
+    // Remove from file watching
+    "files.watcherExclude": {
+        "**/.fvm": true
+    },
+    "dart.lineLength": 100
 }

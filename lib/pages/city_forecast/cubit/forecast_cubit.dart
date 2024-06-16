@@ -34,17 +34,13 @@ class ForecastCubit extends Cubit<ForecastState> {
 
     if (forecast != null) {
       getHourlyForecast(
-          current: forecast.current,
-          forecastDays: forecast.forecast.entries.first.value);
+          current: forecast.current, forecastDays: forecast.forecast.entries.first.value);
 
-      emit(state.copyWith(
-          forecast: forecast,
-          forecastDays: forecast.forecast.entries.first.value));
+      emit(state.copyWith(forecast: forecast, forecastDays: forecast.forecast.entries.first.value));
     }
   }
 
-  void getHourlyForecast(
-      {required Current current, required List<ForecastDay> forecastDays}) {
+  void getHourlyForecast({required Current current, required List<ForecastDay> forecastDays}) {
     final currentHour = DateTime.parse(current.lastUpdated).hour;
 
     final List<Hour> hourlyForecast =
@@ -52,8 +48,8 @@ class ForecastCubit extends Cubit<ForecastState> {
 
     final endIndex = currentHour + 22;
 
-    final filteredHourlyForecast = hourlyForecast.sublist(
-        currentHour, min(endIndex, hourlyForecast.length));
+    final filteredHourlyForecast =
+        hourlyForecast.sublist(currentHour, min(endIndex, hourlyForecast.length));
 
     emit(state.copyWith(hourlyForecast: filteredHourlyForecast));
   }

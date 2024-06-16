@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app/pages/cities/cities.dart';
-import 'package:weather_app/router/router.dart';
+import 'package:weather_app/pages/home/home.dart';
 import 'package:weather_app/theme/colors.dart';
-import 'package:weather_app/widgets/action_button.dart';
+
+import '../../router/router.dart';
+import '../../widgets/action_button.dart';
 
 class Landing extends StatefulWidget {
   const Landing({
@@ -109,7 +110,7 @@ class _LandingState extends State<Landing> with TickerProviderStateMixin {
                     const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
                 child: ActionButton(
                   title: 'GET STARTED',
-                  onPressed: () => router.push(Cities.route),
+                  onPressed: () => router.push(Home.route),
                 ),
               ),
             ),

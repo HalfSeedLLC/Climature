@@ -1,0 +1,32 @@
+{
+    "@currentConditions": {
+        "placeholders": {
+            "condition": {
+                "type": "String",
+                "example": "London"
+            }
+        }
+    },
+    "aqi": "AQI",
+    "cancel": "Cancel",
+    "city": "City",
+    "cities": "Cities",
+    "cityList": "City List",
+    "currentConditions": "Currently {condition} Conditions",
+    "forecast": "Forecast",
+    "humidity": "Humidity",
+    "noCitySelected": "No city selected",
+    "noCitiesOrAirportsFound": "No cities or airports found",
+    "noFavoritesAdded": "No favorites added",
+    "precipitation": "Precipitation",
+    "pressure": "Pressure",
+    "search": "Search",
+    "searchForACityOrAirport": "Search for a city or airport",
+    "sunrise": "Sunrise",
+    "sunset": "Sunset",
+    "temperature": "Temperature",
+    "visibility": "Visibility",
+    "wind": "Wind",
+    "yourCity": "Your City",
+    "yourFavorites": "Your favorites"
+}

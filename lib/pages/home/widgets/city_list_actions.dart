@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather_app/pages/cities/widgets/city_list/cubit/city_list_cubit.dart';
+import 'package:weather_app/pages/home/widgets/city_list/cubit/city_list_cubit.dart';
 
 import '../../../theme/colors.dart';
 import '../../../widgets/action_button.dart';

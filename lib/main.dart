@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_gen/gen_l10n/climature_localizations.dart';
+import 'package:weather_app/respository/weather_repository.dart';
 import 'package:weather_app/router/router.dart';
 import 'package:weather_app/theme/colors.dart';
-import 'package:weather_app/respository/weather_repository.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 void main() async {
   await dotenv.load(fileName: ".env");
@@ -22,16 +23,18 @@ class WeatherApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'Weather App',
+      localizationsDelegates: ClimatureLocalizations.localizationsDelegates,
+      supportedLocales: ClimatureLocalizations.supportedLocales,
       theme: ThemeData(
           useMaterial3: true,
           fontFamily: 'Gilroy-Regular',
           textButtonTheme: const TextButtonThemeData(
               style: ButtonStyle(
-                  minimumSize: MaterialStatePropertyAll(Size.zero),
+                  minimumSize: WidgetStatePropertyAll(Size.zero),
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                   splashFactory: NoSplash.splashFactory,
-                  overlayColor: MaterialStatePropertyAll(Colors.transparent),
-                  padding: MaterialStatePropertyAll(EdgeInsets.zero))),
+                  overlayColor: WidgetStatePropertyAll(Colors.transparent),
+                  padding: WidgetStatePropertyAll(EdgeInsets.zero))),
           textTheme: const TextTheme(
             headlineLarge: TextStyle(
               height: 1,
@@ -103,11 +106,7 @@ class WeatherApp extends StatelessWidget {
               fontWeight: FontWeight.w400,
               color: WeatherColors.secondaryFont,
             ),
-            bodySmall: TextStyle(
-                height: 1.25,
-                fontSize: 15,
-                fontWeight: FontWeight.w900,
-                color: WeatherColors.white),
+            bodySmall: TextStyle(height: 1.25, fontSize: 15, fontWeight: FontWeight.w900, color: WeatherColors.white),
           )),
       routerConfig: router,
     );

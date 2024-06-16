@@ -79,8 +79,8 @@ class Hour {
   final double gustKph;
   final double uv;
   final AirQuality airQuality;
-  final double shortwaveSolarRadiation;
-  final double diffuseHorizontalRadiation;
+  final double? shortwaveSolarRadiation;
+  final double? diffuseHorizontalRadiation;
 
   Hour copyWith({
     int? timeEpoch,
@@ -244,8 +244,8 @@ class Hour {
       uv: map['uv'] as double,
       airQuality:
           AirQuality.fromMap(map['air_quality'] as Map<String, dynamic>),
-      shortwaveSolarRadiation: map['short_rad'] as double,
-      diffuseHorizontalRadiation: map['diff_rad'] as double,
+      shortwaveSolarRadiation: map['short_rad'] as double?,
+      diffuseHorizontalRadiation: map['diff_rad'] as double?,
     );
   }
 

@@ -1,9 +1,11 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:weather_app/constants/enum.dart';
 import 'package:weather_app/constants/shared_preferences_keys.dart';
 import 'package:weather_app/models/weather_card_data.dart';
 import 'package:weather_app/respository/weather_repository.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:weather_app/utils/request_state_with_value.dart';
 
 import '../../../../../models/city.dart';
 
@@ -21,11 +23,11 @@ class CityListCubit extends Cubit<CityListState> {
 
   void init() async {
     preferences = await SharedPreferences.getInstance();
-    await getPreferences();
 
+    await getPreferences();
     await Future.wait([fetchFavoriteCityMeta(), fetchFavoritesMeta()]);
 
-    Future.delayed(const Duration(milliseconds: 700), () {
+    Future.delayed(const Duration(milliseconds: 300), () {
       emit(state.copyWith(isLoading: false));
     });
   }
@@ -35,23 +37,27 @@ class CityListCubit extends Cubit<CityListState> {
   }
 
   Future<void> getFavoriteCity() async {
-    final favoriteCity =
-        preferences?.getString(SharedPreferencesKeys.favoriteCity);
+    final favoriteCity = preferences?.getString(SharedPreferencesKeys.favoriteCity);
 
     emit(state.copyWith(favoriteCity: favoriteCity));
   }
 
   Future<void> getFavorites() async {
-    final favorites =
-        preferences?.getStringList(SharedPreferencesKeys.favorites);
+    final favorites = preferences?.getStringList(SharedPreferencesKeys.favorites);
 
     emit(state.copyWith(favorites: favorites));
   }
 
   Future<void> searchCity({required String searchQuery}) async {
-    final cities = await weatherRepository.searchCities(city: searchQuery);
+    emit(state.copyWith(cities: state.cities.copyWith(requestState: RequestState.loading)));
 
-    emit(state.copyWith(cities: cities));
+    try {
+      final cities = await weatherRepository.searchCities(city: searchQuery);
+      emit(state.copyWith(
+          cities: state.cities.copyWith(requestState: RequestState.success, value: cities)));
+    } catch (e) {
+      emit(state.copyWith(cities: state.cities.copyWith(requestState: RequestState.error)));
+    }
   }
 
   Future<void> fetchFavoriteCityMeta() async {
@@ -67,8 +73,8 @@ class CityListCubit extends Cubit<CityListState> {
     final List<WeatherCardData> favoritesMeta = [];
 
     for (int i = 0; i < state.favorites.length; i++) {
-      final metaData = await weatherRepository.getLocationMetaData(
-          city: state.favorites.elementAt(i));
+      final metaData =
+          await weatherRepository.getLocationMetaData(city: state.favorites.elementAt(i));
 
       if (metaData != null) {
         favoritesMeta.add(metaData);
@@ -112,8 +118,7 @@ class CityListCubit extends Cubit<CityListState> {
       final favorites = [city] + state.favorites;
       emit(state.copyWith(favorites: favorites));
 
-      await preferences?.setStringList(
-          SharedPreferencesKeys.favorites, favorites);
+      await preferences?.setStringList(SharedPreferencesKeys.favorites, favorites);
 
       await fetchFavoritesMeta();
     }

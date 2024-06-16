@@ -6,7 +6,7 @@ class CityListState extends Equatable {
     this.favoriteCityMeta,
     this.favorites = const ['New York', 'Memphis', 'London'],
     this.favoritesMeta = const [],
-    this.cities = const [],
+    this.cities = const RequestStateWithValue(requestState: RequestState.initial, value: []),
     this.isEditMode = false,
     this.isReorderMode = false,
     this.isLoading = true,
@@ -16,7 +16,7 @@ class CityListState extends Equatable {
   final WeatherCardData? favoriteCityMeta;
   final List<String> favorites;
   final List<WeatherCardData> favoritesMeta;
-  final List<City> cities;
+  final RequestStateWithValue<List<City>> cities;
   final bool isEditMode;
   final bool isReorderMode;
   final bool isLoading;
@@ -38,7 +38,7 @@ class CityListState extends Equatable {
     WeatherCardData? favoriteCityMeta,
     List<String>? favorites,
     List<WeatherCardData>? favoritesMeta,
-    List<City>? cities,
+    RequestStateWithValue<List<City>>? cities,
     bool? isEditMode,
     bool? isReorderMode,
     bool? isLoading,

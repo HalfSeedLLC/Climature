@@ -18,8 +18,7 @@ class WeatherProvider {
   Future<Forecast?> getForecast({
     required String city,
   }) async {
-    final uri =
-        _buildUri(api: 'forecast', querySuffix: '&q=$city&days=5&aqi=yes');
+    final uri = _buildUri(api: 'forecast', querySuffix: '&q=$city&days=5&aqi=yes');
 
     final response = await _client.get(uri);
 
@@ -38,8 +37,7 @@ class WeatherProvider {
 
     if (response.statusCode == 200) {
       final List<dynamic> data = jsonDecode(response.body);
-      final List<City> cities =
-          data.map((cityJson) => City.fromJson(cityJson)).toList();
+      final List<City> cities = data.map((cityJson) => City.fromJson(cityJson)).toList();
       return cities;
     } else {
       return [];
@@ -54,8 +52,7 @@ class WeatherProvider {
     final response = await _client.get(uri);
 
     if (response.statusCode == 200) {
-      return WeatherCardData.fromJson(
-          const Utf8Decoder().convert(response.bodyBytes));
+      return WeatherCardData.fromJson(const Utf8Decoder().convert(response.bodyBytes));
     }
     return null;
   }
