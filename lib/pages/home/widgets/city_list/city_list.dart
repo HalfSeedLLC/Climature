@@ -1,109 +1,114 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather_app/constants/enum.dart';
-import 'package:weather_app/models/city.dart';
+import 'package:weather_app/models/weather_card_data.dart';
+import 'package:weather_app/pages/city_forecast/city_forecast.dart';
+import 'package:weather_app/pages/home/widgets/action_icon.dart';
 import 'package:weather_app/pages/home/widgets/city_list/cubit/city_list_cubit.dart';
+import 'package:weather_app/pages/home/widgets/weather_card/weather_card.dart';
+import 'package:weather_app/pages/home/widgets/weather_card/weather_card_skeleton.dart';
+import 'package:weather_app/router/router.dart';
+import 'package:weather_app/theme/colors.dart';
 import 'package:weather_app/utils/localizations.dart';
-import 'package:weather_app/utils/request_state_with_value.dart';
-
-import '../../../../theme/colors.dart';
-
-typedef OnDismissSearchEvent = void Function();
+import 'package:weather_app/utils/utils.dart';
 
 class CityList extends StatelessWidget {
   const CityList({
-    required this.isSearchBarFocused,
-    required this.onDismissSearchEvent,
-    required this.isSearchEmpty,
+    required this.isLoading,
+    required this.isEditMode,
+    required this.favoritesMeta,
+    required this.favoritesNames,
+    required this.animationController,
     Key? key,
   }) : super(key: key);
 
-  final bool isSearchBarFocused;
-  final OnDismissSearchEvent onDismissSearchEvent;
-  final bool isSearchEmpty;
+  final bool isLoading;
+  final bool isEditMode;
+  final List<WeatherCardData> favoritesMeta;
+  final List<String> favoritesNames;
+  final AnimationController animationController;
 
   @override
-  Widget build(BuildContext context) {
-    return BlocSelector<CityListCubit, CityListState, RequestStateWithValue<List<City>>>(
-      selector: (state) => state.cities,
-      builder: (context, state) {
-        final cities = state.value;
-        final requestState = state.requestState;
-
-        return IgnorePointer(
-          ignoring: !isSearchBarFocused,
-          child: AnimatedOpacity(
-            opacity: isSearchBarFocused ? 1 : 0,
-            duration: Duration(milliseconds: !isSearchEmpty ? 0 : 700),
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                color: WeatherColors.black.withOpacity(
-                  isSearchEmpty ? 0.7 : 1,
-                ),
-              ),
-              child: SizedBox(
-                width: double.infinity,
-                height: double.infinity,
-                child: !isSearchEmpty && cities.isEmpty && requestState == RequestState.success
-                    ? Center(
-                        child: DecoratedBox(
-                            decoration: BoxDecoration(
-                              color: WeatherColors.black,
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(10),
-                              child: Text(context.localizations.noCitiesOrAirportsFound),
-                            )),
-                      )
-                    : SingleChildScrollView(
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 10),
-                          child: Wrap(
-                            runSpacing: 10,
-                            children: List.generate(
-                              cities.length,
-                              (i) => TextButton(
-                                onPressed: () async {
-                                  Future.wait([
-                                    context
-                                        .read<CityListCubit>()
-                                        .addToFavorites(city: cities.elementAt(i).name),
-                                    HapticFeedback.mediumImpact()
-                                  ]);
-
-                                  onDismissSearchEvent.call();
-                                },
-                                child: DecoratedBox(
-                                  decoration: BoxDecoration(
-                                    color: i == 0 ? WeatherColors.ev1 : Colors.transparent,
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: SizedBox(
-                                    width: double.infinity,
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(15),
-                                      child: SingleChildScrollView(
-                                        scrollDirection: Axis.horizontal,
-                                        child: Text(
-                                          '${cities.elementAt(i).name}, ${cities.elementAt(i).region} ${cities.elementAt(i).country}',
-                                          style: Theme.of(context).textTheme.bodySmall,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
+  Widget build(BuildContext context) => Transform.translate(
+        offset: Offset(0, -25 + 25 * animationController.value),
+        child: AnimatedOpacity(
+          opacity: 1 * animationController.value,
+          duration: const Duration(milliseconds: 25),
+          child: isLoading
+              ? Wrap(
+                  runSpacing: 12,
+                  children: List.generate(7, (i) => const WeatherCardSkeleton()),
+                )
+              : favoritesMeta.isEmpty
+                  ? Padding(
+                      padding: const EdgeInsets.only(top: 100),
+                      child: Center(
+                        child: Text(
+                          context.localizations.noFavoritesAdded,
+                          style: Theme.of(context).textTheme.bodyMedium,
                         ),
                       ),
-              ),
-            ),
-          ),
-        );
-      },
-    );
-  }
+                    )
+                  : Wrap(
+                      runSpacing: 12,
+                      children: List.generate(
+                        favoritesMeta.length,
+                        (i) => Row(
+                          children: [
+                            Expanded(
+                              child: WeatherCard(
+                                isEditMode: isEditMode,
+                                city: favoritesMeta.elementAt(i).location.name,
+                                time: getUserFriendlyTime(
+                                    dateTime: favoritesMeta.elementAt(i).location.localTime),
+                                degrees:
+                                    favoritesMeta.elementAt(i).current.tempF.toStringAsFixed(0),
+                                forecast: favoritesMeta.elementAt(i).current.condition.text,
+                                fontColor: WeatherColors.white,
+                                backgroundColor: WeatherColors.ev1,
+                                iconAsset: favoritesMeta.elementAt(i).current.condition.icon,
+                                onPressed: () async {
+                                  router.pushNamed(CityForecast.name, pathParameters: {
+                                    'city': favoritesMeta.elementAt(i).location.name
+                                  });
+                                },
+                              ),
+                            ),
+                            if (isEditMode)
+                              Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                                child: Wrap(
+                                  crossAxisAlignment: WrapCrossAlignment.center,
+                                  spacing: 25,
+                                  children: [
+                                    ActionIcon(
+                                      onPressed: () async {
+                                        Future.wait([
+                                          context.read<CityListCubit>().removeFromFavorites(
+                                              city: favoritesNames.elementAt(i)),
+                                          HapticFeedback.mediumImpact()
+                                        ]);
+                                      },
+                                      icon: Icons.remove,
+                                    ),
+                                    ActionIcon(
+                                      onPressed: () async {
+                                        Future.wait([
+                                          context.read<CityListCubit>().updateFavoriteCity(
+                                              city: favoritesMeta.elementAt(i).location.name),
+                                          HapticFeedback.mediumImpact()
+                                        ]);
+                                      },
+                                      icon: Icons.star,
+                                      backgroundColor: const Color(0xFF3F67D8),
+                                    ),
+                                  ],
+                                ),
+                              )
+                          ],
+                        ),
+                      ),
+                    ),
+        ),
+      );
 }

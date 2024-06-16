@@ -1,20 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather_app/pages/city_forecast/city_forecast.dart';
-import 'package:weather_app/pages/home/widgets/action_icon.dart';
 import 'package:weather_app/pages/home/widgets/city_list/city_list.dart';
+import 'package:weather_app/pages/home/widgets/city_list/cubit/city_list_cubit.dart';
+import 'package:weather_app/pages/home/widgets/city_list/widgets/favorite_city.dart';
 import 'package:weather_app/pages/home/widgets/home_header.dart';
 import 'package:weather_app/pages/home/widgets/home_search_bar.dart';
-import 'package:weather_app/pages/home/widgets/weather_card/weather_card.dart';
-import 'package:weather_app/pages/home/widgets/weather_card/weather_card_skeleton.dart';
-import 'package:weather_app/router/router.dart';
 import 'package:weather_app/theme/colors.dart';
-import 'package:weather_app/utils/utils.dart';
 
 import '../../utils/localizations.dart';
 import '../../widgets/debounce.dart';
-import 'widgets/city_list/cubit/city_list_cubit.dart';
+import 'widgets/city_list/widgets/city_search_results.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -104,214 +99,22 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                                 style: Theme.of(context).textTheme.headlineSmall,
                                               ),
                                               const SizedBox(height: 15),
-                                              state.isLoading
-                                                  ? const WeatherCardSkeleton()
-                                                  : state.favoriteCityMeta == null
-                                                      ? Padding(
-                                                          padding: const EdgeInsets.symmetric(
-                                                              vertical: 40),
-                                                          child: Center(
-                                                            child: Text(
-                                                              context.localizations.noCitySelected,
-                                                              style: Theme.of(context)
-                                                                  .textTheme
-                                                                  .bodyMedium,
-                                                            ),
-                                                          ),
-                                                        )
-                                                      : Row(
-                                                          children: [
-                                                            Expanded(
-                                                              child: WeatherCard(
-                                                                isFavorite: true,
-                                                                isEditMode: state.isEditMode,
-                                                                city: state.favoriteCityMeta
-                                                                        ?.location.name ??
-                                                                    '',
-                                                                time: getUserFriendlyTime(
-                                                                    dateTime: state.favoriteCityMeta
-                                                                            ?.location.localTime ??
-                                                                        ''),
-                                                                degrees: state.favoriteCityMeta
-                                                                        ?.current.tempF
-                                                                        .toStringAsFixed(0) ??
-                                                                    '',
-                                                                forecast: state.favoriteCityMeta
-                                                                        ?.current.condition.text ??
-                                                                    '',
-                                                                iconAsset: state.favoriteCityMeta
-                                                                        ?.current.condition.icon ??
-                                                                    '',
-                                                                onPressed: () async {
-                                                                  router.pushNamed(
-                                                                      CityForecast.name,
-                                                                      pathParameters: {
-                                                                        'city': state
-                                                                            .favoriteCityMeta!
-                                                                            .location
-                                                                            .name
-                                                                      });
-                                                                },
-                                                              ),
-                                                            ),
-                                                            if (state.isEditMode)
-                                                              Padding(
-                                                                padding: const EdgeInsets.symmetric(
-                                                                    horizontal: 15.0),
-                                                                child: ActionIcon(
-                                                                  icon: Icons.remove,
-                                                                  onPressed: () => context
-                                                                      .read<CityListCubit>()
-                                                                      .removeFavoriteCity(),
-                                                                ),
-                                                              ),
-                                                          ],
-                                                        ),
+                                              FavoriteCity(
+                                                  isLoading: state.isLoading,
+                                                  isEditMode: state.isEditMode,
+                                                  favoriteCity: state.favoriteCityMeta),
                                               const SizedBox(height: 30),
                                               Text(
                                                 context.localizations.yourFavorites,
                                                 style: Theme.of(context).textTheme.headlineSmall,
                                               ),
                                               const SizedBox(height: 15),
-                                              Transform.translate(
-                                                offset: Offset(
-                                                    0, -25 + 25 * _animationController.value),
-                                                child: AnimatedOpacity(
-                                                  opacity: 1 * _animationController.value,
-                                                  duration: const Duration(milliseconds: 25),
-                                                  child: state.isLoading
-                                                      ? Wrap(
-                                                          runSpacing: 12,
-                                                          children: List.generate(7,
-                                                              (i) => const WeatherCardSkeleton()),
-                                                        )
-                                                      : state.favoritesMeta.isEmpty
-                                                          ? Padding(
-                                                              padding:
-                                                                  const EdgeInsets.only(top: 100),
-                                                              child: Center(
-                                                                child: Text(
-                                                                  context.localizations
-                                                                      .noFavoritesAdded,
-                                                                  style: Theme.of(context)
-                                                                      .textTheme
-                                                                      .bodyMedium,
-                                                                ),
-                                                              ),
-                                                            )
-                                                          : Wrap(
-                                                              runSpacing: 12,
-                                                              children: List.generate(
-                                                                state.favoritesMeta.length,
-                                                                (i) => Row(
-                                                                  children: [
-                                                                    Expanded(
-                                                                      child: WeatherCard(
-                                                                        isEditMode:
-                                                                            state.isEditMode,
-                                                                        city: state.favoritesMeta
-                                                                            .elementAt(i)
-                                                                            .location
-                                                                            .name,
-                                                                        time: getUserFriendlyTime(
-                                                                            dateTime: state
-                                                                                .favoritesMeta
-                                                                                .elementAt(i)
-                                                                                .location
-                                                                                .localTime),
-                                                                        degrees: state.favoritesMeta
-                                                                            .elementAt(i)
-                                                                            .current
-                                                                            .tempF
-                                                                            .toStringAsFixed(0),
-                                                                        forecast: state
-                                                                            .favoritesMeta
-                                                                            .elementAt(i)
-                                                                            .current
-                                                                            .condition
-                                                                            .text,
-                                                                        fontColor:
-                                                                            WeatherColors.white,
-                                                                        backgroundColor:
-                                                                            WeatherColors.ev1,
-                                                                        iconAsset: state
-                                                                            .favoritesMeta
-                                                                            .elementAt(i)
-                                                                            .current
-                                                                            .condition
-                                                                            .icon,
-                                                                        onPressed: () async {
-                                                                          router.pushNamed(
-                                                                              CityForecast.name,
-                                                                              pathParameters: {
-                                                                                'city': state
-                                                                                    .favoritesMeta
-                                                                                    .elementAt(i)
-                                                                                    .location
-                                                                                    .name
-                                                                              });
-                                                                        },
-                                                                      ),
-                                                                    ),
-                                                                    if (state.isEditMode)
-                                                                      Padding(
-                                                                        padding: const EdgeInsets
-                                                                            .symmetric(
-                                                                            horizontal: 15.0),
-                                                                        child: Wrap(
-                                                                          crossAxisAlignment:
-                                                                              WrapCrossAlignment
-                                                                                  .center,
-                                                                          spacing: 25,
-                                                                          children: [
-                                                                            ActionIcon(
-                                                                              onPressed: () async {
-                                                                                Future.wait([
-                                                                                  context
-                                                                                      .read<
-                                                                                          CityListCubit>()
-                                                                                      .removeFromFavorites(
-                                                                                          city: state
-                                                                                              .favorites
-                                                                                              .elementAt(
-                                                                                                  i)),
-                                                                                  HapticFeedback
-                                                                                      .mediumImpact()
-                                                                                ]);
-                                                                              },
-                                                                              icon: Icons.remove,
-                                                                            ),
-                                                                            ActionIcon(
-                                                                              onPressed: () async {
-                                                                                Future.wait([
-                                                                                  context
-                                                                                      .read<
-                                                                                          CityListCubit>()
-                                                                                      .updateFavoriteCity(
-                                                                                          city: state
-                                                                                              .favoritesMeta
-                                                                                              .elementAt(
-                                                                                                  i)
-                                                                                              .location
-                                                                                              .name),
-                                                                                  HapticFeedback
-                                                                                      .mediumImpact()
-                                                                                ]);
-                                                                              },
-                                                                              icon: Icons.star,
-                                                                              backgroundColor:
-                                                                                  const Color(
-                                                                                      0xFF3F67D8),
-                                                                            ),
-                                                                          ],
-                                                                        ),
-                                                                      )
-                                                                  ],
-                                                                ),
-                                                              ),
-                                                            ),
-                                                ),
-                                              )
+                                              CityList(
+                                                  isLoading: state.isLoading,
+                                                  isEditMode: state.isEditMode,
+                                                  favoritesMeta: state.favoritesMeta,
+                                                  favoritesNames: state.favorites,
+                                                  animationController: _animationController),
                                             ],
                                           ),
                                         ],
@@ -319,7 +122,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                     ),
                                   ),
                                 ),
-                                CityList(
+                                CitySearchResults(
                                   isSearchBarFocused: isSearchBarFocused,
                                   isSearchEmpty: _searchQuery.isEmpty,
                                   onDismissSearchEvent: () {
