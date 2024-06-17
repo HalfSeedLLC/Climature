@@ -1,5 +1,5 @@
-# Climature Weather App
-_*_A simple weather app in Flutter using Bloc for state management and a Weather API for accurate weather data_*_
+# Climature Weather App ☀️ 🌧️ ⛈️ ❄️ 🌤️
+_*_A simple weather app built with Flutter_*_
 
 ### Unit Testing 
 Unit testing is ran using the following command
@@ -18,5 +18,5 @@ Integration testing is ran using the following command
 
 ### License
 
-Copyright © 2017, [Johnathan Hill](https://www.johnbhill.com).
+Copyright © 2024, [Johnathan Hill](https://www.johnbhill.com).
 Released under the [MIT License](LICENSE).
