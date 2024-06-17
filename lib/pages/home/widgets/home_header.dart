@@ -49,14 +49,8 @@ class HomeHeader extends StatelessWidget {
                   HapticFeedback.mediumImpact();
                 },
                 child: isEditMode
-                    ? const Icon(
-                        size: 30,
-                        Icons.cancel_outlined,
-                        color: WeatherColors.white)
-                    : const Icon(
-                        size: 30,
-                        Icons.pending_outlined,
-                        color: WeatherColors.white),
+                    ? const Icon(size: 30, Icons.cancel_outlined, color: WeatherColors.white)
+                    : const Icon(size: 30, Icons.pending_outlined, color: WeatherColors.white),
               )
             ],
           ),

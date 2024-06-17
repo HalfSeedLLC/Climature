@@ -38,13 +38,11 @@ class CityListCubit extends Cubit<CityListState> {
 
   Future<void> getFavoriteCity() async {
     final favoriteCity = preferences?.getString(SharedPreferencesKeys.favoriteCity);
-
     emit(state.copyWith(favoriteCity: favoriteCity));
   }
 
   Future<void> getFavorites() async {
-    final favorites = preferences?.getStringList(SharedPreferencesKeys.favorites);
-
+    final favorites = preferences?.getStringList(SharedPreferencesKeys.favorites) ?? [];
     emit(state.copyWith(favorites: favorites));
   }
 
@@ -61,61 +59,74 @@ class CityListCubit extends Cubit<CityListState> {
   }
 
   Future<void> fetchFavoriteCityMeta() async {
-    if (state.favoriteCity.isNotEmpty) {
+    emit(state.copyWith(
+        favoriteCityMeta: state.favoriteCityMeta.copyWith(requestState: RequestState.loading)));
+
+    try {
       final favoriteCityMeta =
           await weatherRepository.getLocationMetaData(city: state.favoriteCity);
 
-      emit(state.copyWith(favoriteCityMeta: favoriteCityMeta));
+      emit(state.copyWith(
+          favoriteCityMeta:
+              RequestStateWithValue(requestState: RequestState.success, value: favoriteCityMeta)));
+    } catch (e) {
+      emit(state.copyWith(
+          favoriteCityMeta: state.favoriteCityMeta.copyWith(requestState: RequestState.error)));
     }
   }
 
   Future<void> fetchFavoritesMeta() async {
-    final List<WeatherCardData> favoritesMeta = [];
+    emit(state.copyWith(
+        favoritesMeta: state.favoritesMeta.copyWith(requestState: RequestState.loading)));
 
-    for (int i = 0; i < state.favorites.length; i++) {
-      final metaData =
-          await weatherRepository.getLocationMetaData(city: state.favorites.elementAt(i));
+    try {
+      final List<Future<WeatherCardData?>> futures = state.favorites.map((city) {
+        return weatherRepository.getLocationMetaData(city: city);
+      }).toList();
 
-      if (metaData != null) {
-        favoritesMeta.add(metaData);
-      }
+      final List<WeatherCardData?> results = await Future.wait(futures);
+
+      final List<WeatherCardData> favoritesMeta = results.whereType<WeatherCardData>().toList();
+
+      emit(state.copyWith(
+        favoritesMeta:
+            RequestStateWithValue(requestState: RequestState.success, value: favoritesMeta),
+      ));
+    } catch (e) {
+      emit(state.copyWith(
+          favoritesMeta: state.favoritesMeta.copyWith(requestState: RequestState.error)));
     }
-
-    emit(state.copyWith(favoritesMeta: favoritesMeta));
   }
 
   Future<void> updateFavoriteCity({required String city}) async {
     if (city != state.favoriteCity) {
-      final favorites = [state.favoriteCity] + state.favorites;
+      final List<String> favorites = [state.favoriteCity, ...state.favorites];
       favorites.remove(city);
       emit(state.copyWith(favoriteCity: city, favorites: favorites));
 
-      preferences?.setString(SharedPreferencesKeys.favoriteCity, city);
-      preferences?.setStringList(SharedPreferencesKeys.favorites, favorites);
+      await _updatePreferences(city, favorites);
 
-      fetchFavoriteCityMeta();
-      fetchFavoritesMeta();
+      await fetchFavoriteCityMeta();
+      await fetchFavoritesMeta();
     }
   }
 
   Future<void> removeFavoriteCity() async {
-    emit(state.copyWith(favoriteCity: ''));
-    emit(state.copyWith(favoriteCityMeta: null));
+    emit(state.copyWith(favoriteCity: '', favoriteCityMeta: null));
   }
 
   Future<void> removeFromFavorites({required String city}) async {
-    final favorites = state.favorites;
-    favorites.remove(city);
-    fetchFavoritesMeta();
-
-    preferences?.setStringList(SharedPreferencesKeys.favorites, favorites);
-
+    final List<String> favorites = List.from(state.favorites)..remove(city);
     emit(state.copyWith(favorites: favorites));
+
+    await preferences?.setStringList(SharedPreferencesKeys.favorites, favorites);
+
+    await fetchFavoritesMeta();
   }
 
   Future<void> addToFavorites({required String city}) async {
     if (!state.favorites.contains(city) && city != state.favoriteCity) {
-      final favorites = [city] + state.favorites;
+      final List<String> favorites = [city, ...state.favorites];
       emit(state.copyWith(favorites: favorites));
 
       await preferences?.setStringList(SharedPreferencesKeys.favorites, favorites);
@@ -124,7 +135,16 @@ class CityListCubit extends Cubit<CityListState> {
     }
   }
 
+  Future<void> _updatePreferences(String city, List<String> favorites) async {
+    await preferences?.setString(SharedPreferencesKeys.favoriteCity, city);
+    await preferences?.setStringList(SharedPreferencesKeys.favorites, favorites);
+  }
+
   void toggleEditMode() {
     emit(state.copyWith(isEditMode: !state.isEditMode));
+  }
+
+  void clearCitiesSearchResults() {
+    emit(state.copyWith(cities: state.cities.copyWith(value: [])));
   }
 }

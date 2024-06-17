@@ -106,7 +106,11 @@ class WeatherApp extends StatelessWidget {
               fontWeight: FontWeight.w400,
               color: WeatherColors.secondaryFont,
             ),
-            bodySmall: TextStyle(height: 1.25, fontSize: 15, fontWeight: FontWeight.w900, color: WeatherColors.white),
+            bodySmall: TextStyle(
+                height: 1.25,
+                fontSize: 15,
+                fontWeight: FontWeight.w900,
+                color: WeatherColors.white),
           )),
       routerConfig: router,
     );

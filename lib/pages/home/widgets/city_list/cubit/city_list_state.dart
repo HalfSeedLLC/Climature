@@ -3,9 +3,10 @@ part of 'city_list_cubit.dart';
 class CityListState extends Equatable {
   const CityListState({
     this.favoriteCity = 'Los Angeles',
-    this.favoriteCityMeta,
+    this.favoriteCityMeta =
+        const RequestStateWithValue(requestState: RequestState.initial, value: null),
     this.favorites = const ['New York', 'Memphis', 'London'],
-    this.favoritesMeta = const [],
+    this.favoritesMeta = const RequestStateWithValue(requestState: RequestState.initial, value: []),
     this.cities = const RequestStateWithValue(requestState: RequestState.initial, value: []),
     this.isEditMode = false,
     this.isReorderMode = false,
@@ -13,9 +14,9 @@ class CityListState extends Equatable {
   });
 
   final String favoriteCity;
-  final WeatherCardData? favoriteCityMeta;
+  final RequestStateWithValue<WeatherCardData?> favoriteCityMeta;
   final List<String> favorites;
-  final List<WeatherCardData> favoritesMeta;
+  final RequestStateWithValue<List<WeatherCardData>> favoritesMeta;
   final RequestStateWithValue<List<City>> cities;
   final bool isEditMode;
   final bool isReorderMode;
@@ -35,9 +36,9 @@ class CityListState extends Equatable {
 
   CityListState copyWith({
     String? favoriteCity,
-    WeatherCardData? favoriteCityMeta,
+    RequestStateWithValue<WeatherCardData?>? favoriteCityMeta,
     List<String>? favorites,
-    List<WeatherCardData>? favoritesMeta,
+    RequestStateWithValue<List<WeatherCardData>>? favoritesMeta,
     RequestStateWithValue<List<City>>? cities,
     bool? isEditMode,
     bool? isReorderMode,

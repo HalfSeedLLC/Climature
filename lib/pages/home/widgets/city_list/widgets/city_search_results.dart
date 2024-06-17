@@ -59,7 +59,7 @@ class CitySearchResults extends StatelessWidget {
                       )
                     : SingleChildScrollView(
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 10),
+                          padding: const EdgeInsets.symmetric(vertical: 20),
                           child: Wrap(
                             runSpacing: 10,
                             children: List.generate(

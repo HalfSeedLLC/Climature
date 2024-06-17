@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:weather_app/pages/home/home.dart';
 import 'package:weather_app/theme/colors.dart';
+import 'package:weather_app/utils/localizations.dart';
 
 import '../../router/router.dart';
 import '../../widgets/action_button.dart';
@@ -21,8 +22,8 @@ class _LandingState extends State<Landing> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    _animationController = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 800));
+    _animationController =
+        AnimationController(vsync: this, duration: const Duration(milliseconds: 800));
 
     _animationController.forward();
   }
@@ -40,8 +41,7 @@ class _LandingState extends State<Landing> with TickerProviderStateMixin {
                 left: -90,
                 child: DecoratedBox(
                   decoration: BoxDecoration(
-                      color: const Color(0xFF232323),
-                      borderRadius: BorderRadius.circular(800)),
+                      color: const Color(0xFF232323), borderRadius: BorderRadius.circular(800)),
                   child: SizedBox(
                       width: 415,
                       height: 415,
@@ -62,35 +62,30 @@ class _LandingState extends State<Landing> with TickerProviderStateMixin {
                   opacity: 1 * _animationController.value,
                   duration: const Duration(milliseconds: 500),
                   child: Padding(
-                    padding:
-                        const EdgeInsets.only(top: 250, left: 25, right: 25),
+                    padding: const EdgeInsets.only(top: 250, left: 25, right: 25),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text('TRUSTED',
+                        Text(context.localizations.trusted.toUpperCase(),
                             style: Theme.of(context).textTheme.headlineLarge),
-                        Text('WEATHER',
+                        Text(context.localizations.weather.toUpperCase(),
                             textAlign: TextAlign.center,
-                            style: Theme.of(context)
-                                .textTheme
-                                .headlineLarge!
-                                .copyWith(
-                                    background: Paint()
-                                      ..color = Colors.transparent,
-                                    foreground: Paint()
-                                      ..style = PaintingStyle.stroke
-                                      ..strokeWidth = 1
-                                      ..color = WeatherColors.white,
-                                    fontWeight: FontWeight.w500)),
-                        Text('FORECAST',
+                            style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+                                background: Paint()..color = Colors.transparent,
+                                foreground: Paint()
+                                  ..style = PaintingStyle.stroke
+                                  ..strokeWidth = 1
+                                  ..color = WeatherColors.white,
+                                fontWeight: FontWeight.w500)),
+                        Text(context.localizations.forecast.toUpperCase(),
                             style: Theme.of(context).textTheme.headlineLarge),
                         Padding(
                           padding: const EdgeInsets.only(top: 5),
                           child: SizedBox(
                             width: 300,
                             child: Text(
-                              'Get to know your weather maps and radar precipitation forecast',
+                              context.localizations.landingPageMessage,
                               style: Theme.of(context).textTheme.bodyLarge,
                             ),
                           ),
@@ -106,10 +101,9 @@ class _LandingState extends State<Landing> with TickerProviderStateMixin {
             offset: Offset(0, 200 - 200 * _animationController.value),
             child: SafeArea(
               child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+                padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
                 child: ActionButton(
-                  title: 'GET STARTED',
+                  title: context.localizations.getStarted.toUpperCase(),
                   onPressed: () => router.push(Home.route),
                 ),
               ),
