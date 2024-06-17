@@ -22,7 +22,7 @@ class WeatherApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'Weather App',
+      title: 'Climature',
       localizationsDelegates: ClimatureLocalizations.localizationsDelegates,
       supportedLocales: ClimatureLocalizations.supportedLocales,
       theme: ThemeData(
