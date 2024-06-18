@@ -1,4 +1,4 @@
-# Climature Weather App ☀️ 🌧️ ⛈️ ❄️ 🌤️
+# Climature ☀️ 🌧️ ⛈️ ❄️ 🌤️
 
 ![144-modified](https://github.com/JohnathanHill/WeatherApp/assets/18708877/4da13c67-0378-45c1-be01-b6fa06a4dfcf)
 
