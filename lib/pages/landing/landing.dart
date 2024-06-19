@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app/pages/home/home.dart';
 import 'package:weather_app/theme/colors.dart';
 import 'package:weather_app/utils/localizations.dart';
 
+import '../../logic/initializer_cubit.dart';
 import '../../router/router.dart';
 import '../../widgets/action_button.dart';
 
@@ -11,7 +13,7 @@ class Landing extends StatefulWidget {
     Key? key,
   }) : super(key: key);
 
-  static const route = '/';
+  static const route = '/landing';
   @override
   State<Landing> createState() => _LandingState();
 }
@@ -26,6 +28,12 @@ class _LandingState extends State<Landing> with TickerProviderStateMixin {
         AnimationController(vsync: this, duration: const Duration(milliseconds: 800));
 
     _animationController.forward();
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
   }
 
   @override
@@ -103,9 +111,11 @@ class _LandingState extends State<Landing> with TickerProviderStateMixin {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
                 child: ActionButton(
-                  title: context.localizations.getStarted.toUpperCase(),
-                  onPressed: () => router.push(Home.route),
-                ),
+                    title: context.localizations.getStarted.toUpperCase(),
+                    onPressed: () {
+                      router.push(Home.route);
+                      context.read<InitializerCubit>().setIsFirstLoad(isFirstLoad: false);
+                    }),
               ),
             ),
           ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:weather_app/pages/launchscreen/launchscreen.dart';
 
 import '../pages/city_forecast/city_forecast.dart';
 import '../pages/city_forecast/cubit/forecast_cubit.dart';
@@ -24,8 +25,7 @@ CustomTransitionPage buildPageWithDefaultTransition<T>({
         return Stack(
           children: [
             ColoredBox(
-                color: Colors.black,
-                child: FadeTransition(opacity: animation, child: child)),
+                color: Colors.black, child: FadeTransition(opacity: animation, child: child)),
           ],
         );
       });
@@ -35,9 +35,16 @@ final GoRouter router = GoRouter(
   initialLocation: '/',
   routes: [
     GoRoute(
+      path: LaunchScreen.route,
+      pageBuilder: (context, state) => buildPageWithDefaultTransition(
+        context: context,
+        state: state,
+        child: const LaunchScreen(),
+      ),
+    ),
+    GoRoute(
       path: Landing.route,
-      pageBuilder: (BuildContext context, GoRouterState state) =>
-          buildPageWithDefaultTransition(
+      pageBuilder: (BuildContext context, GoRouterState state) => buildPageWithDefaultTransition(
         context: context,
         state: state,
         child: const Landing(),
@@ -50,8 +57,7 @@ final GoRouter router = GoRouter(
         state: state,
         child: BlocProvider(
           create: (context) => CityListCubit(
-            weatherRepository:
-                RepositoryProvider.of<WeatherRepository>(context),
+            weatherRepository: RepositoryProvider.of<WeatherRepository>(context),
           ),
           child: const Home(),
         ),
@@ -67,8 +73,7 @@ final GoRouter router = GoRouter(
           child: BlocProvider(
             create: (context) => ForecastCubit(
               city: state.pathParameters["city"] ?? '',
-              weatherRepository:
-                  RepositoryProvider.of<WeatherRepository>(context),
+              weatherRepository: RepositoryProvider.of<WeatherRepository>(context),
             ),
             child: const CityForecast(),
           ),

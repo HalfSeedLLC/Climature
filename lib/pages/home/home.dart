@@ -54,6 +54,13 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
   }
 
   @override
+  void dispose() {
+    _animationController.dispose();
+    _debouncer.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) => BlocBuilder<CityListCubit, CityListState>(
         builder: (blocContext, state) {
           return AnimatedBuilder(

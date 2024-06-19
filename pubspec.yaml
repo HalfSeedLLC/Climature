@@ -21,6 +21,8 @@ dependencies:
   video_player: ^2.8.2
   flutter_localizations:
     sdk: flutter
+  animated_splash_screen: ^1.3.0
+  lottie: ^3.1.2
 
 dev_dependencies:
   flutter_test:
@@ -37,6 +39,7 @@ flutter:
   assets:
     - .env
     - assets/images/
+    - assets/lottie/
     - assets/weather/videos/
     - assets/weather/icons/day/
     - assets/weather/icons/night/

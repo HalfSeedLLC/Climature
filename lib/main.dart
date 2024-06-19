@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_gen/gen_l10n/climature_localizations.dart';
@@ -6,13 +7,30 @@ import 'package:weather_app/respository/weather_repository.dart';
 import 'package:weather_app/router/router.dart';
 import 'package:weather_app/theme/colors.dart';
 
+import 'logic/initializer_cubit.dart';
+
 void main() async {
+  await _initializeApp();
+}
+
+Future<void> _initializeApp() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
   await dotenv.load(fileName: ".env");
   final weatherRepository = WeatherRepository();
+  final initializerCubit = InitializerCubit();
 
-  runApp(RepositoryProvider(
-    create: (context) => weatherRepository,
-    child: const WeatherApp(),
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+
+  runApp(BlocProvider(
+    create: (context) => initializerCubit,
+    child: RepositoryProvider(
+      create: (context) => weatherRepository,
+      child: const WeatherApp(),
+    ),
   ));
 }
 
