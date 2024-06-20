@@ -38,7 +38,9 @@ class HomeHeader extends StatelessWidget {
                     height: 10,
                   ),
                   Text(
-                    context.localizations.currentConditions(currentCondition),
+                    currentCondition.isEmpty
+                        ? context.localizations.addYourCityMessage
+                        : context.localizations.currentConditions(currentCondition),
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
                 ],

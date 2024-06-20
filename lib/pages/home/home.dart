@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather_app/models/weather_card_data.dart';
 import 'package:weather_app/pages/home/widgets/city_list/city_list.dart';
 import 'package:weather_app/pages/home/widgets/city_list/cubit/city_list_cubit.dart';
 import 'package:weather_app/pages/home/widgets/home_header.dart';
 import 'package:weather_app/pages/home/widgets/home_search_bar.dart';
 import 'package:weather_app/theme/colors.dart';
+import 'package:weather_app/utils/utils.dart';
 
 import '../../utils/debounce.dart';
 import '../../utils/localizations.dart';
@@ -66,6 +68,11 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
           return AnimatedBuilder(
               animation: _animationController,
               builder: (context, child) {
+                final WeatherCardData? favoriteCityData =
+                    state.favoritesData.value.firstWhereOrNull(
+                  (data) => data.location.name == state.favoriteCity,
+                );
+
                 return SafeArea(
                   bottom: false,
                   child: Padding(
@@ -77,8 +84,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                           Wrap(
                             children: [
                               HomeHeader(
-                                currentCondition:
-                                    state.favoriteCityMeta.value?.current.condition.text ?? '',
+                                currentCondition: favoriteCityData?.current.condition.text ?? '',
                                 isSearchBarFocused: isSearchBarFocused,
                                 isEditMode: state.isEditMode,
                               ),
@@ -110,7 +116,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                               FavoriteCity(
                                                   isLoading: state.isLoading,
                                                   isEditMode: state.isEditMode,
-                                                  favoriteCity: state.favoriteCityMeta.value),
+                                                  favoriteCity: favoriteCityData),
                                               const SizedBox(height: 30),
                                               Text(
                                                 context.localizations.yourFavorites,
@@ -120,7 +126,10 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                               CityList(
                                                   isLoading: state.isLoading,
                                                   isEditMode: state.isEditMode,
-                                                  favoritesMeta: state.favoritesMeta.value,
+                                                  favoritesData: state.favoritesData.value
+                                                      .where((city) =>
+                                                          city.location.name != state.favoriteCity)
+                                                      .toList(),
                                                   favoritesNames: state.favorites,
                                                   animationController: _animationController),
                                             ],

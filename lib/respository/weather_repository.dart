@@ -1,11 +1,21 @@
 import 'package:weather_app/provider/weather_provider.dart';
 
+import '../database/database.dart';
 import '../models/city.dart';
 import '../models/forecast.dart';
 import '../models/weather_card_data.dart';
 
 class WeatherRepository {
+  WeatherRepository() {
+    _initialize();
+  }
+
   final _provider = WeatherProvider();
+  late final ClimatureDatabase database;
+
+  Future<void> _initialize() async {
+    database = await ClimatureDatabase.create();
+  }
 
   Future<Forecast?> getForecast({
     required String city,
