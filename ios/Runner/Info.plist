@@ -6,7 +6,7 @@
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
-			<key>api.weather.com</key>
+			<key>api.weatherapi.com</key>
 			<dict>
 				<key>NSIncludesSubdomains</key>
 				<true/>
