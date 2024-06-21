@@ -9,6 +9,7 @@
         "dotenv",
         "localstorage",
         "LTWH",
+        "objectbox",
         "respository",
         "sublist",
         "unfocus",

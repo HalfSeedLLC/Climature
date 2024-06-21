@@ -7,6 +7,7 @@
             }
         }
     },
+    "addYourCityMessage": "Add your city for updates",
     "aqi": "AQI",
     "cancel": "Cancel",
     "city": "City",
@@ -32,5 +33,5 @@
     "weather": "Weather",
     "wind": "Wind",
     "yourCity": "Your City",
-    "yourFavorites": "Your favorites"
+    "yourFavorites": "Your Favorites"
 }

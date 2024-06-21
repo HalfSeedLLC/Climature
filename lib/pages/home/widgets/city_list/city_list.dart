@@ -16,7 +16,7 @@ class CityList extends StatelessWidget {
   const CityList({
     required this.isLoading,
     required this.isEditMode,
-    required this.favoritesMeta,
+    required this.favoritesData,
     required this.favoritesNames,
     required this.animationController,
     Key? key,
@@ -24,7 +24,7 @@ class CityList extends StatelessWidget {
 
   final bool isLoading;
   final bool isEditMode;
-  final List<WeatherCardData> favoritesMeta;
+  final List<WeatherCardData> favoritesData;
   final List<String> favoritesNames;
   final AnimationController animationController;
 
@@ -39,7 +39,7 @@ class CityList extends StatelessWidget {
                   runSpacing: 12,
                   children: List.generate(7, (i) => const WeatherCardSkeleton()),
                 )
-              : favoritesMeta.isEmpty
+              : favoritesData.isEmpty
                   ? Padding(
                       padding: const EdgeInsets.only(top: 100),
                       child: Center(
@@ -52,24 +52,24 @@ class CityList extends StatelessWidget {
                   : Wrap(
                       runSpacing: 12,
                       children: List.generate(
-                        favoritesMeta.length,
+                        favoritesData.length,
                         (i) => Row(
                           children: [
                             Expanded(
                               child: WeatherCard(
                                 isEditMode: isEditMode,
-                                city: favoritesMeta.elementAt(i).location.name,
+                                city: favoritesData.elementAt(i).location.name,
                                 time: getUserFriendlyTime(
-                                    dateTime: favoritesMeta.elementAt(i).location.localTime),
+                                    dateTime: favoritesData.elementAt(i).location.localTime),
                                 degrees:
-                                    favoritesMeta.elementAt(i).current.tempF.toStringAsFixed(0),
-                                forecast: favoritesMeta.elementAt(i).current.condition.text,
+                                    favoritesData.elementAt(i).current.tempF.toStringAsFixed(0),
+                                forecast: favoritesData.elementAt(i).current.condition.text,
                                 fontColor: WeatherColors.white,
                                 backgroundColor: WeatherColors.ev1,
-                                iconAsset: favoritesMeta.elementAt(i).current.condition.icon,
+                                iconAsset: favoritesData.elementAt(i).current.condition.icon,
                                 onPressed: () async {
                                   router.pushNamed(CityForecast.name, pathParameters: {
-                                    'city': favoritesMeta.elementAt(i).location.name
+                                    'city': favoritesData.elementAt(i).location.name
                                   });
                                 },
                               ),
@@ -95,7 +95,7 @@ class CityList extends StatelessWidget {
                                       onPressed: () async {
                                         Future.wait([
                                           context.read<CityListCubit>().updateFavoriteCity(
-                                              city: favoritesMeta.elementAt(i).location.name),
+                                              city: favoritesData.elementAt(i).location.name),
                                           HapticFeedback.mediumImpact()
                                         ]);
                                       },
