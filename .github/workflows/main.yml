@@ -6,57 +6,117 @@ on:
       - main
 
 jobs:
- build:
-   runs-on: macos-latest
-   env:
-     APP_STORE_CONNECT_ISSUER_ID: ${{ vars.APP_STORE_CONNECT_ISSUER_ID }}
-     APP_STORE_CONNECT_KEY_IDENTIFIER: ${{ vars.APP_STORE_CONNECT_KEY_IDENTIFIER }}
-     APP_STORE_CONNECT_PRIVATE_KEY: ${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY }}
-     DIST_CERTIFICATE: ${{ secrets.DIST_CERTIFICATE }}
-     DIST_CERTIFICATE_PASSWORD: ${{ secrets.DIST_CERTIFICATE_PASSWORD }}
-     DIST_PROFILE: ${{ secrets.DIST_PROFILE }}
-     APP_STORE_APP_ID: ${{ vars.APP_STORE_APP_ID }}
+  version-check:
+    runs-on: macos-latest
+    outputs:
+      current_version: ${{ steps.extract_version.outputs.version }}
+      previous_version: ${{ steps.get_previous_version.outputs.version }}
+      build_number: ${{ steps.get_build_number.outputs.build_number }}
+    steps:
+      - uses: actions/checkout@v4
 
-   steps:
-   - uses: actions/checkout@v4
+      - name: Extract version from pubspec.yaml
+        id: extract_version
+        run: |
+          version=$(grep '^version:' pubspec.yaml | awk '{print $2}' | cut -d '+' -f 1)
+          build_number=$(grep '^version:' pubspec.yaml | awk '{print $2}' | cut -d '+' -f 2)
+          echo "::set-output name=version::$version"
+          echo "::set-output name=build_number::$build_number"
 
-   - name: Set up Flutter
-     uses: subosito/flutter-action@v2
-     with:
-       channel: 'stable'
+      - name: Get previous version
+        id: get_previous_version
+        run: |
+          if [ -f previous_version.txt ]; then
+            previous_version=$(cat previous_version.txt)
+          else
+            previous_version="0.0.0"
+          fi
+          echo "::set-output name=version::$previous_version"
 
-   - name: Install Codemagic CLI tools
-     run: pip install codemagic-cli-tools
+      - name: Get new build number
+        id: get_build_number
+        run: |
+          if [ -f build_number.txt ]; then
+            build_number=$(cat build_number.txt)
+            build_number=$((build_number + 1))
+          else
+            build_number=1
+          fi
+          echo "::set-output name=build_number::$build_number"
+          echo $build_number > build_number.txt
 
-   - name: Set up keychain
-     run: keychain initialize
+      - name: Save current version
+        run: echo "${{ steps.extract_version.outputs.version }}" > previous_version.txt
 
-   - name: Set up Provisioning profiles
-     run: |
-       PROFILES_HOME="$HOME/Library/MobileDevice/Provisioning Profiles"
-       mkdir -p "$PROFILES_HOME"
-       PROFILE_PATH="$(mktemp "$PROFILES_HOME"/$(uuidgen).mobileprovision)"
-       echo ${DIST_PROFILE} | base64 --decode > "$PROFILE_PATH"
-       echo "Saved provisioning profile $PROFILE_PATH"            
-   - name: Set up signing certificate
-     run: |
-       echo $DIST_CERTIFICATE | base64 --decode > /tmp/certificate.p12
-       keychain add-certificates --certificate /tmp/certificate.p12 --certificate-password $DIST_CERTIFICATE_PASSWORD       
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: version_artifacts
+          path: |
+            previous_version.txt
+            build_number.txt
 
-   - name: Set up code signing settings on Xcode project
-     run: xcode-project use-profiles
+  build:
+    runs-on: macos-latest
+    needs: version-check
+    env:
+      APP_STORE_CONNECT_ISSUER_ID: ${{ vars.APP_STORE_CONNECT_ISSUER_ID }}
+      APP_STORE_CONNECT_KEY_IDENTIFIER: ${{ vars.APP_STORE_CONNECT_KEY_IDENTIFIER }}
+      APP_STORE_CONNECT_PRIVATE_KEY: ${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY }}
+      DIST_CERTIFICATE: ${{ secrets.DIST_CERTIFICATE }}
+      DIST_CERTIFICATE_PASSWORD: ${{ secrets.DIST_CERTIFICATE_PASSWORD }}
+      DIST_PROFILE: ${{ secrets.DIST_PROFILE }}
+      APP_STORE_APP_ID: ${{ vars.APP_STORE_APP_ID }}
+      CURRENT_VERSION: ${{ needs.version-check.outputs.current_version }}
+      PREVIOUS_VERSION: ${{ needs.version-check.outputs.previous_version }}
+      BUILD_NUMBER: ${{ needs.version-check.outputs.build_number }}
+    if: ${{ env.CURRENT_VERSION != env.PREVIOUS_VERSION }}
+    steps:
+      - uses: actions/checkout@v4
 
-   - name: Increment build number
-     run: |
-       cd ios
-       agvtool new-version -all $(($(app-store-connect get-latest-testflight-build-number "$APP_STORE_APP_ID") + 1))       
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
 
-   - name: Build ipa for distribution
-     run: |
-              flutter build ipa --release --export-options-plist=$HOME/export_options.plist
+      - name: Install Codemagic CLI tools
+        run: pip install codemagic-cli-tools
 
-   - name: Publish the app to App Store Connect
-     run: |
-       APP_FILE=$(find $(pwd) -name "*.ipa")
-       app-store-connect publish \
-       --path "$APP_FILE"       
+      - name: Set up keychain
+        run: keychain initialize
+
+      - name: Set up Provisioning profiles
+        run: |
+          PROFILES_HOME="$HOME/Library/MobileDevice/Provisioning Profiles"
+          mkdir -p "$PROFILES_HOME"
+          PROFILE_PATH="$(mktemp "$PROFILES_HOME"/$(uuidgen).mobileprovision)"
+          echo ${DIST_PROFILE} | base64 --decode > "$PROFILE_PATH"
+          echo "Saved provisioning profile $PROFILE_PATH"
+
+      - name: Set up signing certificate
+        run: |
+          echo $DIST_CERTIFICATE | base64 --decode > /tmp/certificate.p12
+          keychain add-certificates --certificate /tmp/certificate.p12 --certificate-password $DIST_CERTIFICATE_PASSWORD
+
+      - name: Set up code signing settings on Xcode project
+        run: xcode-project use-profiles
+
+      - name: Create .env file
+        run: |
+          touch .env
+          echo WEATHER_API_KEY=${{ secrets.WEATHER_API_KEY }} >> .env
+          cat .env
+
+      - name: Set version and build number
+        run: |
+          cd ios
+          agvtool new-marketing-version ${{ env.CURRENT_VERSION }}
+          agvtool new-version -all ${{ env.BUILD_NUMBER }}
+
+      - name: Build ipa for distribution
+        run: flutter build ipa --release --export-options-plist=$HOME/export_options.plist
+
+      - name: Publish the app to App Store Connect
+        run: |
+          APP_FILE=$(find $(pwd) -name "*.ipa")
+          app-store-connect publish --path "$APP_FILE"
