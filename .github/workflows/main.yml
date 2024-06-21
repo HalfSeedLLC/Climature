@@ -67,10 +67,7 @@ jobs:
       DIST_CERTIFICATE_PASSWORD: ${{ secrets.DIST_CERTIFICATE_PASSWORD }}
       DIST_PROFILE: ${{ secrets.DIST_PROFILE }}
       APP_STORE_APP_ID: ${{ vars.APP_STORE_APP_ID }}
-      CURRENT_VERSION: ${{ needs.version-check.outputs.current_version }}
-      PREVIOUS_VERSION: ${{ needs.version-check.outputs.previous_version }}
-      BUILD_NUMBER: ${{ needs.version-check.outputs.build_number }}
-    if: ${{ env.CURRENT_VERSION != env.PREVIOUS_VERSION }}
+    if: ${{ needs.version-check.outputs.current_version != needs.version-check.outputs.previous_version }}
     steps:
       - uses: actions/checkout@v4
 
@@ -104,14 +101,15 @@ jobs:
       - name: Create .env file
         run: |
           touch .env
-          echo WEATHER_API_KEY=${{ secrets.WEATHER_API_KEY }} >> .env
+          echo API_ENDPOINT="https://xxx.execute-api.us-west-2.amazonaws.com" >> .env
+          echo API_KEY=${{ secrets.API_KEY }} >> .env
           cat .env
 
       - name: Set version and build number
         run: |
           cd ios
-          agvtool new-marketing-version ${{ env.CURRENT_VERSION }}
-          agvtool new-version -all ${{ env.BUILD_NUMBER }}
+          agvtool new-marketing-version ${{ needs.version-check.outputs.current_version }}
+          agvtool new-version -all ${{ needs.version-check.outputs.build_number }}
 
       - name: Build ipa for distribution
         run: flutter build ipa --release --export-options-plist=$HOME/export_options.plist
