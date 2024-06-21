@@ -12,7 +12,7 @@ class WeatherProvider {
 
   Uri _buildUri({required String api, required String querySuffix}) {
     return Uri.parse(
-        'http://api.weatherapi.com/v1/$api.json?key=${dotenv.env["WEATHER_API_KEY"]!}$querySuffix');
+        'https://api.weatherapi.com/v1/$api.json?key=${dotenv.env["WEATHER_API_KEY"]!}$querySuffix');
   }
 
   Future<Forecast?> getForecast({
