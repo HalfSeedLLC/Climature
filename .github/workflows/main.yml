@@ -9,8 +9,8 @@ jobs:
   version-check:
     runs-on: macos-latest
     outputs:
-      current_version: ${{ steps.extract_version.outputs.version }}
-      previous_version: ${{ steps.get_previous_version.outputs.version }}
+      current_version: ${{ steps.extract_version.outputs.current_version }}
+      previous_version: ${{ steps.get_previous_version.outputs.previous_version }}
       build_number: ${{ steps.get_build_number.outputs.build_number }}
     steps:
       - uses: actions/checkout@v4
@@ -29,14 +29,13 @@ jobs:
         run: |
           version=$(grep '^version:' pubspec.yaml | awk '{print $2}' | cut -d '+' -f 1)
           build_number=$(grep '^version:' pubspec.yaml | awk '{print $2}' | cut -d '+' -f 2)
-          echo "version=$version" >> $GITHUB_ENV
+          echo "current_version=$version" >> $GITHUB_ENV
           echo "build_number=$build_number" >> $GITHUB_ENV
-          echo "version=$version" >> $GITHUB_OUTPUT
+          echo "current_version=$version" >> $GITHUB_OUTPUT
           echo "build_number=$build_number" >> $GITHUB_OUTPUT
 
       - name: Get previous version
         id: get_previous_version
-        continue-on-error: true
         run: |
           if [ -f previous_version.txt ]; then
             previous_version=$(cat previous_version.txt)
@@ -48,7 +47,6 @@ jobs:
 
       - name: Get new build number
         id: get_build_number
-        continue-on-error: true
         run: |
           if [ -f build_number.txt ]; then
             build_number=$(cat build_number.txt)
@@ -61,7 +59,7 @@ jobs:
           echo $build_number > build_number.txt
 
       - name: Save current version
-        run: echo "${{ steps.extract_version.outputs.version }}" > previous_version.txt
+        run: echo "${{ steps.extract_version.outputs.current_version }}" > previous_version.txt
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
@@ -76,13 +74,13 @@ jobs:
     needs: version-check
     if: needs.version-check.outputs.current_version != needs.version-check.outputs.previous_version
     env:
-      APP_STORE_CONNECT_ISSUER_ID: ${{ vars.APP_STORE_CONNECT_ISSUER_ID }}
-      APP_STORE_CONNECT_KEY_IDENTIFIER: ${{ vars.APP_STORE_CONNECT_KEY_IDENTIFIER }}
+      APP_STORE_CONNECT_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+      APP_STORE_CONNECT_KEY_IDENTIFIER: ${{ secrets.APP_STORE_CONNECT_KEY_IDENTIFIER }}
       APP_STORE_CONNECT_PRIVATE_KEY: ${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY }}
       DIST_CERTIFICATE: ${{ secrets.DIST_CERTIFICATE }}
       DIST_CERTIFICATE_PASSWORD: ${{ secrets.DIST_CERTIFICATE_PASSWORD }}
       DIST_PROFILE: ${{ secrets.DIST_PROFILE }}
-      APP_STORE_APP_ID: ${{ vars.APP_STORE_APP_ID }}
+      APP_STORE_APP_ID: ${{ secrets.APP_STORE_APP_ID }}
     steps:
       - uses: actions/checkout@v4
 
