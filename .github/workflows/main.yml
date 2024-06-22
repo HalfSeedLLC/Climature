@@ -3,7 +3,7 @@ name: Main
 on:
   push:
     branches:
-      - deployment-process
+      - main
 
 jobs:
   version-check:
