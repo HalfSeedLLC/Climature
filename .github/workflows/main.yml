@@ -70,61 +70,61 @@ jobs:
             build_number.txt
 
   deploy-android:
-   runs-on: ubuntu-22.04
-   needs: version-check
-   if: needs.version-check.outputs.current_version != needs.version-check.outputs.previous_version
-   steps:
-     - name: Checkout
-       uses: actions/checkout@v3
+    runs-on: ubuntu-22.04
+    needs: version-check
+    if: ${{ needs.version-check.outputs.current_version != needs.version-check.outputs.previous_version }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
 
-     - name: Install Flutter
-       uses: subosito/flutter-action@v2
-       with:
-         flutter-version: "3.22.2"
-         channel: 'stable'
-         cache: true
+      - name: Install Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.22.2"
+          channel: 'stable'
+          cache: true
 
-     - name: Create .env file
-       run: |
-         touch .env
-         echo WEATHER_API_KEY=${{ secrets.WEATHER_API_KEY }} >> .env
-         cat .env
+      - name: Create .env file
+        run: |
+          touch .env
+          echo WEATHER_API_KEY=${{ secrets.WEATHER_API_KEY }} >> .env
+          cat .env
 
-     - name: Get Flutter Project dependencies
-       run: flutter pub get
+      - name: Get Flutter Project dependencies
+        run: flutter pub get
        
-     - name: Build release app bundle
-       run: flutter build appbundle
+      - name: Build release app bundle
+        run: flutter build appbundle
 
-     - name: Sign App Bundle
-       uses: r0adkll/sign-android-release@v1   
-       id: sign_app
-       with:
-         releaseDirectory: build/app/outputs/bundle/release/
-         signingKeyBase64: ${{ secrets.ANDROID_KEYSTORE_FILE_BASE64 }}
-         alias: ${{ secrets.ANDROID_SIGNING_KEY_ALIAS }}         
-         keyStorePassword: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}             
-         keyPassword: ${{ secrets.ANDROID_SIGNING_KEY_PASSWORD }}
+      - name: Sign App Bundle
+        uses: r0adkll/sign-android-release@v1   
+        id: sign_app
+        with:
+          releaseDirectory: build/app/outputs/bundle/release/
+          signingKeyBase64: ${{ secrets.ANDROID_KEYSTORE_FILE_BASE64 }}
+          alias: ${{ secrets.ANDROID_SIGNING_KEY_ALIAS }}         
+          keyStorePassword: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}             
+          keyPassword: ${{ secrets.ANDROID_SIGNING_KEY_PASSWORD }}
 
-     - name: Upload Signed App Bundle
-       uses: actions/upload-artifact@v3
-       with:
-         name: signed-app-bundle
-         path: ${{steps.sign_app.outputs.signedReleaseFile}}
+      - name: Upload Signed App Bundle
+        uses: actions/upload-artifact@v3
+        with:
+          name: signed-app-bundle
+          path: ${{steps.sign_app.outputs.signedReleaseFile}}
 
-     - name: Upload to Play Store (Internal Testing)
-       uses: r0adkll/upload-google-play@v1.0.18  
-       with:
-        serviceAccountJsonPlainText: ${{ secrets.ANDROID_SERVICE_ACCOUNT_JSON }}
-        packageName: com.halfseed.climature     
-        releaseFiles: ${{steps.sign_app.outputs.signedReleaseFile}}        
-        mappingFile: ./build/app/outputs/mapping/release/mapping.txt
-        track: internal
+      - name: Upload to Play Store (Internal Testing)
+        uses: r0adkll/upload-google-play@v1.0.18  
+        with:
+          serviceAccountJsonPlainText: ${{ secrets.ANDROID_SERVICE_ACCOUNT_JSON }}
+          packageName: com.halfseed.climature     
+          releaseFiles: ${{steps.sign_app.outputs.signedReleaseFile}}        
+          mappingFile: ./build/app/outputs/mapping/release/mapping.txt
+          track: internal
             
   deploy-ios:
     runs-on: macos-latest
     needs: version-check
-    if: needs.version-check.outputs.current_version != needs.version-check.outputs.previous_version
+    if: ${{ needs.version-check.outputs.current_version != needs.version-check.outputs.previous_version }}
     env:
       APP_STORE_CONNECT_ISSUER_ID: ${{ vars.APP_STORE_CONNECT_ISSUER_ID }}
       APP_STORE_CONNECT_KEY_IDENTIFIER: ${{ vars.APP_STORE_CONNECT_KEY_IDENTIFIER }}
@@ -137,10 +137,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Flutter
+      - name: Install Flutter
         uses: subosito/flutter-action@v2
         with:
+          flutter-version: "3.22.2"
           channel: 'stable'
+          cache: true
 
       - name: Install Codemagic CLI tools
         run: pip install codemagic-cli-tools
