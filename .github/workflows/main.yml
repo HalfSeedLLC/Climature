@@ -17,7 +17,7 @@ jobs:
 
       - name: Cache previous version and build number
         id: cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: |
             previous_version.txt
@@ -31,8 +31,8 @@ jobs:
           build_number=$(grep '^version:' pubspec.yaml | awk '{print $2}' | cut -d '+' -f 2)
           echo "version=$version" >> $GITHUB_ENV
           echo "build_number=$build_number" >> $GITHUB_ENV
-          echo "::set-output name=version::$version"
-          echo "::set-output name=build_number::$build_number"
+          echo "version=$version" >> $GITHUB_OUTPUT
+          echo "build_number=$build_number" >> $GITHUB_OUTPUT
 
       - name: Get previous version
         id: get_previous_version
@@ -43,7 +43,7 @@ jobs:
             previous_version="0.0.0"
           fi
           echo "previous_version=$previous_version" >> $GITHUB_ENV
-          echo "::set-output name=version::$previous_version"
+          echo "previous_version=$previous_version" >> $GITHUB_OUTPUT
 
       - name: Get new build number
         id: get_build_number
@@ -55,14 +55,14 @@ jobs:
             build_number=1
           fi
           echo "build_number=$build_number" >> $GITHUB_ENV
-          echo "::set-output name=build_number::$build_number"
+          echo "build_number=$build_number" >> $GITHUB_OUTPUT
           echo $build_number > build_number.txt
 
       - name: Save current version
         run: echo "${{ steps.extract_version.outputs.version }}" > previous_version.txt
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: version_artifacts
           path: |
