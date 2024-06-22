@@ -68,8 +68,38 @@ jobs:
           path: |
             previous_version.txt
             build_number.txt
+
+  build_android:
+   runs-on: ubuntu-22.04
+   steps:
+     - name: Checkout
+       uses: actions/checkout@v3
+
+     - name: Install Flutter
+       uses: subosito/flutter-action@v2
+       with:
+         # Define which stable flutter version should be used
+         flutter-version: "3.7.0"
+         channel: 'stable'
+         cache: true
+
+     - name: Get Flutter Project dependencies
+       run: flutter pub get
+       
+     - name: Build release app bundle
+       run: flutter build appbundle
+
+     - name: Sign App Bundle
+       uses: r0adkll/sign-android-release@v1   
+       id: sign_app
+       with:
+         releaseDirectory: build/app/outputs/bundle/release/
+         signingKeyBase64: ${{ secrets.ANDROID_KEYSTORE_FILE_BASE64 }}
+         alias: ${{ secrets.ANDROID_SIGNING_KEY_ALIAS }}         
+         keyStorePassword: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}             
+         keyPassword: ${{ secrets.ANDROID_SIGNING_KEY_PASSWORD }}
             
-  build:
+  deploy_ios:
     runs-on: macos-latest
     needs: version-check
     if: needs.version-check.outputs.current_version != needs.version-check.outputs.previous_version
