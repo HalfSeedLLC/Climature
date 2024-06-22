@@ -69,7 +69,7 @@ jobs:
             previous_version.txt
             build_number.txt
 
-  build_android:
+  deploy-android:
    runs-on: ubuntu-22.04
    needs: version-check
    if: needs.version-check.outputs.current_version != needs.version-check.outputs.previous_version
@@ -111,8 +111,17 @@ jobs:
        with:
          name: signed-app-bundle
          path: ${{steps.sign_app.outputs.signedReleaseFile}}
+
+     - name: Upload to Play Store (Internal Testing)
+       uses: r0adkll/upload-google-play@v1.0.18  
+       with:
+        serviceAccountJsonPlainText: ${{ secrets.ANDROID_SERVICE_ACCOUNT_JSON }}
+        packageName: com.halfseed.climature.test     
+        releaseFiles: ${{steps.sign_app.outputs.signedReleaseFile}}        
+        mappingFile: ./build/app/outputs/mapping/release/mapping.txt
+        track: internal
             
-  deploy_ios:
+  deploy-ios:
     runs-on: macos-latest
     needs: version-check
     if: needs.version-check.outputs.current_version != needs.version-check.outputs.previous_version
