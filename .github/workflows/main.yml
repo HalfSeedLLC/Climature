@@ -7,82 +7,43 @@ on:
 
 jobs:
   version-check:
-    runs-on: macos-latest
+    name: Version Check
+    runs-on: ubuntu-latest    
     outputs:
-      current_version: ${{ steps.extract_version.outputs.current_version }}
-      previous_version: ${{ steps.get_previous_version.outputs.previous_version }}
-      build_number: ${{ steps.get_build_number.outputs.build_number }}
+      changed: ${{ steps.check.outputs.changed }}
+      version: ${{ steps.check.outputs.version }}
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v3
 
-      - name: Cache previous version and build number
-        id: cache
-        uses: actions/cache@v4
+      - name: Use Node.js v16
+        uses: actions/setup-node@v3
         with:
-          path: |
-            previous_version.txt
-            build_number.txt
-          key: version-cache
+          node-version: 16
 
-      - name: Extract version from pubspec.yaml
-        id: extract_version
-        run: |
-          version=$(grep '^version:' pubspec.yaml | awk '{print $2}' | cut -d '+' -f 1)
-          build_number=$(grep '^version:' pubspec.yaml | awk '{print $2}' | cut -d '+' -f 2)
-          echo "current_version=$version" >> $GITHUB_ENV
-          echo "build_number=$build_number" >> $GITHUB_ENV
-          echo "current_version=$version" >> $GITHUB_OUTPUT
-          echo "build_number=$build_number" >> $GITHUB_OUTPUT
-
-      - name: Get previous version
-        id: get_previous_version
-        run: |
-          if [ -f previous_version.txt ]; then
-            previous_version=$(cat previous_version.txt)
-          else
-            previous_version="0.0.0"
-          fi
-          echo "previous_version=$previous_version" >> $GITHUB_ENV
-          echo "previous_version=$previous_version" >> $GITHUB_OUTPUT
-
-      - name: Get new build number
-        id: get_build_number
-        run: |
-          if [ -f build_number.txt ]; then
-            build_number=$(cat build_number.txt)
-            build_number=$((build_number + 1))
-          else
-            build_number=1
-          fi
-          echo "build_number=$build_number" >> $GITHUB_ENV
-          echo "build_number=$build_number" >> $GITHUB_OUTPUT
-          echo $build_number > build_number.txt
-
-      - name: Save current version
-        run: echo "${{ steps.extract_version.outputs.current_version }}" > previous_version.txt
-
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v4
+      - name: Check Version
+        id: check
+        uses: EndBug/version-check@v2
         with:
-          name: version_artifacts
-          path: |
-            previous_version.txt
-            build_number.txt
+          file-name: ./version.json
+          diff-search: true
+          assume-same-version: new
+          token: ${{ secrets.GITHUB_TOKEN }}
 
   deploy-android:
-    runs-on: ubuntu-22.04
+    name: Deploy Android
     needs: version-check
-    if: ${{ needs.version-check.outputs.current_version != needs.version-check.outputs.previous_version }}
+    if: needs.version-check.outputs.changed == 'true'
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Install Flutter
+      - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: "3.22.2"
+          flutter-version: '3.22.2'
           channel: 'stable'
-          cache: true
 
       - name: Create .env file
         run: |
@@ -90,41 +51,42 @@ jobs:
           echo WEATHER_API_KEY=${{ secrets.WEATHER_API_KEY }} >> .env
           cat .env
 
-      - name: Get Flutter Project dependencies
+      - name: Install Dependencies
         run: flutter pub get
-       
-      - name: Build release app bundle
-        run: flutter build appbundle
 
-      - name: Sign App Bundle
-        uses: r0adkll/sign-android-release@v1   
-        id: sign_app
-        with:
-          releaseDirectory: build/app/outputs/bundle/release/
-          signingKeyBase64: ${{ secrets.ANDROID_KEYSTORE_FILE_BASE64 }}
-          alias: ${{ secrets.ANDROID_SIGNING_KEY_ALIAS }}         
-          keyStorePassword: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}             
-          keyPassword: ${{ secrets.ANDROID_SIGNING_KEY_PASSWORD }}
+      - name: Parse Version
+        id: set_var
+        run: |
+          versionStr=${{ needs.version-check.outputs.version }}
+          parsed=(${versionStr//+/ })
+          version=${parsed[0]}
+          versionParts=(${version//./ })
+          printf -v buildNumber "%d%02d%02d%02d" ${versionParts[0]} ${versionParts[1]} ${versionParts[2]} ${parsed[1]}
+          track="internal"
+          echo "::set-output name=version::$version"
+          echo "::set-output name=buildNumber::$buildNumber"
+          echo "::set-output name=track::$track"
 
-      - name: Upload Signed App Bundle
-        uses: actions/upload-artifact@v3
-        with:
-          name: signed-app-bundle
-          path: ${{steps.sign_app.outputs.signedReleaseFile}}
+      - name: Build App Bundle
+        run: flutter build apk --build-name=${{steps.set_var.outputs.version}} --build-number=${{steps.set_var.outputs.buildNumber}}
+      
+      - name: Upload Artifacts
+        run: |
+          echo -e "\r  release: com.halfseed.climature@${{needs.version-check.outputs.version}}" &>> pubspec.yaml
 
-      - name: Upload to Play Store (Internal Testing)
+      - name: Publish to Play Store
         uses: r0adkll/upload-google-play@v1.0.18  
         with:
           serviceAccountJsonPlainText: ${{ secrets.ANDROID_SERVICE_ACCOUNT_JSON }}
           packageName: com.halfseed.climature     
-          releaseFiles: ${{steps.sign_app.outputs.signedReleaseFile}}        
-          mappingFile: ./build/app/outputs/mapping/release/mapping.txt
-          track: internal
+          releaseFiles: 'build/app/outputs/apk/release/app-release.apk'       
+          track: ${{steps.set_var.outputs.track}}
+          status: completed
             
   deploy-ios:
+    name: Deploy iOS
+    if: needs.version-check.outputs.changed == 'true'
     runs-on: macos-latest
-    needs: version-check
-    if: ${{ needs.version-check.outputs.current_version != needs.version-check.outputs.previous_version }}
     env:
       APP_STORE_CONNECT_ISSUER_ID: ${{ vars.APP_STORE_CONNECT_ISSUER_ID }}
       APP_STORE_CONNECT_KEY_IDENTIFIER: ${{ vars.APP_STORE_CONNECT_KEY_IDENTIFIER }}
