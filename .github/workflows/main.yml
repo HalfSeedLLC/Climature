@@ -36,6 +36,7 @@ jobs:
 
       - name: Get previous version
         id: get_previous_version
+        continue-on-error: true
         run: |
           if [ -f previous_version.txt ]; then
             previous_version=$(cat previous_version.txt)
@@ -47,6 +48,7 @@ jobs:
 
       - name: Get new build number
         id: get_build_number
+        continue-on-error: true
         run: |
           if [ -f build_number.txt ]; then
             build_number=$(cat build_number.txt)
@@ -72,6 +74,7 @@ jobs:
   build:
     runs-on: macos-latest
     needs: version-check
+    if: needs.version-check.outputs.current_version != needs.version-check.outputs.previous_version
     env:
       APP_STORE_CONNECT_ISSUER_ID: ${{ vars.APP_STORE_CONNECT_ISSUER_ID }}
       APP_STORE_CONNECT_KEY_IDENTIFIER: ${{ vars.APP_STORE_CONNECT_KEY_IDENTIFIER }}
@@ -80,7 +83,6 @@ jobs:
       DIST_CERTIFICATE_PASSWORD: ${{ secrets.DIST_CERTIFICATE_PASSWORD }}
       DIST_PROFILE: ${{ secrets.DIST_PROFILE }}
       APP_STORE_APP_ID: ${{ vars.APP_STORE_APP_ID }}
-    if: ${{ needs.version-check.outputs.current_version != needs.version-check.outputs.previous_version }}
     steps:
       - uses: actions/checkout@v4
 
