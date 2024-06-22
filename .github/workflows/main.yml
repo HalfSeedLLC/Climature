@@ -69,6 +69,16 @@ jobs:
 
       - name: Build App Bundle
         run: flutter build appbundle --build-name=${{steps.set_var.outputs.version}} --build-number=${{steps.set_var.outputs.buildNumber}}
+
+      - name: Sign App Bundle
+        uses: r0adkll/sign-android-release@v1   
+        id: sign_app
+        with:
+          releaseDirectory: build/app/outputs/bundle/release/
+          signingKeyBase64: ${{ secrets.ANDROID_KEYSTORE_FILE_BASE64 }}
+          alias: ${{ secrets.ANDROID_SIGNING_KEY_ALIAS }}         
+          keyStorePassword: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          keyPassword: ${{ secrets.ANDROID_SIGNING_KEY_PASSWORD }}
       
       - name: Upload Artifacts
         run: |
@@ -135,14 +145,17 @@ jobs:
           echo WEATHER_API_KEY=${{ secrets.WEATHER_API_KEY }} >> .env
           cat .env
 
-      - name: Set version and build number
+      - name: Parse Version
+        id: set_var
         run: |
-          cd ios
-          agvtool new-marketing-version ${{ needs.version-check.outputs.current_version }}
-          agvtool new-version -all ${{ needs.version-check.outputs.build_number }}
+          versionStr=${{ needs.version-check.outputs.version }}
+          parsed=(${versionStr//+/ })
+          version=${parsed[0]}
+          echo "::set-output name=version::$version"
+          echo "::set-output name=buildNumber::${parsed[1]}"
 
       - name: Build ipa for distribution
-        run: flutter build ipa --release --export-options-plist=$HOME/export_options.plist
+        run: flutter build ipa --release --export-options-plist=$HOME/export_options.plist --build-name=${{steps.set_var.outputs.version}} --build-number=${{steps.set_var.outputs.buildNumber}}
 
       - name: Publish the app to App Store Connect
         run: |
