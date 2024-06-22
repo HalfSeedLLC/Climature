@@ -15,11 +15,22 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Cache previous version and build number
+        id: cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            previous_version.txt
+            build_number.txt
+          key: version-cache
+
       - name: Extract version from pubspec.yaml
         id: extract_version
         run: |
           version=$(grep '^version:' pubspec.yaml | awk '{print $2}' | cut -d '+' -f 1)
           build_number=$(grep '^version:' pubspec.yaml | awk '{print $2}' | cut -d '+' -f 2)
+          echo "version=$version" >> $GITHUB_ENV
+          echo "build_number=$build_number" >> $GITHUB_ENV
           echo "::set-output name=version::$version"
           echo "::set-output name=build_number::$build_number"
 
@@ -31,6 +42,7 @@ jobs:
           else
             previous_version="0.0.0"
           fi
+          echo "previous_version=$previous_version" >> $GITHUB_ENV
           echo "::set-output name=version::$previous_version"
 
       - name: Get new build number
@@ -42,6 +54,7 @@ jobs:
           else
             build_number=1
           fi
+          echo "build_number=$build_number" >> $GITHUB_ENV
           echo "::set-output name=build_number::$build_number"
           echo $build_number > build_number.txt
 
