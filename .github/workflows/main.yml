@@ -82,6 +82,12 @@ jobs:
          channel: 'stable'
          cache: true
 
+     - name: Create .env file
+       run: |
+         touch .env
+         echo WEATHER_API_KEY=${{ secrets.WEATHER_API_KEY }} >> .env
+         cat .env
+
      - name: Get Flutter Project dependencies
        run: flutter pub get
        
