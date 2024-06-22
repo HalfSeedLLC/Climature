@@ -68,7 +68,7 @@ jobs:
           echo "::set-output name=track::$track"
 
       - name: Build App Bundle
-        run: flutter build apk --build-name=${{steps.set_var.outputs.version}} --build-number=${{steps.set_var.outputs.buildNumber}}
+        run: flutter build appbundle --build-name=${{steps.set_var.outputs.version}} --build-number=${{steps.set_var.outputs.buildNumber}}
       
       - name: Upload Artifacts
         run: |
@@ -79,7 +79,7 @@ jobs:
         with:
           serviceAccountJsonPlainText: ${{ secrets.ANDROID_SERVICE_ACCOUNT_JSON }}
           packageName: com.halfseed.climature     
-          releaseFiles: 'build/app/outputs/flutter-apk/app-release.apk'       
+          releaseFiles: 'build/app/outputs/bundle/release/app-release.aab'       
           track: ${{steps.set_var.outputs.track}}
           status: completed
             
