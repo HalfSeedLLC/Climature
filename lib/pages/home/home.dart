@@ -73,6 +73,13 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                   (data) => data.location.name == state.favoriteCity,
                 );
 
+                final List<WeatherCardData> favoritesData = state.favoritesData.value
+                    .where((city) => city.location.name != state.favoriteCity)
+                    .toList();
+
+                final List<String> favoriteNames =
+                    state.favorites.where((city) => city != state.favoriteCity).toList();
+
                 return SafeArea(
                   bottom: false,
                   child: Padding(
@@ -126,11 +133,8 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                               CityList(
                                                   isLoading: state.isLoading,
                                                   isEditMode: state.isEditMode,
-                                                  favoritesData: state.favoritesData.value
-                                                      .where((city) =>
-                                                          city.location.name != state.favoriteCity)
-                                                      .toList(),
-                                                  favoritesNames: state.favorites,
+                                                  favoritesData: favoritesData,
+                                                  favoritesNames: favoriteNames,
                                                   animationController: _animationController),
                                             ],
                                           ),

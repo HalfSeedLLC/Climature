@@ -1,9 +1,13 @@
 part of 'city_list_cubit.dart';
 
+const defaultFavoriteCity = 'Los Angeles';
+
+const defaultCities = ['New York', 'Miami', 'Dallas', 'Seattle'];
+
 class CityListState extends Equatable {
   const CityListState({
-    this.favoriteCity = 'Los Angeles',
-    this.favorites = const ['New York', 'Memphis', 'London'],
+    this.favoriteCity = defaultFavoriteCity,
+    this.favorites = const [...defaultCities],
     this.favoritesData = const RequestStateWithValue(requestState: RequestState.initial, value: []),
     this.cities = const RequestStateWithValue(requestState: RequestState.initial, value: []),
     this.isEditMode = false,
