@@ -13,15 +13,15 @@ typedef OnDismissSearchEvent = void Function();
 
 class CitySearchResults extends StatelessWidget {
   const CitySearchResults({
+    required this.isSearchEmpty,
     required this.isSearchBarFocused,
     required this.onDismissSearchEvent,
-    required this.isSearchEmpty,
     Key? key,
   }) : super(key: key);
 
+  final bool isSearchEmpty;
   final bool isSearchBarFocused;
   final OnDismissSearchEvent onDismissSearchEvent;
-  final bool isSearchEmpty;
 
   @override
   Widget build(BuildContext context) {
@@ -57,38 +57,42 @@ class CitySearchResults extends StatelessWidget {
                               child: Text(context.localizations.noCitiesOrAirportsFound),
                             )),
                       )
-                    : SingleChildScrollView(
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 20),
-                          child: Wrap(
-                            runSpacing: 10,
-                            children: List.generate(
-                              cities.length,
-                              (i) => TextButton(
-                                onPressed: () async {
-                                  Future.wait([
-                                    context
-                                        .read<CityListCubit>()
-                                        .addToFavorites(city: cities.elementAt(i).name),
-                                    HapticFeedback.mediumImpact()
-                                  ]);
+                    : isSearchEmpty
+                        ? const SizedBox.shrink()
+                        : SingleChildScrollView(
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 20),
+                              child: Wrap(
+                                runSpacing: 10,
+                                children: List.generate(
+                                  cities.length,
+                                  (i) => TextButton(
+                                    onPressed: () async {
+                                      Future.wait([
+                                        context
+                                            .read<CityListCubit>()
+                                            .addToFavorites(city: cities.elementAt(i).name),
+                                        HapticFeedback.mediumImpact()
+                                      ]);
 
-                                  onDismissSearchEvent.call();
-                                },
-                                child: DecoratedBox(
-                                  decoration: BoxDecoration(
-                                    color: i == 0 ? WeatherColors.ev1 : Colors.transparent,
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: SizedBox(
-                                    width: double.infinity,
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(15),
-                                      child: SingleChildScrollView(
-                                        scrollDirection: Axis.horizontal,
-                                        child: Text(
-                                          '${cities.elementAt(i).name}, ${cities.elementAt(i).region} ${cities.elementAt(i).country}',
-                                          style: Theme.of(context).textTheme.bodySmall,
+                                      onDismissSearchEvent.call();
+                                    },
+                                    child: DecoratedBox(
+                                      decoration: BoxDecoration(
+                                        color: i == 0 ? WeatherColors.ev1 : Colors.transparent,
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      child: SizedBox(
+                                        width: double.infinity,
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(15),
+                                          child: SingleChildScrollView(
+                                            scrollDirection: Axis.horizontal,
+                                            child: Text(
+                                              '${cities.elementAt(i).name}, ${cities.elementAt(i).region} ${cities.elementAt(i).country}',
+                                              style: Theme.of(context).textTheme.bodySmall,
+                                            ),
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -97,8 +101,6 @@ class CitySearchResults extends StatelessWidget {
                               ),
                             ),
                           ),
-                        ),
-                      ),
               ),
             ),
           ),

@@ -37,8 +37,8 @@ class CityListCubit extends Cubit<CityListState> {
   }
 
   Future<void> _fetchPreferences() async {
-    await getFavoriteCityPreference();
     await getFavoritesFromDatabase();
+    await getFavoriteCityPreference();
   }
 
   Future<void> getFavoriteCityPreference() async {
@@ -58,8 +58,11 @@ class CityListCubit extends Cubit<CityListState> {
     emit(state.copyWith(
         favoritesData: state.favoritesData.copyWith(requestState: RequestState.loading)));
 
+    final List<String> defaultsToLoad = await defaultCitiesToLoad();
+    final List<String> favorites = [...state.favorites, ...defaultsToLoad];
+
     try {
-      final List<Future<WeatherCardData?>> futures = state.favorites.map((city) {
+      final List<Future<WeatherCardData?>> futures = favorites.map((city) {
         return weatherRepository.getLocationMetaData(city: city);
       }).toList();
 
@@ -68,12 +71,38 @@ class CityListCubit extends Cubit<CityListState> {
       final List<WeatherCardData> favoritesData = results.whereType<WeatherCardData>().toList();
 
       emit(state.copyWith(
+        favorites: defaultsToLoad,
         favoritesData:
             RequestStateWithValue(requestState: RequestState.success, value: favoritesData),
       ));
     } catch (e) {
       emit(state.copyWith(
           favoritesData: state.favoritesData.copyWith(requestState: RequestState.error)));
+    }
+  }
+
+  Future<List<String>> defaultCitiesToLoad() async {
+    List<String> defaultCitiesToLoad = [defaultFavoriteCity, ...defaultCities];
+
+    final removedDefaultCities =
+        preferences?.getStringList(SharedPreferencesKeys.removedDefaultCities);
+
+    if (removedDefaultCities != null) {
+      defaultCitiesToLoad =
+          defaultCitiesToLoad.where((city) => !removedDefaultCities.contains(city)).toList();
+    }
+
+    return defaultCitiesToLoad;
+  }
+
+  Future<void> _removeCityIfDefault({required String city}) async {
+    final allDefaultCities = [defaultFavoriteCity, ...defaultCities];
+
+    if (allDefaultCities.contains(city)) {
+      final removedCities = preferences?.getStringList(SharedPreferencesKeys.removedDefaultCities);
+
+      await preferences?.setStringList(
+          SharedPreferencesKeys.removedDefaultCities, [city, ...removedCities ?? []]);
     }
   }
 
@@ -99,6 +128,8 @@ class CityListCubit extends Cubit<CityListState> {
   Future<void> removeFavoriteCity() async {
     final favoriteCity = state.favoriteCity;
 
+    _removeCityIfDefault(city: state.favoriteCity);
+
     emit(state.copyWith(
         favoriteCity: '',
         favorites: state.favorites.where((e) => e != state.favoriteCity).toList(),
@@ -107,7 +138,7 @@ class CityListCubit extends Cubit<CityListState> {
                 .where((e) => e.location.name != state.favoriteCity)
                 .toList())));
 
-    _removeCityFromDatabase(city: favoriteCity);
+    removeCityFromDatabase(city: favoriteCity);
   }
 
   Future<void> removeFromFavorites({required String city}) async {
@@ -115,13 +146,15 @@ class CityListCubit extends Cubit<CityListState> {
     final List<WeatherCardData> favoritesData =
         state.favoritesData.value.where((e) => e.location.name != city).toList();
 
+    await _removeCityIfDefault(city: city);
+
     emit(state.copyWith(
         favorites: favorites, favoritesData: state.favoritesData.copyWith(value: favoritesData)));
 
-    _removeCityFromDatabase(city: city);
+    removeCityFromDatabase(city: city);
   }
 
-  Future<void> _removeCityFromDatabase({required String city}) async {
+  Future<void> removeCityFromDatabase({required String city}) async {
     Query<db_city.City> query = cityBox.query(City_.name.equals(city)).build();
     db_city.City? existingCity = query.findFirst();
 
@@ -132,13 +165,18 @@ class CityListCubit extends Cubit<CityListState> {
 
   Future<void> addToFavorites({required String city}) async {
     if (!state.favorites.contains(city) && city != state.favoriteCity) {
-      final List<String> favorites = [city, ...state.favorites];
-      emit(state.copyWith(favorites: favorites));
+      final cityData = await weatherRepository.getLocationMetaData(city: city);
 
-      final db_city.City newCity = db_city.City(name: city);
-      cityBox.put(newCity);
+      if (cityData != null) {
+        final List<String> favorites = [city, ...state.favorites];
+        final List<WeatherCardData> favoritesData = [cityData, ...state.favoritesData.value];
+        emit(state.copyWith(
+            favorites: favorites,
+            favoritesData: state.favoritesData.copyWith(value: favoritesData)));
 
-      await fetchFavorites();
+        final db_city.City newCity = db_city.City(name: city);
+        cityBox.put(newCity);
+      }
     }
   }
 

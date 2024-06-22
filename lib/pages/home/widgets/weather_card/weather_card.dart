@@ -88,14 +88,17 @@ class WeatherCard extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 2),
-                              child: Text(
-                                forecast,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodySmall!
-                                    .copyWith(color: fontColor),
+                            SizedBox(
+                              width: constraints.maxWidth - (isEditMode ? 105 : 200),
+                              child: Padding(
+                                padding: const EdgeInsets.only(left: 2),
+                                child: Text(
+                                  forecast,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodySmall!
+                                      .copyWith(color: fontColor, overflow: TextOverflow.ellipsis),
+                                ),
                               ),
                             )
                           ],

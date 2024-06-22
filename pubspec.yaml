@@ -25,6 +25,7 @@ dependencies:
   lottie: ^3.1.2
   objectbox: ^4.0.1
   objectbox_flutter_libs: any
+  text_scroll: ^0.2.0
 
 dev_dependencies:
   flutter_test:
