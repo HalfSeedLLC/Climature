@@ -91,7 +91,7 @@ jobs:
           packageName: com.halfseed.climature     
           releaseFiles: 'build/app/outputs/bundle/release/app-release.aab'       
           track: ${{steps.set_var.outputs.track}}
-          status: completed
+          status: draft
             
   deploy-ios:
     name: Deploy iOS
