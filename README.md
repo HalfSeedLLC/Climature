@@ -21,4 +21,4 @@ Integration testing is ran using the following command
 
 ## Copyright and License
 
-Copyright [Johnathan Hill](https://www.johnbhill.com/) 2024. This is a proprietary product developed for the sole use by [Johnathan Hill](https://www.johnbhill.com/).
+Copyright [Half Seed](https://www.halfseed.com/) 2024. This is a proprietary product developed for the sole use by [Half Seed LLC](https://www.halfseed.com/) developed by [Johnathan Hill](https://www.johnbhill.com). 
