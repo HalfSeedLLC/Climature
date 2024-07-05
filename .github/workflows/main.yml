@@ -161,3 +161,43 @@ jobs:
         run: |
           APP_FILE=$(find $(pwd) -name "*.ipa")
           app-store-connect publish --path "$APP_FILE"
+
+  create-release:
+    name: Create Release
+    runs-on: ubuntu-latest
+    if: needs.version-check.outputs.changed == 'true'
+    needs: [version-check, deploy-ios, deploy-android]
+  
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Create GitHub Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ needs.version-check.outputs.version }}
+          release_name: Release ${{ needs.version-check.outputs.version }}
+          body: |
+            ## Changes
+            - Automated release for version ${{ needs.version-check.outputs.version }}
+          draft: false
+          prerelease: false
+
+      - name: Download Build Zip
+        uses: actions/download-artifact@v2
+        with:
+          name: build
+          path: .
+
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./build.zip
+          asset_name: release.zip
+          asset_content_type: application/zip
