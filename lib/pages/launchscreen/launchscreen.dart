@@ -1,9 +1,9 @@
+import 'package:climature/logic/initializer_cubit.dart';
+import 'package:climature/pages/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
-import 'package:weather_app/logic/initializer_cubit.dart';
-import 'package:weather_app/pages/home/home.dart';
 
 import '../landing/landing.dart';
 

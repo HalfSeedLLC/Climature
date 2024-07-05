@@ -1,5 +1,5 @@
+import 'package:climature/theme/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:weather_app/theme/colors.dart';
 
 import '../../../../utils/utils.dart';
 

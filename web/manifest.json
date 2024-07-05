@@ -1,6 +1,6 @@
 {
-    "name": "weather_app",
-    "short_name": "weather_app",
+    "name": "climature",
+    "short_name": "climature",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

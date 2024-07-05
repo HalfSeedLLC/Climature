@@ -8,13 +8,13 @@ String getDayOfWeekString({required String date}) {
     return 'Today';
   } else {
     List<String> dayNames = [
-      'Monday',
-      'Tuesday',
-      'Wednesday',
-      'Thursday',
-      'Friday',
-      'Saturday',
-      'Sunday',
+      'Mon',
+      'Tue',
+      'Wed',
+      'Thu',
+      'Fri',
+      'Sat',
+      'Sun',
     ];
 
     int inputDayOfWeek = inputDate.weekday;

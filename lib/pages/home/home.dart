@@ -1,12 +1,12 @@
+import 'package:climature/models/weather_card_data.dart';
+import 'package:climature/pages/home/widgets/city_list/city_list.dart';
+import 'package:climature/pages/home/widgets/city_list/cubit/city_list_cubit.dart';
+import 'package:climature/pages/home/widgets/home_header.dart';
+import 'package:climature/pages/home/widgets/home_search_bar.dart';
+import 'package:climature/theme/colors.dart';
+import 'package:climature/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather_app/models/weather_card_data.dart';
-import 'package:weather_app/pages/home/widgets/city_list/city_list.dart';
-import 'package:weather_app/pages/home/widgets/city_list/cubit/city_list_cubit.dart';
-import 'package:weather_app/pages/home/widgets/home_header.dart';
-import 'package:weather_app/pages/home/widgets/home_search_bar.dart';
-import 'package:weather_app/theme/colors.dart';
-import 'package:weather_app/utils/utils.dart';
 
 import '../../utils/debounce.dart';
 import '../../utils/localizations.dart';

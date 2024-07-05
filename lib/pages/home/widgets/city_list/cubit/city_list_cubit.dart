@@ -1,12 +1,12 @@
+import 'package:climature/constants/enum.dart';
+import 'package:climature/constants/shared_preferences_keys.dart';
+import 'package:climature/models/weather_card_data.dart';
+import 'package:climature/objectbox.g.dart';
+import 'package:climature/respository/weather_repository.dart';
+import 'package:climature/utils/request_state_with_value.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:weather_app/constants/enum.dart';
-import 'package:weather_app/constants/shared_preferences_keys.dart';
-import 'package:weather_app/models/weather_card_data.dart';
-import 'package:weather_app/objectbox.g.dart';
-import 'package:weather_app/respository/weather_repository.dart';
-import 'package:weather_app/utils/request_state_with_value.dart';
 
 import '../../../../../models/city.dart';
 import '../../../../../models/database/city.dart' as db_city;

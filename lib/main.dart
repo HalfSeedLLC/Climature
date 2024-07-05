@@ -1,11 +1,11 @@
+import 'package:climature/respository/weather_repository.dart';
+import 'package:climature/router/router.dart';
+import 'package:climature/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_gen/gen_l10n/climature_localizations.dart';
-import 'package:weather_app/respository/weather_repository.dart';
-import 'package:weather_app/router/router.dart';
-import 'package:weather_app/theme/colors.dart';
 
 import 'logic/initializer_cubit.dart';
 
@@ -41,6 +41,7 @@ class WeatherApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'Climature',
+      debugShowCheckedModeBanner: false,
       localizationsDelegates: ClimatureLocalizations.localizationsDelegates,
       supportedLocales: ClimatureLocalizations.supportedLocales,
       theme: ThemeData(

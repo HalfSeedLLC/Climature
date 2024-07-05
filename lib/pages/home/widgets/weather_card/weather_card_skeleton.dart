@@ -1,5 +1,5 @@
+import 'package:climature/widgets/gradient_container.dart';
 import 'package:flutter/material.dart';
-import 'package:weather_app/widgets/gradient_container.dart';
 
 import '../../../../theme/colors.dart';
 
@@ -16,8 +16,7 @@ class WeatherCardSkeleton extends StatelessWidget {
     return LayoutBuilder(builder: (context, constraints) {
       return DecoratedBox(
         decoration: BoxDecoration(
-            color: backgroundColor.withOpacity(0.65),
-            borderRadius: BorderRadius.circular(15)),
+            color: backgroundColor.withOpacity(0.65), borderRadius: BorderRadius.circular(15)),
         child: SizedBox(
           height: 100,
           width: double.infinity,
@@ -59,8 +58,7 @@ class WeatherCardSkeleton extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(height: 10),
-                      GradientContainer(
-                          width: constraints.maxWidth / 2, height: 10),
+                      GradientContainer(width: constraints.maxWidth / 2, height: 10),
                     ]),
                 const GradientContainer(
                   width: 50,

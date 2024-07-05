@@ -1,16 +1,16 @@
+import 'package:climature/models/weather_card_data.dart';
+import 'package:climature/pages/city_forecast/city_forecast.dart';
+import 'package:climature/pages/home/widgets/action_icon.dart';
+import 'package:climature/pages/home/widgets/city_list/cubit/city_list_cubit.dart';
+import 'package:climature/pages/home/widgets/weather_card/weather_card.dart';
+import 'package:climature/pages/home/widgets/weather_card/weather_card_skeleton.dart';
+import 'package:climature/router/router.dart';
+import 'package:climature/theme/colors.dart';
+import 'package:climature/utils/localizations.dart';
+import 'package:climature/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather_app/models/weather_card_data.dart';
-import 'package:weather_app/pages/city_forecast/city_forecast.dart';
-import 'package:weather_app/pages/home/widgets/action_icon.dart';
-import 'package:weather_app/pages/home/widgets/city_list/cubit/city_list_cubit.dart';
-import 'package:weather_app/pages/home/widgets/weather_card/weather_card.dart';
-import 'package:weather_app/pages/home/widgets/weather_card/weather_card_skeleton.dart';
-import 'package:weather_app/router/router.dart';
-import 'package:weather_app/theme/colors.dart';
-import 'package:weather_app/utils/localizations.dart';
-import 'package:weather_app/utils/utils.dart';
 
 class CityList extends StatelessWidget {
   const CityList({

@@ -1,13 +1,12 @@
+import 'package:climature/models/forecast_day.dart';
+import 'package:climature/utils/utils.dart';
 import 'package:flutter/material.dart';
-import 'package:weather_app/models/forecast_day.dart';
-import 'package:weather_app/utils/utils.dart';
 
 import '../../../theme/colors.dart';
 import '../../../widgets/temperature_trend.dart';
 
 class FutureForecast extends StatelessWidget {
-  const FutureForecast({required this.forecastDays, Key? key})
-      : super(key: key);
+  const FutureForecast({required this.forecastDays, Key? key}) : super(key: key);
 
   final List<ForecastDay>? forecastDays;
 
@@ -15,9 +14,8 @@ class FutureForecast extends StatelessWidget {
   Widget build(BuildContext context) {
     return forecastDays != null
         ? DecoratedBox(
-            decoration: BoxDecoration(
-                color: WeatherColors.ev1,
-                borderRadius: BorderRadius.circular(20)),
+            decoration:
+                BoxDecoration(color: WeatherColors.ev1, borderRadius: BorderRadius.circular(20)),
             child: SizedBox(
               child: Padding(
                 padding: const EdgeInsets.all(25),
@@ -29,22 +27,17 @@ class FutureForecast extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         const Icon(
-                            size: 24,
-                            Icons.calendar_month,
-                            color: WeatherColors.secondaryFont),
+                            size: 24, Icons.calendar_month, color: WeatherColors.secondaryFont),
                         const SizedBox(
                           width: 10,
                         ),
                         Text('${forecastDays?.length ?? 0}-DAY-FORECAST',
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium!
-                                .copyWith(
-                                    height: 1,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w900,
-                                    letterSpacing: 1,
-                                    color: WeatherColors.secondaryFont)),
+                            style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                                height: 1,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w900,
+                                letterSpacing: 1,
+                                color: WeatherColors.secondaryFont)),
                       ],
                     ),
                     const SizedBox(height: 30),
@@ -53,39 +46,26 @@ class FutureForecast extends StatelessWidget {
                         children: List.generate(
                             forecastDays?.length ?? 0,
                             (i) => Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text(
-                                        getDayOfWeekString(
-                                            date: forecastDays!
-                                                .elementAt(i)
-                                                .date),
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodyMedium!
-                                            .copyWith(
-                                                height: 1,
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w900,
-                                                letterSpacing: 0,
-                                                color: WeatherColors.white)),
+                                    Text(getDayOfWeekString(date: forecastDays!.elementAt(i).date),
+                                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                                            height: 1,
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w900,
+                                            letterSpacing: 0,
+                                            color: WeatherColors.white)),
                                     Wrap(
                                       spacing: 15,
-                                      crossAxisAlignment:
-                                          WrapCrossAlignment.center,
+                                      crossAxisAlignment: WrapCrossAlignment.center,
                                       children: [
                                         Text(
                                           '${forecastDays!.elementAt(i).day.minTempF.toStringAsFixed(0)}°',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .labelSmall!
-                                              .copyWith(
-                                                  fontWeight: FontWeight.w900,
-                                                  fontSize: 16,
-                                                  letterSpacing: 1,
-                                                  color: WeatherColors
-                                                      .secondaryFont),
+                                          style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                                              fontWeight: FontWeight.w900,
+                                              fontSize: 16,
+                                              letterSpacing: 1,
+                                              color: WeatherColors.secondaryFont),
                                         ),
                                         Stack(
                                           alignment: Alignment.center,
@@ -94,11 +74,8 @@ class FutureForecast extends StatelessWidget {
                                               height: 4,
                                               width: 100,
                                               decoration: BoxDecoration(
-                                                  color:
-                                                      const Color(0xFF313131),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          10)),
+                                                  color: const Color(0xFF313131),
+                                                  borderRadius: BorderRadius.circular(10)),
                                             ),
                                             const SizedBox(
                                               width: 50,
@@ -115,18 +92,14 @@ class FutureForecast extends StatelessWidget {
                                         ),
                                         Text(
                                           '${forecastDays!.elementAt(i).day.maxTempF.toStringAsFixed(0)}°',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .labelSmall!
-                                              .copyWith(
-                                                  fontWeight: FontWeight.w900,
-                                                  fontSize: 16,
-                                                  letterSpacing: 1,
-                                                  color: WeatherColors.white),
+                                          style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                                              fontWeight: FontWeight.w900,
+                                              fontSize: 16,
+                                              letterSpacing: 1,
+                                              color: WeatherColors.white),
                                         ),
                                         Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: 5, bottom: 5),
+                                          padding: const EdgeInsets.only(left: 5, bottom: 5),
                                           child: SizedBox(
                                             width: 10,
                                             height: 10,

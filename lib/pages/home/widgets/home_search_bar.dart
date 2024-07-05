@@ -1,6 +1,6 @@
+import 'package:climature/utils/localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather_app/utils/localizations.dart';
 
 import '../../../theme/colors.dart';
 import 'city_list/cubit/city_list_cubit.dart';
@@ -114,7 +114,7 @@ class _HomeSearchBarState extends State<HomeSearchBar> with TickerProviderStateM
               decoration: InputDecoration(
                 filled: true,
                 hintText: context.localizations.searchForACityOrAirport,
-                contentPadding: EdgeInsets.zero,
+                contentPadding: const EdgeInsets.only(right: 30),
                 fillColor: WeatherColors.ev1,
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10.0),

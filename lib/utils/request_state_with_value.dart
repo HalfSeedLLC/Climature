@@ -1,4 +1,4 @@
-import 'package:weather_app/constants/enum.dart';
+import 'package:climature/constants/enum.dart';
 
 class RequestStateWithValue<T> {
   const RequestStateWithValue({

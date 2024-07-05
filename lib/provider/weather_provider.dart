@@ -1,9 +1,9 @@
 import 'dart:convert';
 
+import 'package:climature/models/forecast.dart';
+import 'package:climature/models/weather_card_data.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
-import 'package:weather_app/models/forecast.dart';
-import 'package:weather_app/models/weather_card_data.dart';
 
 import '../models/city.dart';
 

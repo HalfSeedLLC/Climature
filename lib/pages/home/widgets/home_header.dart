@@ -1,8 +1,8 @@
+import 'package:climature/theme/colors.dart';
+import 'package:climature/utils/localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather_app/theme/colors.dart';
-import 'package:weather_app/utils/localizations.dart';
 
 import 'city_list/cubit/city_list_cubit.dart';
 

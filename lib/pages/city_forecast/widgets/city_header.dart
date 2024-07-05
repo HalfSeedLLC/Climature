@@ -1,7 +1,7 @@
+import 'package:climature/theme/colors.dart';
+import 'package:climature/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
-import 'package:weather_app/theme/colors.dart';
-import 'package:weather_app/utils/utils.dart';
 
 import '../util/util.dart';
 

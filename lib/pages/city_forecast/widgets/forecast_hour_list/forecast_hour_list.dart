@@ -1,6 +1,6 @@
+import 'package:climature/pages/city_forecast/widgets/forecast_hour_list/widgets/forecast_hour.dart';
+import 'package:climature/utils/utils.dart';
 import 'package:flutter/material.dart';
-import 'package:weather_app/utils/utils.dart';
-import 'package:weather_app/pages/city_forecast/widgets/forecast_hour_list/widgets/forecast_hour.dart';
 
 import '../../../../models/hour.dart';
 import '../../../../theme/colors.dart';
@@ -15,8 +15,8 @@ class ForecastHourList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => DecoratedBox(
-        decoration: BoxDecoration(
-            color: WeatherColors.ev1, borderRadius: BorderRadius.circular(20)),
+        decoration:
+            BoxDecoration(color: WeatherColors.ev1, borderRadius: BorderRadius.circular(20)),
         child: SizedBox(
           height: 170,
           width: double.infinity,
@@ -31,23 +31,17 @@ class ForecastHourList extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      const Icon(
-                          size: 24,
-                          Icons.schedule,
-                          color: WeatherColors.secondaryFont),
+                      const Icon(size: 24, Icons.schedule, color: WeatherColors.secondaryFont),
                       const SizedBox(
                         width: 10,
                       ),
                       Text('HOURLY FORECAST',
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyMedium!
-                              .copyWith(
-                                  height: 1,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w900,
-                                  letterSpacing: 1,
-                                  color: WeatherColors.secondaryFont)),
+                          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                              height: 1,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w900,
+                              letterSpacing: 1,
+                              color: WeatherColors.secondaryFont)),
                     ],
                   ),
                 ),
@@ -64,15 +58,9 @@ class ForecastHourList extends StatelessWidget {
                                 time: i == 0
                                     ? 'Now'
                                     : '${getUserFriendlyHour(dateTime: forecastHours.elementAt(i).time)} ',
-                                temperature: forecastHours
-                                    .elementAt(i)
-                                    .tempF
-                                    .toStringAsFixed(0),
+                                temperature: forecastHours.elementAt(i).tempF.toStringAsFixed(0),
                                 iconAssetPath: getWeatherIconAsset(
-                                    iconAsset: forecastHours
-                                        .elementAt(i)
-                                        .condition
-                                        .icon),
+                                    iconAsset: forecastHours.elementAt(i).condition.icon),
                               )),
                     ),
                   ),

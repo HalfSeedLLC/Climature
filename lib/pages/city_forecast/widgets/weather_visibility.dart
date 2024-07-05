@@ -1,5 +1,5 @@
+import 'package:climature/pages/city_forecast/util/util.dart';
 import 'package:flutter/material.dart';
-import 'package:weather_app/pages/city_forecast/util/util.dart';
 
 import '../../../theme/colors.dart';
 
@@ -16,8 +16,7 @@ class WeatherVisibility extends StatelessWidget {
     final normalizedVisibility = visibility.toInt();
 
     return DecoratedBox(
-      decoration: BoxDecoration(
-          color: WeatherColors.ev1, borderRadius: BorderRadius.circular(20)),
+      decoration: BoxDecoration(color: WeatherColors.ev1, borderRadius: BorderRadius.circular(20)),
       child: SizedBox(
         height: 200,
         child: Padding(

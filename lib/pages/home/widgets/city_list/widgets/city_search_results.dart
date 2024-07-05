@@ -1,11 +1,11 @@
+import 'package:climature/constants/enum.dart';
+import 'package:climature/models/city.dart';
+import 'package:climature/pages/home/widgets/city_list/cubit/city_list_cubit.dart';
+import 'package:climature/utils/localizations.dart';
+import 'package:climature/utils/request_state_with_value.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather_app/constants/enum.dart';
-import 'package:weather_app/models/city.dart';
-import 'package:weather_app/pages/home/widgets/city_list/cubit/city_list_cubit.dart';
-import 'package:weather_app/utils/localizations.dart';
-import 'package:weather_app/utils/request_state_with_value.dart';
 
 import '../../../../../theme/colors.dart';
 

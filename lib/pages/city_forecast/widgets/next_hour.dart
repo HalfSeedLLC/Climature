@@ -1,6 +1,6 @@
+import 'package:climature/widgets/gradient_container.dart';
 import 'package:flutter/material.dart';
 import 'package:text_scroll/text_scroll.dart';
-import 'package:weather_app/widgets/gradient_container.dart';
 
 import '../../../theme/colors.dart';
 import '../../../utils/utils.dart';

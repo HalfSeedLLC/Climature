@@ -1,7 +1,7 @@
+import 'package:climature/pages/launchscreen/launchscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:weather_app/pages/launchscreen/launchscreen.dart';
 
 import '../pages/city_forecast/city_forecast.dart';
 import '../pages/city_forecast/cubit/forecast_cubit.dart';

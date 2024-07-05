@@ -1,8 +1,8 @@
+import 'package:climature/pages/home/home.dart';
+import 'package:climature/theme/colors.dart';
+import 'package:climature/utils/localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather_app/pages/home/home.dart';
-import 'package:weather_app/theme/colors.dart';
-import 'package:weather_app/utils/localizations.dart';
 
 import '../../logic/initializer_cubit.dart';
 import '../../router/router.dart';

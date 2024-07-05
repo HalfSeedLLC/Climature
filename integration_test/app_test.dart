@@ -1,15 +1,15 @@
+import 'package:climature/main.dart' as app;
+import 'package:climature/pages/home/home.dart';
+import 'package:climature/pages/home/widgets/action_icon.dart';
+import 'package:climature/pages/home/widgets/city_list/city_list.dart';
+import 'package:climature/pages/home/widgets/home_header.dart';
+import 'package:climature/pages/home/widgets/home_search_bar.dart';
+import 'package:climature/pages/landing/landing.dart';
+import 'package:climature/utils/localizations.dart';
+import 'package:climature/widgets/action_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
-import 'package:weather_app/main.dart' as app;
-import 'package:weather_app/pages/home/home.dart';
-import 'package:weather_app/pages/home/widgets/action_icon.dart';
-import 'package:weather_app/pages/home/widgets/city_list/city_list.dart';
-import 'package:weather_app/pages/home/widgets/home_header.dart';
-import 'package:weather_app/pages/home/widgets/home_search_bar.dart';
-import 'package:weather_app/pages/landing/landing.dart';
-import 'package:weather_app/utils/localizations.dart';
-import 'package:weather_app/widgets/action_button.dart';
 
 void main() {
   final binding = IntegrationTestWidgetsFlutterBinding.ensureInitialized();

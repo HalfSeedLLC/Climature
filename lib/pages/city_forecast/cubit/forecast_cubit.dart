@@ -1,9 +1,9 @@
 import 'dart:math';
 
+import 'package:climature/models/forecast_day.dart';
+import 'package:climature/respository/weather_repository.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather_app/models/forecast_day.dart';
-import 'package:weather_app/respository/weather_repository.dart';
 
 import '../../../models/current.dart';
 import '../../../models/forecast.dart';

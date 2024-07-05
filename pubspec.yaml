@@ -1,4 +1,4 @@
-name: weather_app
+name: climature
 description: "A simple weather app"
 publish_to: 'none' 
 
@@ -26,6 +26,9 @@ dependencies:
   objectbox: ^4.0.1
   objectbox_flutter_libs: any
   text_scroll: ^0.2.0
+  bloc_test: ^9.1.7
+  mocktail: ^1.0.4
+  mockito: ^5.4.4
 
 dev_dependencies:
   flutter_test:

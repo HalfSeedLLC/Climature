@@ -1,8 +1,8 @@
 // ignore_for_file: depend_on_referenced_packages
 
+import 'package:climature/objectbox.g.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
-import 'package:weather_app/objectbox.g.dart';
 
 class ClimatureDatabase {
   late final Store store;

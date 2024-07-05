@@ -1,4 +1,4 @@
-import 'package:weather_app/provider/weather_provider.dart';
+import 'package:climature/provider/weather_provider.dart';
 
 import '../database/database.dart';
 import '../models/city.dart';

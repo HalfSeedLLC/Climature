@@ -1,8 +1,8 @@
+import 'package:climature/constants/enum.dart';
+import 'package:climature/constants/shared_preferences_keys.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:weather_app/constants/enum.dart';
-import 'package:weather_app/constants/shared_preferences_keys.dart';
 
 part 'initializer_state.dart';
 
