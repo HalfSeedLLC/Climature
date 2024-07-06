@@ -82,6 +82,19 @@ jobs:
           keyStorePassword: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
           keyPassword: ${{ secrets.ANDROID_SIGNING_KEY_PASSWORD }}
 
+      - name: Upload Artifacts
+        run: |
+          echo -e "\r  release: com.halfseed.climature@${{needs.version-check.outputs.version}}" &>> pubspec.yaml
+
+      - name: Publish to Play Store
+        uses: r0adkll/upload-google-play@v1.0.18  
+        with:
+          serviceAccountJsonPlainText: ${{ secrets.ANDROID_SERVICE_ACCOUNT_JSON }}
+          packageName: com.halfseed.climature     
+          releaseFiles: 'build/app/outputs/bundle/release/app-release.aab'       
+          track: ${{steps.set_var.outputs.track}}
+          status: draft
+
       - name: Create Android Build ZIP
         id: upload
         run: |
@@ -159,6 +172,11 @@ jobs:
 
       - name: Build ipa for distribution
         run: flutter build ipa --release --export-options-plist=$HOME/export_options.plist --build-name=${{ env.version }} --build-number=${{ env.buildNumber }}
+
+      - name: Publish the app to App Store Connect
+        run: |
+          APP_FILE=$(find $(pwd) -name "*.ipa")
+          app-store-connect publish --path "$APP_FILE"
 
       - name: Create iOS Build ZIP
         id: upload
