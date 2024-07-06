@@ -89,6 +89,12 @@ jobs:
           zip -r android-release.zip app-release.aab
           echo "android_build_path=build/app/outputs/bundle/release/android-release.zip" >> $GITHUB_ENV
 
+      - name: Upload Android Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: android-release
+          path: build/app/outputs/bundle/release/android-release.zip
+
   deploy-ios:
     name: Deploy iOS
     if: needs.version-check.outputs.changed == 'true'
@@ -161,6 +167,12 @@ jobs:
           zip -r ios-release.zip *.ipa
           echo "ios_build_path=build/ios/ipa/ios-release.zip" >> $GITHUB_ENV
 
+      - name: Upload iOS Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: ios-release
+          path: build/ios/ipa/ios-release.zip
+
   create-release:
     name: Create Release
     runs-on: ubuntu-latest
@@ -185,10 +197,16 @@ jobs:
           draft: false
           prerelease: false
 
-      - name: Download Build Zip
+      - name: Download Android Artifact
         uses: actions/download-artifact@v2
         with:
-          name: build
+          name: android-release
+          path: .
+
+      - name: Download iOS Artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: ios-release
           path: .
 
       - name: Upload Android Release Asset
@@ -197,7 +215,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ${{ needs.deploy-android.outputs.android_build_path }}
+          asset_path: ./android-release.zip
           asset_name: android-release.zip
           asset_content_type: application/zip
 
@@ -207,6 +225,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ${{ needs.deploy-ios.outputs.ios_build_path }}
+          asset_path: ./ios-release.zip
           asset_name: ios-release.zip
           asset_content_type: application/zip
