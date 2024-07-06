@@ -35,8 +35,6 @@ jobs:
     if: needs.version-check.outputs.changed == 'true'
     needs: version-check
     runs-on: ubuntu-latest
-    outputs:
-      android_build_path: ${{ steps.upload.outputs.android_build_path }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -82,10 +80,6 @@ jobs:
           keyStorePassword: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
           keyPassword: ${{ secrets.ANDROID_SIGNING_KEY_PASSWORD }}
 
-      - name: Upload Artifacts
-        run: |
-          echo -e "\r  release: com.halfseed.climature@${{needs.version-check.outputs.version}}" &>> pubspec.yaml
-
       - name: Publish to Play Store
         uses: r0adkll/upload-google-play@v1.0.18  
         with:
@@ -96,11 +90,9 @@ jobs:
           status: draft
 
       - name: Create Android Build ZIP
-        id: upload
         run: |
           cd build/app/outputs/bundle/release/
           zip -r android-release.zip app-release.aab
-          echo "android_build_path=build/app/outputs/bundle/release/android-release.zip" >> $GITHUB_ENV
 
       - name: Upload Android Artifact
         uses: actions/upload-artifact@v2
