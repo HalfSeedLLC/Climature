@@ -35,6 +35,8 @@ jobs:
     if: needs.version-check.outputs.changed == 'true'
     needs: version-check
     runs-on: ubuntu-latest
+    outputs:
+      android_build_path: ${{ steps.upload.outputs.android_build_path }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -63,12 +65,12 @@ jobs:
           versionParts=(${version//./ })
           printf -v buildNumber "%d%02d%02d%02d" ${versionParts[0]} ${versionParts[1]} ${versionParts[2]} ${parsed[1]}
           track="internal"
-          echo "::set-output name=version::$version"
-          echo "::set-output name=buildNumber::$buildNumber"
-          echo "::set-output name=track::$track"
+          echo "version=${version}" >> $GITHUB_ENV
+          echo "buildNumber=${buildNumber}" >> $GITHUB_ENV
+          echo "track=${track}" >> $GITHUB_ENV
 
       - name: Build App Bundle
-        run: flutter build appbundle --build-name=${{steps.set_var.outputs.version}} --build-number=${{steps.set_var.outputs.buildNumber}}
+        run: flutter build appbundle --build-name=${{ env.version }} --build-number=${{ env.buildNumber }}
 
       - name: Sign App Bundle
         uses: r0adkll/sign-android-release@v1   
@@ -79,20 +81,14 @@ jobs:
           alias: ${{ secrets.ANDROID_SIGNING_KEY_ALIAS }}         
           keyStorePassword: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
           keyPassword: ${{ secrets.ANDROID_SIGNING_KEY_PASSWORD }}
-      
-      - name: Upload Artifacts
-        run: |
-          echo -e "\r  release: com.halfseed.climature@${{needs.version-check.outputs.version}}" &>> pubspec.yaml
 
-      - name: Publish to Play Store
-        uses: r0adkll/upload-google-play@v1.0.18  
-        with:
-          serviceAccountJsonPlainText: ${{ secrets.ANDROID_SERVICE_ACCOUNT_JSON }}
-          packageName: com.halfseed.climature     
-          releaseFiles: 'build/app/outputs/bundle/release/app-release.aab'       
-          track: ${{steps.set_var.outputs.track}}
-          status: draft
-            
+      - name: Create Android Build ZIP
+        id: upload
+        run: |
+          cd build/app/outputs/bundle/release/
+          zip -r android-release.zip app-release.aab
+          echo "android_build_path=build/app/outputs/bundle/release/android-release.zip" >> $GITHUB_ENV
+
   deploy-ios:
     name: Deploy iOS
     if: needs.version-check.outputs.changed == 'true'
@@ -106,9 +102,10 @@ jobs:
       DIST_CERTIFICATE_PASSWORD: ${{ secrets.DIST_CERTIFICATE_PASSWORD }}
       DIST_PROFILE: ${{ secrets.DIST_PROFILE }}
       APP_STORE_APP_ID: ${{ vars.APP_STORE_APP_ID }}
-      
+    outputs:
+      ios_build_path: ${{ steps.upload.outputs.ios_build_path }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
 
       - name: Install Flutter
         uses: subosito/flutter-action@v2
@@ -151,16 +148,18 @@ jobs:
           versionStr=${{ needs.version-check.outputs.version }}
           parsed=(${versionStr//+/ })
           version=${parsed[0]}
-          echo "::set-output name=version::$version"
-          echo "::set-output name=buildNumber::${parsed[1]}"
+          echo "version=${version}" >> $GITHUB_ENV
+          echo "buildNumber=${parsed[1]}" >> $GITHUB_ENV
 
       - name: Build ipa for distribution
-        run: flutter build ipa --release --export-options-plist=$HOME/export_options.plist --build-name=${{steps.set_var.outputs.version}} --build-number=${{steps.set_var.outputs.buildNumber}}
+        run: flutter build ipa --release --export-options-plist=$HOME/export_options.plist --build-name=${{ env.version }} --build-number=${{ env.buildNumber }}
 
-      - name: Publish the app to App Store Connect
+      - name: Create iOS Build ZIP
+        id: upload
         run: |
-          APP_FILE=$(find $(pwd) -name "*.ipa")
-          app-store-connect publish --path "$APP_FILE"
+          cd build/ios/ipa
+          zip -r ios-release.zip *.ipa
+          echo "ios_build_path=build/ios/ipa/ios-release.zip" >> $GITHUB_ENV
 
   create-release:
     name: Create Release
@@ -192,12 +191,22 @@ jobs:
           name: build
           path: .
 
-      - name: Upload Release Asset
+      - name: Upload Android Release Asset
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./build.zip
-          asset_name: release.zip
+          asset_path: ${{ needs.deploy-android.outputs.android_build_path }}
+          asset_name: android-release.zip
+          asset_content_type: application/zip
+
+      - name: Upload iOS Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ${{ needs.deploy-ios.outputs.ios_build_path }}
+          asset_name: ios-release.zip
           asset_content_type: application/zip
