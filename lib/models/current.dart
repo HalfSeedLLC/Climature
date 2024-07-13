@@ -141,31 +141,47 @@ class Current {
 
   factory Current.fromMap(Map<String, dynamic> map) {
     return Current(
-      lastUpdatedEpoch: map['last_updated_epoch'] as int,
-      lastUpdated: map['last_updated'] as String,
-      tempC: map['temp_c'] as double,
-      tempF: map['temp_f'] as double,
-      itsDay: map['its_day'] as int?,
-      condition: Condition.fromMap(map['condition'] as Map<String, dynamic>),
-      windMph: map['wind_mph'] as double,
-      windKph: map['wind_kph'] as double,
-      windDegree: map['wind_degree'] as int,
-      windDir: map['wind_dir'] as String,
-      pressureMb: map['pressure_mb'] as double,
-      pressureIn: map['pressure_in'] as double,
-      precipitationMm: map['precip_mm'] as double,
-      precipitationIn: map['precip_in'] as double,
-      humidity: map['humidity'] as int,
-      cloud: map['cloud'] as int,
-      feelsLikeC: map['feelslike_c'] as double,
-      feelsLikeF: map['feelslike_f'] as double,
-      visibilityKilometers: map['vis_km'] as double,
-      visibilityMiles: map['vis_miles'] as double,
-      uv: map['uv'] as double,
-      gustMph: map['gust_mph'] as double,
-      gustKph: map['gust_kph'] as double,
-      airQuality:
-          AirQuality.fromMap(map['air_quality'] as Map<String, dynamic>),
+      lastUpdatedEpoch: map['last_updated_epoch'] as int? ?? 0,
+      lastUpdated: map['last_updated'] as String? ?? '',
+      tempC: (map['temp_c'] as num?)?.toDouble() ?? 0,
+      tempF: (map['temp_f'] as num?)?.toDouble() ?? 0,
+      itsDay: map['its_day'] as int? ?? 0,
+      condition: map['condition'] != null
+          ? Condition.fromMap(map['condition'] as Map<String, dynamic>)
+          : Condition(
+              text: '',
+              icon: '',
+              code: 0,
+            ),
+      windMph: (map['wind_mph'] as num?)?.toDouble() ?? 0,
+      windKph: (map['wind_kph'] as num?)?.toDouble() ?? 0,
+      windDegree: map['wind_degree'] as int? ?? 0,
+      windDir: map['wind_dir'] as String? ?? '',
+      pressureMb: (map['pressure_mb'] as num?)?.toDouble() ?? 0,
+      pressureIn: (map['pressure_in'] as num?)?.toDouble() ?? 0,
+      precipitationMm: (map['precip_mm'] as num?)?.toDouble() ?? 0,
+      precipitationIn: (map['precip_in'] as num?)?.toDouble() ?? 0,
+      humidity: map['humidity'] as int? ?? 0,
+      cloud: map['cloud'] as int? ?? 0,
+      feelsLikeC: (map['feelslike_c'] as num?)?.toDouble() ?? 0,
+      feelsLikeF: (map['feelslike_f'] as num?)?.toDouble() ?? 0,
+      visibilityKilometers: (map['vis_km'] as num?)?.toDouble() ?? 0,
+      visibilityMiles: (map['vis_miles'] as num?)?.toDouble() ?? 0,
+      uv: (map['uv'] as num?)?.toDouble() ?? 0,
+      gustMph: (map['gust_mph'] as num?)?.toDouble() ?? 0,
+      gustKph: (map['gust_kph'] as num?)?.toDouble() ?? 0,
+      airQuality: map['air_quality'] != null
+          ? AirQuality.fromMap(map['air_quality'] as Map<String, dynamic>)
+          : AirQuality(
+              co: 0,
+              no2: 0,
+              o3: 0,
+              so2: 0,
+              pm2_5: 0,
+              pm10: 0,
+              usEpaIndex: 0,
+              gbDefraIndex: 0,
+            ),
     );
   }
 

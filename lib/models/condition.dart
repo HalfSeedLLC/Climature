@@ -33,9 +33,9 @@ class Condition {
 
   factory Condition.fromMap(Map<String, dynamic> map) {
     return Condition(
-      text: map['text'] as String,
-      icon: map['icon'] as String,
-      code: map['code'] as int,
+      text: map['text'] as String? ?? '',
+      icon: map['icon'] as String? ?? '',
+      code: (map['code'] as num?)?.toInt() ?? 0,
     );
   }
 

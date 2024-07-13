@@ -62,13 +62,16 @@ class CityListCubit extends Cubit<CityListState> {
     final List<String> favorites = [...state.favorites, ...defaultsToLoad];
 
     try {
-      final List<Future<WeatherCardData?>> futures = favorites.map((city) {
-        return weatherRepository.getLocationMetaData(city: city);
-      }).toList();
+      final queryResults = [];
 
-      final List<WeatherCardData?> results = await Future.wait(futures);
+      for (final String city in favorites) {
+        final WeatherCardData? cityData = await weatherRepository.getLocationMetaData(city: city);
+        Future.delayed(const Duration(milliseconds: 5));
+        queryResults.add(cityData);
+      }
 
-      final List<WeatherCardData> favoritesData = results.whereType<WeatherCardData>().toList();
+      final List<WeatherCardData> favoritesData =
+          queryResults.whereType<WeatherCardData>().toList();
 
       emit(state.copyWith(
         favorites: defaultsToLoad,

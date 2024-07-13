@@ -26,31 +26,39 @@ class ForecastCubit extends Cubit<ForecastState> {
     await getForecast(city: city);
 
     Future.delayed(const Duration(milliseconds: 500));
-    emit(state.copyWith(isLoading: false));
   }
 
   Future<void> getForecast({required String city}) async {
-    final forecast = await weatherRepository.getForecast(city: city);
+    try {
+      final forecast = await weatherRepository.getForecast(city: city);
 
-    if (forecast != null) {
-      getHourlyForecast(
-          current: forecast.current, forecastDays: forecast.forecast.entries.first.value);
+      if (forecast != null) {
+        getHourlyForecast(
+            current: forecast.current, forecastDays: forecast.forecast.entries.first.value);
 
-      emit(state.copyWith(forecast: forecast, forecastDays: forecast.forecast.entries.first.value));
+        emit(state.copyWith(
+            forecast: forecast, forecastDays: forecast.forecast.entries.first.value));
+      }
+    } catch (e) {
+      emit(state.copyWith(isError: true, isLoading: false));
     }
   }
 
   void getHourlyForecast({required Current current, required List<ForecastDay> forecastDays}) {
-    final currentHour = DateTime.parse(current.lastUpdated).hour;
+    try {
+      final currentHour = DateTime.parse(current.lastUpdated).hour;
 
-    final List<Hour> hourlyForecast =
-        forecastDays.expand((forecastDay) => forecastDay.hours).toList();
+      final List<Hour> hourlyForecast =
+          forecastDays.expand((forecastDay) => forecastDay.hours).toList();
 
-    final endIndex = currentHour + 22;
+      final endIndex = currentHour + 22;
 
-    final filteredHourlyForecast =
-        hourlyForecast.sublist(currentHour, min(endIndex, hourlyForecast.length));
+      final filteredHourlyForecast =
+          hourlyForecast.sublist(currentHour, min(endIndex, hourlyForecast.length));
 
-    emit(state.copyWith(hourlyForecast: filteredHourlyForecast));
+      emit(state.copyWith(isLoading: false, hourlyForecast: filteredHourlyForecast));
+    } catch (e) {
+      emit(state.copyWith(isLoading: false, isError: true));
+    }
   }
 }

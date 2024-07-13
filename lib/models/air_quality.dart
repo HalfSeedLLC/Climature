@@ -36,14 +36,14 @@ class AirQuality {
 
   factory AirQuality.fromMap(Map<String, dynamic> map) {
     return AirQuality(
-      co: map['co'] as double?,
-      no2: map['no2'] as double?,
-      o3: map['o3'] as double?,
-      so2: map['so2'] as double?,
-      pm2_5: map['pm2_5'] as double?,
-      pm10: map['pm10'] as double?,
-      usEpaIndex: map['us-epa-index'] as int?,
-      gbDefraIndex: map['gb-defra-index'] as int?,
+      co: map['co'] as double? ?? 0,
+      no2: map['no2'] as double? ?? 0,
+      o3: map['o3'] as double? ?? 0,
+      so2: map['so2'] as double? ?? 0,
+      pm2_5: map['pm2_5'] as double? ?? 0,
+      pm10: map['pm10'] as double? ?? 0,
+      usEpaIndex: map['us-epa-index'] as int? ?? 0,
+      gbDefraIndex: map['gb-defra-index'] as int? ?? 0,
     );
   }
 

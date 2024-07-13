@@ -1,6 +1,6 @@
 import 'dart:convert';
-import 'air_quality.dart';
 
+import 'air_quality.dart';
 import 'condition.dart';
 
 class Hour {
@@ -157,10 +157,8 @@ class Hour {
       gustKph: gustKph ?? this.gustKph,
       uv: uv ?? this.uv,
       airQuality: airQuality ?? this.airQuality,
-      shortwaveSolarRadiation:
-          shortwaveSolarRadiation ?? this.shortwaveSolarRadiation,
-      diffuseHorizontalRadiation:
-          diffuseHorizontalRadiation ?? this.diffuseHorizontalRadiation,
+      shortwaveSolarRadiation: shortwaveSolarRadiation ?? this.shortwaveSolarRadiation,
+      diffuseHorizontalRadiation: diffuseHorizontalRadiation ?? this.diffuseHorizontalRadiation,
     );
   }
 
@@ -208,51 +206,49 @@ class Hour {
 
   factory Hour.fromMap(Map<String, dynamic> map) {
     return Hour(
-      timeEpoch: map['time_epoch'] as int,
+      timeEpoch: (map['time_epoch'] as num).toInt(),
       time: map['time'] as String,
-      tempC: map['temp_c'] as double,
-      tempF: map['temp_f'] as double,
-      itsDay: map['is_day'] as int,
+      tempC: (map['temp_c'] as num).toDouble(),
+      tempF: (map['temp_f'] as num).toDouble(),
+      itsDay: (map['is_day'] as num).toInt(),
       condition: Condition.fromMap(map['condition'] as Map<String, dynamic>),
-      windMph: map['wind_mph'] as double,
-      windKph: map['wind_kph'] as double,
-      windDegree: map['wind_degree'] as int,
+      windMph: (map['wind_mph'] as num).toDouble(),
+      windKph: (map['wind_kph'] as num).toDouble(),
+      windDegree: (map['wind_degree'] as num).toInt(),
       windDir: map['wind_dir'] as String,
-      pressureMb: map['pressure_mb'] as double,
-      pressureIn: map['pressure_in'] as double,
-      precipitationMm: map['precip_mm'] as double,
-      precipitationIn: map['precip_in'] as double,
-      snowCm: map['snow_cm'] as double,
-      humidity: map['humidity'] as int,
-      cloud: map['cloud'] as int,
-      feelsLikeC: map['feelslike_c'] as double,
-      feelsLikeF: map['feelslike_f'] as double,
-      windChillC: map['windchill_c'] as double,
-      windChillF: map['windchill_f'] as double,
-      heatIndexC: map['heatindex_c'] as double,
-      heatIndexF: map['heatindex_f'] as double,
-      dewPointC: map['dewpoint_c'] as double,
-      dewPointF: map['dewpoint_f'] as double,
+      pressureMb: (map['pressure_mb'] as num).toDouble(),
+      pressureIn: (map['pressure_in'] as num).toDouble(),
+      precipitationMm: (map['precip_mm'] as num).toDouble(),
+      precipitationIn: (map['precip_in'] as num).toDouble(),
+      snowCm: (map['snow_cm'] as num).toDouble(),
+      humidity: (map['humidity'] as num).toInt(),
+      cloud: (map['cloud'] as num).toInt(),
+      feelsLikeC: (map['feelslike_c'] as num).toDouble(),
+      feelsLikeF: (map['feelslike_f'] as num).toDouble(),
+      windChillC: (map['windchill_c'] as num).toDouble(),
+      windChillF: (map['windchill_f'] as num).toDouble(),
+      heatIndexC: (map['heatindex_c'] as num).toDouble(),
+      heatIndexF: (map['heatindex_f'] as num).toDouble(),
+      dewPointC: (map['dewpoint_c'] as num).toDouble(),
+      dewPointF: (map['dewpoint_f'] as num).toDouble(),
       willItRain: map['will_it_rain'] == 1,
-      chanceOfRain: map['chance_of_rain'] as int,
+      chanceOfRain: (map['chance_of_rain'] as num).toInt(),
       willItSnow: map['will_it_snow'] == 1,
-      chanceOfSnow: map['chance_of_snow'] as int,
-      visibilityKilometers: map['vis_km'] as double,
-      visibilityMiles: map['vis_miles'] as double,
-      gustMph: map['gust_mph'] as double,
-      gustKph: map['gust_kph'] as double,
-      uv: map['uv'] as double,
-      airQuality:
-          AirQuality.fromMap(map['air_quality'] as Map<String, dynamic>),
-      shortwaveSolarRadiation: map['short_rad'] as double?,
-      diffuseHorizontalRadiation: map['diff_rad'] as double?,
+      chanceOfSnow: (map['chance_of_snow'] as num).toInt(),
+      visibilityKilometers: (map['vis_km'] as num).toDouble(),
+      visibilityMiles: (map['vis_miles'] as num).toDouble(),
+      gustMph: (map['gust_mph'] as num).toDouble(),
+      gustKph: (map['gust_kph'] as num).toDouble(),
+      uv: (map['uv'] as num).toDouble(),
+      airQuality: AirQuality.fromMap(map['air_quality'] as Map<String, dynamic>),
+      shortwaveSolarRadiation: (map['short_rad'] as num?)?.toDouble(),
+      diffuseHorizontalRadiation: (map['diff_rad'] as num?)?.toDouble(),
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory Hour.fromJson(String source) =>
-      Hour.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory Hour.fromJson(String source) => Hour.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   String toString() {

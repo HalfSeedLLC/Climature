@@ -50,7 +50,7 @@ class ForecastDay {
   factory ForecastDay.fromMap(Map<String, dynamic> map) {
     return ForecastDay(
         date: map['date'] as String,
-        dateEpoch: map['date_epoch'] as int,
+        dateEpoch: (map['date_epoch'] as num).toInt(),
         day: Day.fromMap(map['day'] as Map<String, dynamic>),
         astro: Astro.fromMap(map['astro'] as Map<String, dynamic>),
         hours: (map['hour'] as List<dynamic>)
@@ -83,10 +83,6 @@ class ForecastDay {
 
   @override
   int get hashCode {
-    return date.hashCode ^
-        dateEpoch.hashCode ^
-        day.hashCode ^
-        astro.hashCode ^
-        hours.hashCode;
+    return date.hashCode ^ dateEpoch.hashCode ^ day.hashCode ^ astro.hashCode ^ hours.hashCode;
   }
 }

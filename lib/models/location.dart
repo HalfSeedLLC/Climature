@@ -58,14 +58,14 @@ class Location {
 
   factory Location.fromMap(Map<String, dynamic> map) {
     return Location(
-      name: map['name'] as String,
-      region: map['region'] as String,
-      country: map['country'] as String,
-      latitude: map['lat'] as double,
-      longitude: map['lon'] as double,
-      timezone: map['tz_id'] as String,
-      localTimeEpoch: map['localtime_epoch'] as int,
-      localTime: map['localtime'] as String,
+      name: map['name'] as String? ?? '',
+      region: map['region'] as String? ?? '',
+      country: map['country'] as String? ?? '',
+      latitude: (map['lat'] as num?)?.toDouble() ?? 0,
+      longitude: (map['lon'] as num?)?.toDouble() ?? 0,
+      timezone: map['tz_id'] as String? ?? '',
+      localTimeEpoch: (map['localtime_epoch'] as num?)?.toInt() ?? 0,
+      localTime: map['localtime'] as String? ?? '',
     );
   }
 
