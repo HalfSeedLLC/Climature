@@ -38,22 +38,18 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.22.2'
           channel: 'stable'
-
       - name: Create .env file
         run: |
           touch .env
           echo WEATHER_API_KEY=${{ secrets.WEATHER_API_KEY }} >> .env
           cat .env
-
       - name: Install Dependencies
         run: flutter pub get
-
       - name: Parse Version
         id: set_var
         run: |
@@ -63,29 +59,29 @@ jobs:
           versionParts=(${version//./ })
           printf -v buildNumber "%d%02d%02d%02d" ${versionParts[0]} ${versionParts[1]} ${versionParts[2]} ${parsed[1]}
           track="internal"
-          echo "version=${version}" >> $GITHUB_ENV
-          echo "buildNumber=${buildNumber}" >> $GITHUB_ENV
-          echo "track=${track}" >> $GITHUB_ENV
+          echo "::set-output name=version::$version"
+          echo "::set-output name=buildNumber::$buildNumber"
+          echo "::set-output name=track::$track"
 
       - name: Build App Bundle
-        run: flutter build appbundle --build-name=${{ env.version }} --build-number=${{ env.buildNumber }}
+        run: flutter build appbundle --build-name=${{steps.set_var.outputs.version}} --build-number=${{steps.set_var.outputs.buildNumber}}
 
       - name: Sign App Bundle
-        uses: r0adkll/sign-android-release@v1   
+        uses: r0adkll/sign-android-release@v1
         id: sign_app
         with:
           releaseDirectory: build/app/outputs/bundle/release/
           signingKeyBase64: ${{ secrets.ANDROID_KEYSTORE_FILE_BASE64 }}
-          alias: ${{ secrets.ANDROID_SIGNING_KEY_ALIAS }}         
+          alias: ${{ secrets.ANDROID_SIGNING_KEY_ALIAS }}
           keyStorePassword: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
           keyPassword: ${{ secrets.ANDROID_SIGNING_KEY_PASSWORD }}
 
       - name: Publish to Play Store
-        uses: r0adkll/upload-google-play@v1.0.18  
+        uses: r0adkll/upload-google-play@v1.0.18
         with:
           serviceAccountJsonPlainText: ${{ secrets.ANDROID_SERVICE_ACCOUNT_JSON }}
-          packageName: com.halfseed.climature     
-          releaseFiles: 'build/app/outputs/bundle/release/app-release.aab'       
+          packageName: com.halfseed.climature
+          releaseFiles: 'build/app/outputs/bundle/release/app-release.aab'
           track: ${{steps.set_var.outputs.track}}
           status: draft
 
@@ -188,7 +184,7 @@ jobs:
     runs-on: ubuntu-latest
     if: needs.version-check.outputs.changed == 'true'
     needs: [version-check, deploy-ios, deploy-android]
-  
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
