@@ -66,7 +66,6 @@ class CityListCubit extends Cubit<CityListState> {
 
       for (final String city in favorites) {
         final WeatherCardData? cityData = await weatherRepository.getLocationMetaData(city: city);
-        Future.delayed(const Duration(milliseconds: 5));
         queryResults.add(cityData);
       }
 
