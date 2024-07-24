@@ -3,6 +3,7 @@ import 'package:climature/utils/localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:text_scroll/text_scroll.dart';
 
 import 'city_list/cubit/city_list_cubit.dart';
 
@@ -19,43 +20,50 @@ class HomeHeader extends StatelessWidget {
   final bool isEditMode;
 
   @override
-  Widget build(BuildContext context) => AnimatedContainer(
-        height: isSearchBarFocused ? 0 : 60,
-        duration: const Duration(milliseconds: 250),
-        child: SingleChildScrollView(
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    context.localizations.cityList,
-                    style: Theme.of(context).textTheme.headlineMedium,
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    currentCondition.isEmpty
-                        ? context.localizations.addYourCityMessage
-                        : context.localizations.currentConditions(currentCondition),
-                    style: Theme.of(context).textTheme.bodyMedium,
-                  ),
-                ],
-              ),
-              TextButton(
-                onPressed: () async {
-                  context.read<CityListCubit>().toggleEditMode();
-                  HapticFeedback.mediumImpact();
-                },
-                child: isEditMode
-                    ? const Icon(size: 30, Icons.cancel_outlined, color: WeatherColors.white)
-                    : const Icon(size: 30, Icons.pending_outlined, color: WeatherColors.white),
-              )
-            ],
+  Widget build(BuildContext context) => LayoutBuilder(builder: (context, constraints) {
+        return AnimatedContainer(
+          height: isSearchBarFocused ? 0 : 60,
+          duration: const Duration(milliseconds: 250),
+          child: SingleChildScrollView(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      context.localizations.cityList,
+                      style: Theme.of(context).textTheme.headlineMedium,
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    SizedBox(
+                      width: constraints.maxWidth - 50,
+                      child: TextScroll(
+                        currentCondition.isEmpty
+                            ? context.localizations.addYourCityMessage
+                            : context.localizations.currentConditions(currentCondition),
+                        mode: TextScrollMode.endless,
+                        velocity: const Velocity(pixelsPerSecond: Offset(25, 0)),
+                        style: Theme.of(context).textTheme.bodyMedium,
+                      ),
+                    ),
+                  ],
+                ),
+                TextButton(
+                  onPressed: () async {
+                    context.read<CityListCubit>().toggleEditMode();
+                    HapticFeedback.mediumImpact();
+                  },
+                  child: isEditMode
+                      ? const Icon(size: 30, Icons.cancel_outlined, color: WeatherColors.white)
+                      : const Icon(size: 30, Icons.pending_outlined, color: WeatherColors.white),
+                )
+              ],
+            ),
           ),
-        ),
-      );
+        );
+      });
 }
