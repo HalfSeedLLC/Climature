@@ -84,6 +84,7 @@ jobs:
           releaseFiles: 'build/app/outputs/bundle/release/app-release.aab'
           track: ${{steps.set_var.outputs.track}}
           status: draft
+          changesNotSentForReview: true
 
       - name: Create Android Build ZIP
         run: |
