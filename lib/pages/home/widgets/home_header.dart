@@ -3,6 +3,7 @@ import 'package:climature/utils/localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:text_scroll/text_scroll.dart';
 
 import 'city_list/cubit/city_list_cubit.dart';
 
@@ -40,11 +41,12 @@ class HomeHeader extends StatelessWidget {
                     ),
                     SizedBox(
                       width: constraints.maxWidth - 50,
-                      child: Text(
+                      child: TextScroll(
                         currentCondition.isEmpty
                             ? context.localizations.addYourCityMessage
                             : context.localizations.currentConditions(currentCondition),
-                        overflow: TextOverflow.ellipsis,
+                        mode: TextScrollMode.endless,
+                        velocity: const Velocity(pixelsPerSecond: Offset(25, 0)),
                         style: Theme.of(context).textTheme.bodyMedium,
                       ),
                     ),
