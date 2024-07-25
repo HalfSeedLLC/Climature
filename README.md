@@ -4,10 +4,15 @@ _*_A minimal weather app built with Flutter_*_
 
 ![144-modified](https://github.com/JohnathanHill/WeatherApp/assets/18708877/4da13c67-0378-45c1-be01-b6fa06a4dfcf)
 
-Available in the Apple App Store 🚀 [Climature App](https://apps.apple.com/us/app/climature/id6504634267?platform=iphone)
+Available in the Apple App Store 🚀
+
+<!---<img src="https://github.com/user-attachments/assets/11e672b3-b54d-405e-8e7d-8bfa136f1f4b" width="200" />-->
+
+<a href="https://apps.apple.com/us/app/climature/id6504634267?platform=iphone"><img src="https://github.com/user-attachments/assets/e88a06a2-e954-4467-a9ab-fe5ab23b2616" width="200" /></a>
+
 
 ### Unit Testing 
-Unit testing is ran using the following command
+Unit testing can be ran using the following command
 
 ```
  flutter test
@@ -15,7 +20,7 @@ Unit testing is ran using the following command
 
 
 ### Integration Testing
-Integration testing is ran using the following command
+Integration testing can be ran using the following command
 
 ```
  flutter test integration_test/app_test.dart
