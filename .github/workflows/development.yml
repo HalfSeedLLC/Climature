@@ -21,19 +21,19 @@ jobs:
         flutter-version: '3.22.2'
         channel: 'stable'
 
-    - name: Create .env file
-      run: |
-        touch .env
-        echo WEATHER_API_KEY=${{ secrets.WEATHER_API_KEY }} >> .env
-        cat .env
-
-    - name: Cache Flutter SDK
+    - name: Cache Dart dependencies
       uses: actions/cache@v2
       with:
         path: ~/.pub-cache
         key: ${{ runner.os }}-pub-cache-${{ hashFiles('**/pubspec.yaml') }}
         restore-keys: |
           ${{ runner.os }}-pub-cache-
+
+    - name: Create .env file
+      run: |
+        touch .env
+        echo WEATHER_API_KEY=${{ secrets.WEATHER_API_KEY }} >> .env
+        cat .env
 
     - name: Install dependencies
       run: flutter pub get
