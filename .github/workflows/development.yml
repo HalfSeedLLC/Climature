@@ -6,7 +6,8 @@ on:
       - '**'
 
 jobs:
-  test:
+  run-tests:
+    name: Run Tests
     runs-on: ubuntu-latest
 
     steps:
@@ -17,6 +18,13 @@ jobs:
       uses: subosito/flutter-action@v2
       with:
         flutter-version: '3.22.2'
+        channel: 'stable'
+    
+    - name: Create .env file
+        run: |
+          touch .env
+          echo WEATHER_API_KEY=${{ secrets.WEATHER_API_KEY }} >> .env
+          cat .env
 
     - name: Cache Flutter SDK
       uses: actions/cache@v2
