@@ -4,11 +4,16 @@ _*_A minimal weather app built with Flutter_*_
 
 ![144-modified](https://github.com/JohnathanHill/WeatherApp/assets/18708877/4da13c67-0378-45c1-be01-b6fa06a4dfcf)
 
-Available in the Apple App Store 🚀
+Available in the Apple App & Google Play Store 🚀
 
-<!---<img src="https://github.com/user-attachments/assets/11e672b3-b54d-405e-8e7d-8bfa136f1f4b" width="200" />-->
+  <a href="https://play.google.com/store/apps/details?id=com.halfseed.climature&hl=en_US">
+    <img src="https://github.com/user-attachments/assets/fb14c312-c9ff-48fc-b338-0bed545ff6a0" width="200" />
+  </a><a href="https://apps.apple.com/us/app/climature/id6504634267?platform=iphone">
+    <img src="https://github.com/user-attachments/assets/e88a06a2-e954-4467-a9ab-fe5ab23b2616" width="200" />
+  </a>
 
-<a href="https://apps.apple.com/us/app/climature/id6504634267?platform=iphone"><img src="https://github.com/user-attachments/assets/e88a06a2-e954-4467-a9ab-fe5ab23b2616" width="200" /></a>
+
+
 
 
 ### Unit Testing 
